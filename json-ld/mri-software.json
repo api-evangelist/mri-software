@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.mrisoftware.com/",
+  "name": "MRI Software",
+  "description": "MRI Software is a real estate technology platform serving over 45,000 clients across 170+ countries. It provides REST APIs and an open integration ecosystem for property management, investment management, lease accounting, facilities management, visitor and contractor management, and commercial real estate analytics.",
+  "url": "https://www.mrisoftware.com/",
+  "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/company/mri-software-llc",
+    "https://x.com/mrisoftware",
+    "https://github.com/MRI-Software"
+  ],
+  "knowsAbout": [
+    "Real Estate Technology",
+    "Property Management",
+    "Investment Management",
+    "Lease Accounting",
+    "Facilities Management",
+    "Visitor Management",
+    "Commercial Real Estate Analytics",
+    "PropTech"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "MRI Software API Products",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "MRI Information Exchange (MIX) API",
+        "description": "An open and connected ecosystem of secure REST APIs enabling controlled data exchange between MRI's core property management platform and third-party or custom applications. Over 1,000 unique APIs operate within the MIX environment.",
+        "url": "https://www.mrisoftware.com/products/mri-information-exchange/"
+      },
+      {
+        "@type": "Offer",
+        "name": "MRI OnLocation REST API",
+        "description": "A REST API for integrating with MRI OnLocation's people presence management platform, enabling programmatic access to visitor, contractor, and employee sign-in data.",
+        "url": "https://apidocs.whosonlocation.com/"
+      },
+      {
+        "@type": "Offer",
+        "name": "MRI Property Management X API",
+        "description": "REST APIs providing programmatic access to MRI's core property management platform, covering residential and commercial property portfolios, units, leases, resident ledgers, maintenance work orders, and AP workflows.",
+        "url": "https://www.mrisoftware.com/mrifunctionalspecs/"
+      }
+    ]
+  },
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "url": "https://www.mrisoftware.com/"
+  },
+  "publishingPrinciples": "https://www.mrisoftware.com/blog/",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://status.mrisoftware.com/"
+  }
+}
