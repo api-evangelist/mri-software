@@ -1,0 +1,32 @@
+name: MRI Software FinOps
+description: MRI Software operates on a fully custom enterprise pricing model for its core real estate technology platform. There is no self-serve or consumption-based API billing. Costs are negotiated per contract based on portfolio size, modules selected, user count, and implementation scope. The OnLocation visitor-management product is the only product with publicly available pricing tiers.
+url: https://www.mrisoftware.com/contact-us/
+model: custom_enterprise
+billing:
+  - type: Annual Subscription (Core Platform)
+    description: Annual license fees for Property Management X, MRI Agora, Investment Management, Lease Accounting, Facilities Management, and Commercial Real Estate modules. Fees are custom-quoted per engagement.
+    price: Custom Quote
+    estimated_range: "$9,600–$240,000+ per year depending on modules and portfolio size"
+    notes: Implementation, professional services, data migration, and training are billed separately and can add tens of thousands to hundreds of thousands of dollars for large enterprises.
+  - type: OnLocation Subscription
+    description: Tiered annual or monthly subscription for visitor and contractor management with REST API access.
+    price: Contact Sales (NZD pricing available on website)
+    tiers:
+      - Small: up to 3,000 visitor/contractor and 30,000 employee sign-ins per year
+      - Medium: up to 10,000 visitor/contractor and 100,000 employee sign-ins per year
+      - Large: up to 20,000 visitor/contractor and 200,000 employee sign-ins per year
+      - Custom: negotiated for campuses and high-traffic environments
+    discount: Up to 15% savings on annual pre-payment
+    notes: Pricing excludes local taxes. Add-ons such as OnScan and Desk Booking are available at extra cost.
+  - type: Partner/Integration Fees
+    description: Access to the MRI Information Exchange (MIX) API ecosystem and Partner Connect program may require partner agreement fees.
+    price: Contact Sales
+    notes: MRI engineers vet and approve all partner-built APIs for security and integrity before deployment in the MIX ecosystem.
+cost_optimization:
+  - Pay annually for OnLocation to capture up to 15% discount.
+  - Engage MRI Software sales early to negotiate bundle pricing across multiple modules (Property Management + Lease Accounting + Investment Management).
+  - Use the MRI Information Exchange toolkit to build custom APIs internally rather than relying on third-party integration middleware where possible.
+  - Leverage the Partner Connect ecosystem (400+ partners) to avoid redundant integration development costs.
+contact:
+  sales_phone: "+1 800 321 8770"
+  url: https://www.mrisoftware.com/contact-us/

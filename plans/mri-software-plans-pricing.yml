@@ -1,0 +1,67 @@
+name: MRI Software Plans and Pricing
+description: MRI Software uses a custom enterprise pricing model for its core real estate platform (Property Management X, MRI Agora, Investment Management, Lease Accounting, Facilities Management). The OnLocation visitor-management product publishes tiered plans based on annual sign-in volume. All other products require direct engagement with sales for a custom quote.
+url: https://www.mrisoftware.com/products/onlocation/pricing/
+plans:
+  - name: OnLocation Small
+    description: Ideal for a location with low visitor and contractor numbers.
+    url: https://www.mrisoftware.com/products/onlocation/pricing/
+    price: Contact Sales
+    unit: per month (NZD pricing available)
+    features:
+      - 3,000 visitor and contractor sign-ins per year
+      - 30,000 employee sign-ins per year
+      - REST API access (OAuth 2.0)
+      - Desk booking (included)
+    limits:
+      - visitor_contractor_signins_per_year: 3000
+      - employee_signins_per_year: 30000
+  - name: OnLocation Medium
+    description: Ideal for a location with a need for contractor management.
+    url: https://www.mrisoftware.com/products/onlocation/pricing/
+    price: Contact Sales
+    unit: per month
+    features:
+      - 10,000 visitor and contractor sign-ins per year
+      - 100,000 employee sign-ins per year
+      - REST API access (OAuth 2.0)
+      - Contractor management module
+    limits:
+      - visitor_contractor_signins_per_year: 10000
+      - employee_signins_per_year: 100000
+  - name: OnLocation Large
+    description: Ideal for a large location with visitor, contractor, and employee presence needs.
+    url: https://www.mrisoftware.com/products/onlocation/pricing/
+    price: Contact Sales
+    unit: per month
+    features:
+      - 20,000 visitor and contractor sign-ins per year
+      - 200,000 employee sign-ins per year
+      - REST API access (OAuth 2.0)
+      - Full visitor, contractor, and employee management
+    limits:
+      - visitor_contractor_signins_per_year: 20000
+      - employee_signins_per_year: 200000
+  - name: OnLocation Custom
+    description: For high-traffic locations, campuses, and multi-occupier environments.
+    url: https://www.mrisoftware.com/products/onlocation/pricing/
+    price: Price on Application (POA)
+    unit: custom
+    features:
+      - Unlimited sign-ins (negotiated)
+      - Campus and multi-site support
+      - REST API access (OAuth 2.0)
+      - Dedicated support
+  - name: Core Platform (Enterprise)
+    description: Custom-quoted enterprise licensing for Property Management X, MRI Agora, Investment Management, Lease Accounting, Commercial Real Estate, and Facilities Management modules. Pricing depends on portfolio size, module selection, user count, and implementation scope.
+    url: https://www.mrisoftware.com/contact-us/
+    price: Custom Quote
+    unit: per year
+    features:
+      - Property Management X (residential and commercial)
+      - MRI Agora intelligent platform
+      - Investment Management
+      - Lease Accounting (ASC 842 / IFRS 16 compliant)
+      - Facilities and Energy Management
+      - MRI Information Exchange (MIX) API ecosystem
+      - Partner Connect ecosystem (400+ partners)
+      - myMRI client portal
