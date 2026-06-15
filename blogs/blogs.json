@@ -33,5 +33,14 @@
       "date": "2026-05-13",
       "description": "Examines the cost-benefit analysis of professional property management versus self-management for rental property owners."
     }
-  ]
+  ],
+  "repo": "mri-software",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/mri-software-llc",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
