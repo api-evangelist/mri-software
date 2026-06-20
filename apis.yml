@@ -1,7 +1,7 @@
 aid: mri-software
 name: MRI Software
 description: MRI Software is a real estate technology platform serving over 45,000 clients across 170+ countries. It provides REST APIs and an open integration ecosystem for property management, investment management, lease accounting, facilities management, visitor and contractor management, and commercial real estate analytics. The MRI Information Exchange (MIX) hosts over 1,000 vetted APIs for data exchange between MRI's core platform and third-party or custom applications.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/mri-software/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -19,7 +19,7 @@ apis:
   - aid: mri-software:mri-information-exchange-api
     name: MRI Information Exchange (MIX) API
     description: An open and connected ecosystem of secure REST APIs built by MRI and its partners that enables controlled data exchange between MRI's core property management and accounting platform and third-party or custom applications. Over 1,000 unique APIs operate within the MIX environment, all vetted by MRI engineers for security and integrity.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
     baseURL: https://www.mrisoftware.com
     tags:
@@ -35,7 +35,7 @@ apis:
   - aid: mri-software:mri-onlocation-api
     name: MRI OnLocation REST API
     description: A REST API for integrating with MRI OnLocation's people presence management platform. Enables programmatic access to visitor, contractor, and employee sign-in data, assets, certifications, locations, zones, inductions, and notifications. Supports OAuth 2.0 client credentials and API key authentication.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://apidocs.whosonlocation.com/
     baseURL: https://login.whosonlocation.com
     tags:
@@ -51,7 +51,7 @@ apis:
   - aid: mri-software:mri-property-management-api
     name: MRI Property Management X API
     description: REST APIs providing programmatic access to MRI's core property management platform, covering residential and commercial property portfolios, units, leases, resident ledgers, maintenance work orders, and AP workflows. Authentication uses OAuth 2.0 with TLS 1.2+ encryption. Access is provisioned through the myMRI client portal.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.mrisoftware.com/mrifunctionalspecs/
     baseURL: https://www.mrisoftware.com
     tags:
