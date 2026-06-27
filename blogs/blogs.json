@@ -1,46 +1,21 @@
 {
-  "provider": "mri-software",
-  "blogUrl": "https://www.mrisoftware.com/blog/",
-  "retrieved": "2026-06-13",
-  "posts": [
-    {
-      "title": "EMS vs BMS: Key differences between building and energy management systems",
-      "url": "https://www.mrisoftware.com/blog/ems-vs-bms-key-differences-building-energy-management-systems/",
-      "date": "2026-06-02",
-      "description": "Compares building management systems (BMS) and energy management systems (EMS) as organizations seek technological solutions to optimize building performance amid rising energy costs."
-    },
-    {
-      "title": "From systems of record to systems of intelligence and execution: What it means for real estate businesses",
-      "url": "https://www.mrisoftware.com/blog/from-systems-of-record-to-systems-of-intelligence-and-execution-what-it-means-for-real-estate-businesses/",
-      "date": "2026-05-26",
-      "description": "Explores how real estate technology is evolving beyond traditional systems designed to capture and reconcile operational and financial data."
-    },
-    {
-      "title": "5 multifamily utility cost recovery strategies",
-      "url": "https://www.mrisoftware.com/blog/5-multifamily-utility-cost-recovery-strategies/",
-      "date": "2026-05-21",
-      "description": "Addresses utility management as a leading operating expense and discusses approaches to improve Net Operating Income through cost recovery."
-    },
-    {
-      "title": "Lease vs license",
-      "url": "https://www.mrisoftware.com/blog/lease-vs-licenses-whats-the-difference/",
-      "date": "2026-05-15",
-      "description": "Distinguishes between lease and license agreements for commercial landlords, examining their legal, financial, and operational differences."
-    },
-    {
-      "title": "Is property management worth it in 2026?",
-      "url": "https://www.mrisoftware.com/blog/is-property-management-worth-it/",
-      "date": "2026-05-13",
-      "description": "Examines the cost-benefit analysis of professional property management versus self-management for rental property owners."
-    }
-  ],
   "repo": "mri-software",
   "feeds": [
     {
+      "source": "https://www.mrisoftware.com/feed/",
+      "feed_url": "https://www.mrisoftware.com/feed/",
+      "title": "",
+      "saved": 3,
+      "method": "feed"
+    },
+    {
       "source": "https://www.linkedin.com/company/mri-software-llc",
-      "error": "HTTPError"
+      "feed_url": "https://www.linkedin.com/company/mri-software-llc",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:03:07Z",
+  "post_count": 4
 }
