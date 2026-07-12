@@ -66,6 +66,8 @@ apis:
       - type: Login
         url: https://mrisoftware360.my.site.com/MyMRI/s/login
 common:
+  - type: DomainSecurity
+    url: security/mri-software-domain-security.yml
   - type: Website
     url: https://www.mrisoftware.com/
   - type: Documentation
