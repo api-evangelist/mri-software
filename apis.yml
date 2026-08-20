@@ -19,6 +19,15 @@ created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.23'
 tags:
+  - Real-Estate
+  - Property Management
+  - Investment Management
+  - Lease Accounting
+  - Facilities Management
+  - Commercial Real Estate
+  - Visitor Management
+  - PropTech
+tags_raw:
   - Real Estate
   - Property Management
   - Investment Management
@@ -35,6 +44,11 @@ apis:
     humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
     baseURL: https://www.mrisoftware.com
     tags:
+      - Property Management
+      - Accounting
+      - Integration
+      - Real-Estate
+    tags_raw:
       - Property Management
       - Accounting
       - Integration
