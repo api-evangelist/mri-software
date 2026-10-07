@@ -1,3 +1,11 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+# Coverage demoted 2026-10-07 (roadmap#942, PLAN.md Stage A): this file was written by an API Evangelist
+# sweep and names no billing unit, meters or pricing category read from the provider — it restates the
+# FinOps framework. It is `x-coverage: unmeasured`, and the FOCUS alignment it claimed has been removed.
+x-coverage: unmeasured
+method: generated
 name: MRI Software FinOps
 description: MRI Software operates on a fully custom enterprise pricing model for its core real estate technology platform. There is no self-serve or consumption-based API billing. Costs are negotiated per contract based on portfolio size, modules selected, user count, and implementation scope. The OnLocation visitor-management product is the only product with publicly available pricing tiers.
 url: https://www.mrisoftware.com/contact-us/

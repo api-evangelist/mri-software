@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: MRI Software Plans and Pricing
 description: MRI Software uses a custom enterprise pricing model for its core real estate platform (Property Management X, MRI Agora, Investment Management, Lease Accounting, Facilities Management). The OnLocation visitor-management product publishes tiered plans based on annual sign-in volume. All other products require direct engagement with sales for a custom quote.
 url: https://www.mrisoftware.com/products/onlocation/pricing/
