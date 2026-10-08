@@ -69,3 +69,46 @@ plans:
       - MRI Information Exchange (MIX) API ecosystem
       - Partner Connect ecosystem (400+ partners)
       - myMRI client portal
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units:
+  - negotiated
+  plans:
+  - name: OnLocation Small
+    access: other
+    model: negotiated
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: OnLocation Medium
+    access: other
+    model: negotiated
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: OnLocation Large
+    access: other
+    model: negotiated
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: OnLocation Custom
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - negotiated
+    periods: []
+  - name: Core Platform (Enterprise)
+    access: other
+    model: negotiated
+    model_how: derived
+    units:
+    - other
+    periods: []
