@@ -1,0 +1,308 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Contractor membership API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Contractor membership across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Contractor membership
+  description: 'Each contractor organization has individual members that are authorized to work on-site. A contractor member can belong to multiple contractor organizations in OnLocation.
+
+
+    Use the API to retrieve the organizations each member belongs to, including locations and contact role types; add, update, or delete the connection between a member and an organization.
+
+
+    Learn more about contractor members in the OnLocation Help Center.'
+paths:
+  /sp/membership:
+    get:
+      tags:
+      - Contractor membership
+      summary: List all membership records
+      description: Retrieves a list of the members that belong to each contractor organization.
+      operationId: getContractorMembershipList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any contractor membership element.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: org_name:ACME
+      - name: order
+        in: query
+        description: Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: 'Limits the amount of records to return. '
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss) . Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of contractor memberships
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorMembershipResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorMembershipResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Contractor membership
+      summary: Create a membership record
+      description: Create a new contractor membership association.
+      operationId: createContractorMembership
+      requestBody:
+        description: Data to save for this contractor membership.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorMembershipRequest'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorMembershipResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorMembershipResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: Mapping already exists with id
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /sp/membership/{id}:
+    get:
+      tags:
+      - Contractor membership
+      summary: Retrieve a membership record
+      description: Retrieves a single contractor membership record, filtering with the provided ID
+      operationId: getContractorMembership
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor membership record to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A single contractor membership record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorMembershipResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorMembershipResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Contractor membership
+      summary: Update a membership record
+      description: Updates a contractor membership association
+      operationId: updateContractorMembership
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor membership association to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the contractor membership association record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorMembershipRequest'
+      responses:
+        '204':
+          description: Updated resource
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Contractor membership
+      summary: Delete a membership record
+      description: Deletes the specified contractor membership
+      operationId: deleteContractorMembership
+      parameters:
+      - name: id
+        in: path
+        description: ID of the membership to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Resource Deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    ContractorLocation:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 301
+        name:
+          type: string
+          format: string
+          example: Sub Office
+        start:
+          type: string
+          format: date
+          example: '2021-12-01'
+        expires:
+          type: string
+          format: date
+          example: '2021-12-01'
+      type: object
+    ContractorMembershipResponse:
+      properties:
+        id:
+          type: string
+          format: date-time
+          example: 13863
+        created:
+          type: string
+          format: date-time
+          example: '2021-09-03T15:17:59+12:00'
+        org_id:
+          type: integer
+          format: int32
+          example: 4587
+        org_name:
+          type: string
+          format: string
+          example: Contractor Organisation
+        member_id:
+          type: integer
+          format: int32
+          example: 16348
+        member_name:
+          type: string
+          format: string
+          example: Contractor Name
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractorLocation'
+        locations_same_as_org:
+          type: boolean
+          format: boolean
+          example: true
+      type: object
+    BasicIdNamePair:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 556
+        name:
+          type: string
+          format: string
+          example: Example Name
+      type: object
+    ContractorMembershipLocation:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1024
+        start:
+          description: Describes when the contractor's membership for this location starts. Only needs to be provided if an expiration date is provided.
+          type: string
+          format: date
+          example: '2021-11-27'
+        expires:
+          description: Describes when the contractor's membership for this location expires. If this is left out it is assumed that the membership does not expire.
+          type: string
+          format: date
+          example: '2021-11-27'
+      type: object
+    ContractorMembershipRequest:
+      properties:
+        org_id:
+          description: ID of a contractor organisation
+          type: integer
+          format: int32
+          example: 405
+        member_id:
+          type: integer
+          format: int32
+          example: 43
+        roles:
+          type: array
+          items:
+            format: int32
+            example:
+            - 44
+            - 6
+            - 73
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractorMembershipLocation'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

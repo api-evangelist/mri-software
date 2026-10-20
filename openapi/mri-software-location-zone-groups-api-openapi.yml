@@ -1,0 +1,206 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Location zone groups API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Location zone groups across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Location zone groups
+  description: 'Zone groups are used to group your location''s zones together. For example, a zone group may be a building and each floor is a zone. Use the API to retrieve a list of all zone groups, add new zone groups, and update or delete existing zone groups.
+
+
+    Learn more about zone groups in the OnLocation Help Center.'
+paths:
+  /zonegroup:
+    get:
+      tags:
+      - Location zone groups
+      summary: List all zone groups
+      description: 'Returns a list of all zone groups.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getZoneGroupList
+      responses:
+        '200':
+          description: List of zone groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneGroupResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneGroupResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Location zone groups
+      summary: Create a zone group
+      description: Creates a new zone group.
+      operationId: createZoneGroup
+      requestBody:
+        description: Information to use when creating a new zone group record.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneGroupRequest'
+      responses:
+        '201':
+          description: Certification created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneGroupResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /zonegroup/{id}:
+    get:
+      tags:
+      - Location zone groups
+      summary: Retrieve a zone group
+      description: Retrieves a single zone group, filtering with the provided ID.
+      operationId: getZoneGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone group to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneGroupResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ZoneGroupResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Location zone groups
+      summary: Update a zone group
+      description: Updates the details of a zone group.
+      operationId: updateZoneGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone group to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the zone group record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneGroupRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneGroupResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ZoneGroupResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Location zone groups
+      summary: Delete a zone group
+      description: Deletes a zone group using the provided ID.
+      operationId: deleteZoneGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone group to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Zone group deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    ZoneGroupRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Main Building
+        location_id:
+          type: integer
+          format: int32
+          example: 22
+      type: object
+    ZoneGroupResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1206
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:35:28+13:00'
+        modifed:
+          type: string
+          format: date-time
+          example: '2021-12-31T14:35:28+13:00'
+        org_id:
+          type: integer
+          format: int32
+          example: 81
+        location_id:
+          type: integer
+          format: int32
+          example: 22
+        name:
+          type: string
+          format: string
+          example: Main Building
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

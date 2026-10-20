@@ -1,0 +1,215 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/mri-software-onlocation-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: 'No MCP server was found. The pre-flight posted tools/list to /mcp on api.mrisoftware.com, login.whosonlocation.com, www.mrisoftware.com,
+  apidocs.whosonlocation.com; verdict opaque (https://status.mrisoftware.com/mcp answered 403: the edge authenticates before it routes, which
+  proves nothing either way). Candidate tools below are derived from the 188 operation(s) in the provider''s own OpenAPI (40 listed); they describe
+  what a server WOULD expose, not one that exists.'
+tools:
+- name: get_asset_list
+  operationId: getAssetList
+  method: GET
+  path: /asset
+  description: List assets
+- name: create_asset
+  operationId: createAsset
+  method: POST
+  path: /asset
+  description: Create an asset
+- name: get_asset
+  operationId: getAsset
+  method: GET
+  path: /asset/{id}
+  description: Retrieve an asset
+- name: update_asset
+  operationId: updateAsset
+  method: PUT
+  path: /asset/{id}
+  description: Update an asset
+- name: delete_asset
+  operationId: deleteAsset
+  method: DELETE
+  path: /asset/{id}
+  description: Delete an asset
+- name: issue_asset
+  operationId: issueAsset
+  method: PUT
+  path: /asset/{id}/issue
+  description: Issue an asset
+- name: return_asset
+  operationId: returnAsset
+  method: PUT
+  path: /asset/{id}/return
+  description: Return an asset
+- name: get_asset_group_list
+  operationId: getAssetGroupList
+  method: GET
+  path: /assetgroup
+  description: List asset groups
+- name: create_asset_group
+  operationId: createAssetGroup
+  method: POST
+  path: /assetgroup
+  description: Create an asset group
+- name: get_asset_group
+  operationId: getAssetGroup
+  method: GET
+  path: /assetgroup/{id}
+  description: Retrieve an asset group
+- name: update_asset_group
+  operationId: updateAssetGroup
+  method: PUT
+  path: /assetgroup/{id}
+  description: Update an asset group
+- name: delete_asset_group
+  operationId: deleteAssetGroup
+  method: DELETE
+  path: /assetgroup/{id}
+  description: Delete an asset group
+- name: get_asset_movement_list
+  operationId: getAssetMovementList
+  method: GET
+  path: /assetmovement
+  description: List asset movements
+- name: get_asset_movement
+  operationId: getAssetMovement
+  method: GET
+  path: /assetmovement/{id}
+  description: Get asset movement by ID
+- name: update_asset_movement
+  operationId: updateAssetMovement
+  method: PUT
+  path: /assetmovement/{id}
+  description: Update an asset movement
+- name: get_asset_type_list
+  operationId: getAssetTypeList
+  method: GET
+  path: /assettype
+  description: List asset types
+- name: create_asset_type
+  operationId: createAssetType
+  method: POST
+  path: /assettype
+  description: Create an asset type
+- name: get_asset_type
+  operationId: getAssetType
+  method: GET
+  path: /assettype/{id}
+  description: Retrieve an asset type
+- name: update_asset_type
+  operationId: updateAssetType
+  method: PUT
+  path: /assettype/{id}
+  description: Update an asset type
+- name: delete_asset_type
+  operationId: deleteAssetType
+  method: DELETE
+  path: /assettype/{id}
+  description: Delete an asset type
+- name: get_auditlog_list
+  operationId: getAuditlogList
+  method: GET
+  path: /audit
+  description: List audit logs
+- name: get_audit_settings
+  operationId: getAuditSettings
+  method: GET
+  path: /audit/settings
+  description: Retrieve available audit settings
+- name: get_certification_list
+  operationId: getCertificationList
+  method: GET
+  path: /certification
+  description: List all certifications
+- name: create_certification
+  operationId: createCertification
+  method: POST
+  path: /certification
+  description: Create a certification
+- name: get_certification
+  operationId: getCertification
+  method: GET
+  path: /certification/{id}
+  description: Retrieve a certification
+- name: update_certification
+  operationId: updateCertification
+  method: PUT
+  path: /certification/{id}
+  description: Update a certification
+- name: delete_certification
+  operationId: deleteCertification
+  method: DELETE
+  path: /certification/{id}
+  description: Delete a certification
+- name: get_certification_holder_list
+  operationId: getCertificationHolderList
+  method: GET
+  path: /certification/{id}/holder
+  description: List all certification holders
+- name: create_certification_holder
+  operationId: createCertificationHolder
+  method: POST
+  path: /certification/{id}/holder
+  description: Create a certification holder
+- name: get_certification_holder
+  operationId: getCertificationHolder
+  method: GET
+  path: /certification/{id}/holder/{hid}
+  description: Retrieve a certification holder
+- name: update_certification_holder
+  operationId: updateCertificationHolder
+  method: PUT
+  path: /certification/{id}/holder/{hid}
+  description: Update a certification holder
+- name: delete_certification_holder
+  operationId: deleteCertificationHolder
+  method: DELETE
+  path: /certification/{id}/holder/{hid}
+  description: Delete a certification holder
+- name: get_certification_holder_documents
+  operationId: getCertificationHolderDocuments
+  method: GET
+  path: /certification/{id}/holder/{hid}/document
+  description: List of certification documents
+- name: save_certification_holder_document
+  operationId: saveCertificationHolderDocument
+  method: POST
+  path: /certification/{id}/holder/{hid}/document
+  description: Adds a certification document
+- name: get_certification_holder_document
+  operationId: getCertificationHolderDocument
+  method: GET
+  path: /certification/{id}/holder/{hid}/document/{did}
+  description: Retrieve a certification document
+- name: delete_certification_holder_document
+  operationId: deleteCertificationHolderDocument
+  method: DELETE
+  path: /certification/{id}/holder/{hid}/document/{did}
+  description: Delete a certification document
+- name: get_certification_type_list
+  operationId: getCertificationTypeList
+  method: GET
+  path: /certification/types
+  description: List all certification types
+- name: create_certification_type
+  operationId: createCertificationType
+  method: POST
+  path: /certification/types
+  description: Create a certification type
+- name: get_certification_type
+  operationId: getCertificationType
+  method: GET
+  path: /certification/types/{id}
+  description: Retrieve a certification type
+- name: update_certification_type
+  operationId: updateCertificationType
+  method: PUT
+  path: /certification/types/{id}
+  description: Update a certification type

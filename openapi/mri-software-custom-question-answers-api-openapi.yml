@@ -1,0 +1,159 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Custom question answers API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Custom question answers across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Custom question answers
+  description: 'When someone answers a custom question in a questionnaire submission, OnLocation records their submission and links it to the questionnaire submission ID and custom question ID.
+
+
+    Use the API to view the answers for all or specific custom questions.'
+paths:
+  /custom-questionnaire/submission/answer:
+    get:
+      tags:
+      - Custom question answers
+      summary: List all custom question answers
+      description: 'Returns a list of custom questionnaire submission answer records. The endpoint is limited to a maximum of 10,000 records.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getCustomQuestionnaireSubmissionAnswerList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any custom questionnaire submission answer.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: submision_id:0
+      - name: order
+        in: query
+        description: Specifies an element to order by. To order in reverse order, prepend the element with '-'.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: 'question_id: 982'
+      - name: limit
+        in: query
+        description: Limits the amount of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: page
+        in: query
+        description: Specifies which page of results to return, most effective when used together with the 'limit' parameter
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of custom question answer records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomQuestionnaireSubmissionAnswerResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomQuestionnaireSubmissionAnswerResponse'
+        '403':
+          description: Access denied to this resource.
+        '404':
+          description: Resource not found.
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /custom-questionnaire/submission/answer/{id}:
+    get:
+      tags:
+      - Custom question answers
+      summary: Retrieve a custom question answer
+      description: Returns a custom question answer record filtered by the passed in ID.
+      operationId: getCustomQuestionnaireSubmissionAnswer
+      parameters:
+      - name: id
+        in: path
+        description: ID of the custom questionnaire submission to look for
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: The custom question answer element matching the passed in ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomQuestionnaireSubmissionAnswerResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CustomQuestionnaireSubmissionAnswerResponse'
+        '403':
+          description: Access denied to this resource.
+        '404':
+          description: Resource not found.
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CustomQuestionnaireSubmissionAnswerResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 3155
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-25T15:01:29+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-12-25T15:01:29+13:00'
+        submission_id:
+          type: integer
+          format: int32
+          example: 1741
+        question_id:
+          type: integer
+          format: int32
+          example: 982
+        answer:
+          type: string
+          format: string
+          example: I acknowledge
+        signature_url:
+          type: string
+          format: string
+          example: https://example.url/storage/signature3152png_zr75U796wybjTZ.png
+        answer_multi:
+          type: array
+          items:
+            type: string
+            example:
+            - First floor
+            - Second floor
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

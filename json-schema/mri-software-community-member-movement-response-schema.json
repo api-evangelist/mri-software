@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mri-software/main/json-schema/mri-software-community-member-movement-response-schema.json",
+  "title": "CommunityMemberMovementResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityMemberMovementResponse",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "community_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "member_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_in": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signed_out": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode_in": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "Manual",
+        "Kiosk",
+        "Touchless",
+        "Sign In/Out Manager",
+        "Sign In/Out Manager (Tenant)",
+        "Trigger",
+        "API"
+      ]
+    },
+    "mode_out": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "Manual",
+        "Kiosk",
+        "Touchless",
+        "Sign In/Out Manager",
+        "Sign In/Out Manager (Tenant)",
+        "Trigger",
+        "API"
+      ]
+    },
+    "zone_id": {
+      "type": "integer",
+      "format": "in32"
+    },
+    "zone_other": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_out_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "carpark_question": {
+      "type": "boolean",
+      "format": "bool"
+    },
+    "carpark_registration": {
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_number": {
+      "type": "string",
+      "format": "string"
+    },
+    "purpose": {
+      "type": "string",
+      "format": "string"
+    },
+    "assistance": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "expected": {
+      "description": "Expected time on-site in minutes.",
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "accessdenied": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "accessdenied_reason": {
+      "type": "string",
+      "format": "string"
+    },
+    "loneworker": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "interzone": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "from_zone": {
+      "type": "integer",
+      "format": "int"
+    },
+    "selected_language": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_in_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_out_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "zone_group_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "photo_url": {
+      "type": "string",
+      "format": "string"
+    },
+    "signout_photo_url": {
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "type": "object"
+}

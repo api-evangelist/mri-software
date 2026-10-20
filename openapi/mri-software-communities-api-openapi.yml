@@ -1,0 +1,189 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Communities API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Communities across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Communities
+paths:
+  /community:
+    get:
+      tags:
+      - Communities
+      summary: List of all communities
+      description: 'Returns a list of all communities
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and a greater/less than separator searches number/date ranges.'
+      operationId: getCommunityList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any community value,
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name%Student
+      responses:
+        '200':
+          description: List of communities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Communities
+      summary: Create a community
+      description: Creates a new community.
+      operationId: createCommunity
+      requestBody:
+        description: Information to use when creating a new community record.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommunityRequest'
+      responses:
+        '201':
+          description: Community created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /community/{id}:
+    get:
+      tags:
+      - Communities
+      summary: Retrieve a community
+      description: Retrieves a single community, filtering with the provided ID.
+      operationId: getCommunity
+      parameters:
+      - name: id
+        in: path
+        description: ID of the community to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommunityResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Communities
+      summary: Update a community
+      description: Updates a community.
+      operationId: updateCommunity
+      requestBody:
+        description: Information to use when updating a new community record.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommunityRequest'
+      responses:
+        '201':
+          description: Community updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CommunityResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1206
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:35:28+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-12-31T14:35:28+13:00'
+        name:
+          type: string
+          format: string
+          example: Students
+        active:
+          type: boolean
+          format: boolean
+          example: true
+        is_evac_enabled:
+          type: boolean
+          format: boolean
+          example: true
+        evac_primary_filter:
+          type: boolean
+          format: string
+          example: name
+      type: object
+    CommunityRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Updated Request
+        active:
+          type: boolean
+          format: bool
+          example: true
+        is_evac_enabled:
+          type: boolean
+          format: bool
+          example: true
+        evac_primary_filter:
+          type: string
+          format: string
+          example: name
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

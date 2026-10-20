@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mri-software/main/json-schema/mri-software-visitor-event-response-schema.json",
+  "title": "VisitorEventResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mri-software-onlocation-openapi.yml#/components/schemas/VisitorEventResponse",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created_staff_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "visiting_staff_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_in": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signed_out": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode_in": {
+      "type": "string",
+      "format": "string"
+    },
+    "mode_out": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_out_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "name": {
+      "type": "string",
+      "format": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "string"
+    },
+    "from": {
+      "type": "string",
+      "format": "string"
+    },
+    "phone": {
+      "type": "string",
+      "format": "string"
+    },
+    "mobile": {
+      "type": "string",
+      "format": "string"
+    },
+    "title": {
+      "type": "string",
+      "format": "string"
+    },
+    "assistance": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "expected": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "printed": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "pass": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "purpose": {
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_question": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "carpark_registration": {
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_number": {
+      "type": "string",
+      "format": "string"
+    },
+    "cardnumber": {
+      "type": "string",
+      "format": "string"
+    },
+    "id_verification_checked": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "id_verification_type": {
+      "type": "boolean",
+      "format": "string"
+    },
+    "accessdenied": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "id_verification_reference": {
+      "type": "string",
+      "format": "string"
+    },
+    "visiting_staff_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "location_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_in_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_out_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_by_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_by_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "onsite": {
+      "type": "string",
+      "format": "string"
+    },
+    "type": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_in_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "lacp_out_id": {
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "type": "object"
+}

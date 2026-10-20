@@ -1,0 +1,27 @@
+name: MRI Software authentication
+generated: '2026-10-20'
+method: searched
+source: https://apidocs.whosonlocation.com/developer-portal/authentication/
+docs: https://apidocs.whosonlocation.com/developer-portal/authentication/
+api: MRI OnLocation REST API
+schemes:
+  - name: OAuth2ClientCredentials
+    type: oauth2
+    flow: clientCredentials
+    tokenUrl: https://login.whosonlocation.com/oauth2/token
+    refresh: supported (grant_type=refresh_token)
+    token_lifetime_seconds: 3600
+    note: Recommended for machine-to-machine integrations; Authorization Bearer <access_token>.
+  - name: ApiKeyHeader
+    type: apiKey
+    in: header
+    header: Authorization
+    format: "APIKEY <key>"
+    note: Legacy, still supported. Keys managed in OnLocation Tools > Account > API; can be restricted to data areas.
+  - name: ApiKeyBasic
+    type: http
+    scheme: basic
+    note: API key as basic-auth username with empty password.
+transport: SSL-only
+credential_management: Rotate secret, revoke and delete OAuth2.0 clients from the API Management screen.
+note: The published OpenAPI (embedded in the Redocly reference) declares no securitySchemes; this profile is from the docs page.

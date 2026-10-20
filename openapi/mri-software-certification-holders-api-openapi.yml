@@ -1,0 +1,293 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Certification holders API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Certification holders across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Certification holders
+  description: 'Certifications can be assigned to employees and contractors. Each certification record includes the dates that the certification is valid for, along with the person''s name, email, and if there are any documents attached to the record. Use the API to see which employees and contractors hold each certification, or create, update or delete a certification holder record.
+
+
+    Learn more about certification holders in the OnLocation Help Center.'
+paths:
+  /certification/{id}/holder:
+    get:
+      tags:
+      - Certification holders
+      summary: List all certification holders
+      description: 'Returns a list of the employees or contractors that hold the specified certification.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getCertificationHolderList
+      parameters:
+      - name: id
+        in: path
+        description: ID of the certification to retrieve holders for
+        required: true
+        schema:
+          type: integer
+          format: int32
+        example: '5'
+      responses:
+        '200':
+          description: List of employees or contractors that hold the certification
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificationHolderResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Certification holders
+      summary: Create a certification holder
+      description: Adds a new certification holder association.
+      operationId: createCertificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the certification to create a holder association for
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationHolderRequest'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /certification/{id}/holder/{hid}:
+    get:
+      tags:
+      - Certification holders
+      summary: Retrieve a certification holder
+      description: Retrieves the details of a specific certification holder
+      operationId: getCertificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the certification to retrieve holders for
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the certification holder to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Details of the certification holder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Certification holders
+      summary: Update a certification holder
+      description: Updates a certification holder's details.
+      operationId: updateCertificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the certification
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the certification holder association to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the certification holder association
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationHolderRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Certification holders
+      summary: Delete a certification holder
+      description: Deletes the specified certification holder association record.
+      operationId: deleteCertificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the certification
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the certification holder association to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Certification holder deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CertificationHolderResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 218
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:37:12+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-30T14:37:12+13:00'
+        certification_id:
+          type: integer
+          format: int32
+          example: 1205
+        record_id:
+          type: integer
+          format: int32
+          example: 823431
+        record_type:
+          type: string
+          enum:
+          - staff
+          - sp
+          example: staff
+        validfrom:
+          type: string
+          format: date
+          example: '2021-11-27'
+        validto:
+          type: string
+          format: date
+          example: '2022-11-27'
+        certification_number:
+          type: string
+          format: string
+          example: WFL900
+        holder_name:
+          type: string
+          format: string
+          example: Robert Jordan
+        holder_email:
+          type: string
+          format: string
+          example: example-email@whosonlocation.com
+        certification_name:
+          type: string
+          format: string
+          example: Window Fitting Licence
+        type:
+          type: string
+          format: string
+          example: Licence
+        documents:
+          type: integer
+          format: int32
+          example: 1
+      type: object
+    CertificationHolderRequest:
+      properties:
+        record_id:
+          description: This is the ID of the staff or contractor member being given the qualification
+          type: integer
+          format: int32
+          example: 823431
+        record_type:
+          type: string
+          enum:
+          - staff
+          - sp
+          example: staff
+        validfrom:
+          type: string
+          format: date
+          example: '2021-11-27'
+        validto:
+          type: string
+          format: date
+          example: '2022-11-27'
+        certification_number:
+          type: string
+          format: string
+          example: WFL900
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

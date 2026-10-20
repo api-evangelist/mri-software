@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Community field tabs API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Community field tabs across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Community field tabs
+paths:
+  /community/{community_id}/tab:
+    get:
+      tags:
+      - Community field tabs
+      summary: List all community field tabs
+      description: Retrieves a list of community field tabs and their order
+      operationId: getCommunityTabList
+      parameters:
+      - name: q
+        in: query
+        description: Community ID to filter by.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: community/1/tab
+      responses:
+        '200':
+          description: List of community field tabs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityTabResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityTabResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Community not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CommunityTabResponse:
+      properties:
+        title:
+          type: string
+          format: string
+          example: Basic Information
+        order:
+          type: integer
+          format: int32
+          example: 1
+        fields:
+          type: array
+          format: array
+          items:
+            $ref: '#/components/schemas/CommunityTabField'
+          example:
+            id: cf_8aae3b
+            order: 1
+      type: object
+    CommunityTabField:
+      properties:
+        id:
+          type: string
+          format: string
+          example: cf_8aae3b
+        order:
+          type: integer
+          format: int32
+          example: 1
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

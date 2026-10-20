@@ -1,0 +1,162 @@
+generated: '2026-10-20'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 12
+  own: 6
+  other_domain: 3
+  platform: 3
+  roles:
+  - api
+  - identity
+  - other
+  - partner
+  - status
+  - website
+hosts:
+- host: api.mrisoftware.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: mrisoftware.com
+  role: api
+  relation: own
+- host: api.whosonlocation.com
+  found_by:
+  - apis[]
+  - probed
+  - site-links
+  - namespace-probe
+  - well-known
+  types: []
+  serves:
+  - api
+  status: 200
+  registrable_domain: whosonlocation.com
+  role: api
+  relation: other-domain
+- host: apidocs.whosonlocation.com
+  found_by:
+  - apis[]
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  types: []
+  serves:
+  - docs
+  registrable_domain: whosonlocation.com
+  role: other
+  relation: other-domain
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrg
+  serves: []
+  registrable_domain: github.com
+  role: other
+  relation: platform
+- host: info.mrisoftware.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: mrisoftware.com
+  role: other
+  relation: own
+- host: login.whosonlocation.com
+  found_by:
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: whosonlocation.com
+  role: identity
+  relation: other-domain
+- host: partners.mrisoftware.com
+  found_by:
+  - probed
+  - site-links
+  - namespace-probe
+  - well-known
+  types: []
+  serves: []
+  status: 200
+  registrable_domain: mrisoftware.com
+  role: partner
+  relation: own
+- host: status.mrisoftware.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: mrisoftware.com
+  role: status
+  relation: own
+- host: statuspage.mrisoftware.com
+  found_by:
+  - probed
+  - site-links
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: mrisoftware.com
+  role: status
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.mrisoftware.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - TermsOfService
+  - Support
+  - PrivacyPolicy
+  - Newsroom
+  - Login
+  - Leadership
+  - Website
+  - Documentation
+  - Blog
+  - Pricing
+  serves:
+  - docs
+  - cdn
+  - hosting
+  vendor: cloudflare
+  registrable_domain: mrisoftware.com
+  role: website
+  relation: own
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform

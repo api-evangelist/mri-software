@@ -1,0 +1,147 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Audit log API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Audit log across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Audit Log
+  description: When records are created, updated or deleted within your account, an audit log is created. Use the audit log API to retrieve the last 30 days worth of data corresponding to changes within your account.
+paths:
+  /audit:
+    get:
+      tags:
+      - Audit Log
+      summary: List audit logs
+      description: Returns a list of audit logs.
+      operationId: getAuditlogList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any audit log value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: audit_table:staff;sp_member,user_name:john@example.com,audit_timestamp>2022-05-01
+      - name: limit
+        in: query
+        description: Limits the amount of records to return (maxiumum 5000).
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      responses:
+        '200':
+          description: List of audit logs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuditResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuditResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /audit/settings:
+    get:
+      tags:
+      - Audit Log
+      summary: Retrieve available audit settings
+      description: Retrieves an audit settings object.
+      operationId: getAuditSettings
+      responses:
+        '200':
+          description: Audit settings
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    AuditResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 823431
+        audit_timestamp:
+          type: string
+          format: date-time
+          example: '2021-08-12T10:54:13+12:00'
+        audit_event:
+          description: 'Type of audit log: INSERT, UPDATE or DELETE'
+          type: string
+          format: string
+          example: UPDATE
+        audit_table:
+          description: Table name of the record change
+          type: string
+          format: string
+          example: staff
+        user_name:
+          description: Email address of the logged in user user which initiated the record change
+          type: string
+          format: string
+          example: john@example.com
+        user_type:
+          description: User type who initiated the record change. Options are api, kiosk, staff, support
+          type: string
+          format: string
+          example: staff
+        record_id:
+          description: The unique identifier of the record that was changed
+          type: integer
+          format: int32
+          example: 823431
+        data_changed:
+          description: An array of columns with the changes that were made during the record change
+          type: object
+          format: object
+          example:
+          - column_name: name
+            change_from: John Smith
+            change_to: John B Smith
+          - column_name: from
+            change_from: Smith Corp
+            change_to: Smith Corporation
+        data_old:
+          description: An array of columns from the original record before modification
+          type: object
+          format: object
+          example:
+            id: 588
+            from: Smith Corp
+            name: John Smith
+            created: '2022-05-06 00:23:48.000000'
+            modified: null
+        data_new:
+          description: An array of columns from the original record after modification
+          type: object
+          format: object
+          example:
+            id: 588
+            from: Smith Corporation
+            name: John B Smith
+            created: '2022-05-06 00:23:48.000000'
+            modified: '2022-05-07 10:33:19.000000'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

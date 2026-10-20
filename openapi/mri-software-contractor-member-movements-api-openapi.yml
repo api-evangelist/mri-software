@@ -1,0 +1,455 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Contractor member movements API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Contractor member movements across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Contractor member movements
+  description: Each time a contractor signs in or out, they create a movement. Use the API to return all contractor member movements, or add or update a movement record.
+paths:
+  /sp/member/movement:
+    get:
+      tags:
+      - Contractor member movements
+      summary: List all member movements
+      description: 'Retrieves a list of contractor movement records. If an ''id'' query parameter is supplied it will return a single contractor movement record.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getContractorMemberMovement
+      parameters:
+      - name: q
+        in: query
+        description: ID of the contractor movement to retrieve
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: sp_member_id:123456
+      - name: order
+        in: query
+        description: Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of contractor movement records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorMovementResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorMovementResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Contractor member movements
+      summary: Update a member movement
+      description: Creates or updates a contractor movement record.
+      operationId: updateContractorMemberMovement
+      parameters:
+      - name: sp_member_id
+        in: query
+        description: ID of the contractor. This can be supplied as either a query parameter or as part of the request body.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the contractor movement record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorMovementRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorMovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorMovementResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    ContractorMovementResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 4938
+        created:
+          type: string
+          format: date-time
+          example: '2021-10-28T12:57:14+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-15T12:57:14+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        sp_member_id:
+          type: integer
+          format: int32
+          example: 16348
+        sp_org_id:
+          type: integer
+          format: int32
+          example: 4587
+        signed_in:
+          type: string
+          format: date-time
+          example: '2021-10-28T12:57:14+13:00'
+        signed_out:
+          type: string
+          format: date-time
+          example: '2021-10-28T16:57:14+13:00'
+        mode_in:
+          type: string
+          enum:
+          - Auto
+          - Manual
+          - Kiosk
+          - Touchless
+          - Token Scan
+          - Sign In/Out Manager
+          - OnLocation Mobile Legacy
+          - OnLocation Mobile
+          - OnLocation Mobile Auto
+          - OnSentry Scan
+          - OnSentry Manual
+          - Sign In/Out Manager (Tenant)
+          - Trigger
+          - Brivo
+          - API
+          example: Sign In/Out Manager
+        mode_out:
+          type: string
+          enum:
+          - Auto
+          - Manual
+          - Kiosk
+          - Touchless
+          - Token Scan
+          - Sign In/Out Manager
+          - OnLocation Mobile Legacy
+          - OnLocation Mobile
+          - OnLocation Mobile Auto
+          - OnSentry Scan
+          - OnSentry Manual
+          - Sign In/Out Manager (Tenant)
+          - Trigger
+          - Brivo
+          - API
+          example: Sign In/Out Manager
+        zone_id:
+          type: integer
+          format: in32
+          example: 32
+        zone_other:
+          type: string
+          format: string
+          example: zone
+        signed_in_by:
+          type: integer
+          format: int32
+          example: 823493
+        signed_out_by:
+          type: integer
+          format: int32
+          example: 823493
+        scanned_in:
+          description: Scanned in note.
+          type: string
+          format: string
+        scanned_out:
+          description: Scanned out note.
+          type: string
+          format: string
+        visiting_staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        cardnumber:
+          type: string
+          format: string
+          example: c001
+        carpark_question:
+          type: boolean
+          format: bool
+          example: true
+        carpark_registration:
+          type: string
+          format: string
+          example: DRU706
+        carpark_number:
+          type: string
+          format: string
+          example: SP003
+        pass:
+          type: integer
+          format: int
+          example: 20
+        other_pass:
+          type: string
+          format: string
+          example: opass047
+        sp_purpose:
+          type: string
+          format: string
+          example: Repairs
+        assistance:
+          type: boolean
+          format: boolean
+          example: false
+        expected:
+          type: boolean
+          format: boolean
+          example: true
+        accessdenied:
+          type: boolean
+          format: boolean
+          example: false
+        accessdenied_reason:
+          type: string
+          format: string
+          example: No reason required
+        loneworker:
+          type: boolean
+          format: boolean
+          example: true
+        so_staff_id:
+          type: integer
+          format: int32
+          example: 455
+        so_spm_id:
+          type: integer
+          format: int32
+          example: 458
+        interzone:
+          type: boolean
+          format: boolean
+          example: true
+        breathtest:
+          type: string
+          format: string
+          example: false
+        from_zone:
+          type: integer
+          format: int
+          example: 87
+        selected_language:
+          type: string
+          format: string
+          example: english
+        lacp_in_name:
+          type: string
+          format: string
+          example: Reception
+        lacp_out_name:
+          type: string
+          format: string
+          example: Reception
+        zone_group_name:
+          type: string
+          format: string
+          example: Maintenance
+        signed_in_by_kiosk:
+          type: boolean
+          format: boolean
+          example: false
+        signed_out_by_kiosk:
+          type: boolean
+          format: boolean
+          example: false
+        photo_url:
+          type: string
+          format: string
+          example: your.site/storage/contractorphoto.pdf
+        signout_photo_url:
+          type: string
+          format: string
+          example: your.site/storage/contractorphoto.pdf
+        signed_in_lat:
+          type: string
+          format: string
+          example: Latitude-value of coordinates for sign-in (Decimal Degrees)
+        signed_in_lon:
+          type: string
+          format: string
+          example: Longitude-value of coordinates for sign-in (Decimal Degrees)
+        signed_in_accuracy:
+          type: string
+          format: string
+          example: Precision for sign-in coordinates
+        signed_out_lat:
+          type: string
+          format: string
+          example: Latitude-value of coordinates for sign-out (Decimal Degrees)
+        signed_out_lon:
+          type: string
+          format: string
+          example: Longitude-value of coordinates for sign-out (Decimal Degrees)
+        signed_out_accuracy:
+          type: string
+          format: string
+          example: Precision for sign-out coordinates
+      type: object
+    ContractorMovementRequest:
+      required:
+      - sp_member_id
+      - location_id
+      - sp_org_id
+      - onsite_status
+      properties:
+        onsite_status:
+          description: Describes whether the movement is 'onsite' or 'offsite', if set to onsite the 'scanned_out' field is unset
+          type: string
+          format: string
+          example: onsite
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        sp_member_id:
+          type: integer
+          format: int32
+          example: 54
+        sp_org_id:
+          type: integer
+          format: int32
+          example: 504
+        print_kiosk_id:
+          description: ID of the kiosk which has shared badge pass printing enabled. Not mandatory.
+          type: integer
+          format: int32
+          example: 301
+        lacp_id:
+          description: Location access point ID. Not mandatory.
+          type: integer
+          format: int32
+          example: 38
+        zone_id:
+          description: ID of the zone being signed into. Not mandatory.
+          type: integer
+          format: int32
+          example: 3
+        zone_other:
+          description: Zone note for this movement. Not mandatory
+          type: string
+          format: string
+        scanned_in:
+          description: Scanned in note. Only set when onsite_status = 'onsite'. Not mandatory.
+          type: string
+          format: string
+        scanned_out:
+          description: Scanned out note. Only set when onsite_status = 'offsite', gets unset when onsite_status = 'onsite'. Not mandatory.
+          type: string
+          format: string
+        visiting_staff_id:
+          description: ID of staff member being visited. Not mandatory.
+          type: integer
+          format: int32
+          example: 8
+        cardnumber:
+          description: Sign in card number. Not mandatory.
+          type: string
+          format: string
+          example: cp013
+        carpark_question:
+          description: Can be set as either 1/0 or true/false. Not mandatory.
+          type: boolean
+          format: boolean
+        carpark_registration:
+          description: Vehicle registration. Not mandatory.
+          type: string
+          format: string
+          example: MRD346
+        carpark_number:
+          description: Carpark number. Not mandatory.
+          type: string
+          format: string
+          example: '0014'
+        pass:
+          description: Not mandatory
+          type: integer
+          format: int32
+          example: 1054
+        other_pass:
+          description: Any other pass that might need to be submitted. Not mandatory.
+          type: string
+          format: string
+          example: Contractor pass
+        sp_purpose:
+          description: Reason for contractor visit. Not mandatory.
+          type: string
+          format: string
+          example: Water station repairs
+        assistance:
+          description: Whether or not a contractor requires assistance. Not mandatory.
+          type: boolean
+          format: boolean
+        expected:
+          description: Expected time on-site. Not mandatory
+          type: integer
+          format: int32
+          example: 60
+        loneworker:
+          description: Describes whether or not the contractor is working alone. Not mandatory.
+          format: boolean
+        so_staff_id:
+          description: Staff safety officer ID. Not mandatory
+          type: integer
+          format: int32
+          example: 40
+        so_spm_id:
+          description: Contractor manager safety officer ID. Not mandatory
+          type: integer
+          format: int32
+          example: 89
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

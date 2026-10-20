@@ -1,0 +1,162 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Custom fields API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Custom fields across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Custom Fields
+  description: 'Custom fields are used to record information that is not covered by the the default employee and contractor profile fields. Use the custom fields API to retrieve any employee custom fields, contractor organization custom fields, and contractor member custom fields.
+
+
+    See how to update custom fields in employee or contractor profiles.
+
+
+    Learn more about custom fields in the OnLocation Help Center.'
+paths:
+  /customfield/element/{element_type}:
+    get:
+      tags:
+      - Custom Fields
+      summary: List all custom fields
+      description: 'Retrieves a list of all custom fields filtered by the parameter provided: employees, contractor organizations, or contractor members.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.
+
+
+        The endpoint is limited to a maximum of 1000 records.
+
+
+        Each custom field contains a value pair, which consists of the field ID as the key and a string representation as the value. As custom fields contain a range of data types, the API responds with a JSON-string representation for nested data.
+
+
+        The fields that contain nested data are:
+
+
+        Date and Time fields if they contain a date or time range. The JSON-Format is {“start”: “value”, “end”:”value”}
+
+
+        Option fields where ‘Multiple Selection’ is activated. The value is a string representation of a JSON-Array in the format. For example, [“value1”, “value2”]
+
+
+        Person fields where ‘Multiple Selection’ is activated. The format is a string representation of a JSON-Array containing user identifiers. E.g. [1,2,3].ID can either be a contractor member identifier or an employee (staff) identifier. For example, if you add the Person field ‘Contractors from any organization’ to your employee custom fields, we’ll use the GET /customfield/element/staff endpoint to determine whether the identifier represents a contractor member or an employee.
+
+
+        If the Person field is set to ‘Single Selection’, the results will be a string representation of an identifier, eg 1
+
+
+        Checkbox fields will have a string representation of 1 if the field is selected or 0 if it is not.'
+      operationId: getCustomFieldElementTypeList
+      parameters:
+      - name: element_type
+        in: path
+        description: 'Custom field element type to filter by. Options: ''staff'', ''sp-org'', ''sp-member'''
+        required: true
+        schema:
+          description: 'This can be one of 3 options: (1) ''staff'', which will return all custom fields set up for employees of the current organization, (2) ''sp-org'', which will return all custom fields set up for contractor organizations and (3) ''sp-member'', which will return all custom fields set up for contractor members'
+          type: string
+          format: string
+        example: element/sp-member
+      - name: order
+        in: query
+        description: Specifies an element to order by. To order in reverse order, prepend the element with '-'.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: page
+        in: query
+        description: Specifies which page of results to return, most effective when used together with the 'limit' parameter
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: List of custom field elements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomfieldElement'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomfieldElement'
+        '403':
+          description: Returned if the account does not have access to custom fields
+        '404':
+          description: Resource not found.
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CustomfieldElement:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 741
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-25T12:17:27+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-27T12:17:27+13:00'
+        cf_tab_id:
+          type: integer
+          format: int32
+          example: 89
+        is_visible:
+          type: boolean
+          format: bool
+          example: true
+        is_mandatory:
+          type: boolean
+          format: bool
+          example: true
+        is_unique:
+          type: boolean
+          format: bool
+          example: true
+        title:
+          type: string
+          format: string
+          example: Checkbox field
+        config:
+          type: array
+          items:
+            format: string
+        created_by:
+          type: integer
+          format: int32
+          example: 823431
+        modified_by:
+          type: integer
+          format: int32
+          example: 823431
+        element_type:
+          type: string
+          format: string
+          example: checkbox
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

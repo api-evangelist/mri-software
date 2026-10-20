@@ -1,0 +1,27 @@
+name: MRI Software conventions
+generated: '2026-10-20'
+method: searched
+source: https://apidocs.whosonlocation.com/developer-portal/using-the-api/
+api: MRI OnLocation REST API
+auth: {style: "OAuth2 client credentials (Bearer) or legacy APIKEY header / basic auth", ref: authentication/mri-software-authentication.yml}
+media_types: "Accept application/json or application/xml; if omitted the response defaults to XML."
+idempotency:
+  coverage: none
+  note: No idempotency key is documented. The docs state GET and PUT are idempotent by HTTP semantics; POST carries no replay protection.
+pagination:
+  style: keyset
+  params: [limit, order, q]
+  text: "The API uses a cursor/keyset pagination... GET /staff/?order=id&limit=10&q=id>100"
+filtering: {param: q, operators: [":", "%", ">", "<", "~"], separator: ","}
+sorting: {param: order, descending_prefix: "-"}
+time_zone: {param: time_zone, case_sensitive: true}
+errors: {status_codes: [200, 204, 400, 403, 404, 405, 429, 500], envelope: undocumented}
+rate_limit_signaling: {status: 429, headers: [Retry-After], ref: rate-limits/mri-software-rate-limits.yml}
+versioning: {style: url-path, current: v1, ref: lifecycle/mri-software-lifecycle.yml}
+reversibility:
+  status: documented
+  surfaces:
+    - write: "POST/PUT on resources (e.g. staff, locations, contractor organizations)"
+      reversal: "DELETE on the same resource where supported (405 on non-deletable resources)"
+      window: null
+      note: No undo/restore window is documented.

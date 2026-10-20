@@ -1,6 +1,12 @@
 aid: mri-software
+
 name: MRI Software
-description: MRI Software is a real estate technology platform serving over 45,000 clients across 170+ countries. It provides REST APIs and an open integration ecosystem for property management, investment management, lease accounting, facilities management, visitor and contractor management, and commercial real estate analytics. The MRI Information Exchange (MIX) hosts over 1,000 vetted APIs for data exchange between MRI's core platform and third-party or custom applications.
+
+description: MRI Software is a real estate technology platform serving over 45,000 clients across 170+ countries. It provides REST APIs and an
+  open integration ecosystem for property management, investment management, lease accounting, facilities management, visitor and contractor management,
+  and commercial real estate analytics. The MRI Information Exchange (MIX) hosts over 1,000 vetted APIs for data exchange between MRI's core platform
+  and third-party or custom applications.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -12,6 +18,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: enterprise
   onboarding: unknown
@@ -24,109 +31,1817 @@ accessModel:
   - plans
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mri-software.png
+
 url: https://raw.githubusercontent.com/api-evangelist/mri-software/refs/heads/main/apis.yml
+
 created: '2026-06-13'
-modified: '2026-06-13'
+
+modified: '2026-10-20'
+
 specificationVersion: '0.23'
+
 tags:
-  - Real Estate
-  - Property Management
-  - Investment Management
-  - Lease Accounting
-  - Facilities Management
-  - Commercial Real Estate
-  - Visitor Management
-  - PropTech
+- Real Estate
+- Property Management
+- Investment Management
+- Lease Accounting
+- Facilities Management
+- Commercial Real Estate
+- Visitor Management
+- PropTech
+
 tags_raw:
-  - Real Estate
-  - Property Management
-  - Investment Management
-  - Lease Accounting
-  - Facilities Management
-  - Commercial Real Estate
-  - Visitor Management
-  - PropTech
-  - Real-Estate
-apis:
-  - aid: mri-software:mri-information-exchange-api
-    name: MRI Information Exchange (MIX) API
-    description: An open and connected ecosystem of secure REST APIs built by MRI and its partners that enables controlled data exchange between MRI's core property management and accounting platform and third-party or custom applications. Over 1,000 unique APIs operate within the MIX environment, all vetted by MRI engineers for security and integrity.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
-    tags:
-      - Property Management
-      - Accounting
-      - Integration
-      - Real Estate
-    tags_raw:
-      - Property Management
-      - Accounting
-      - Integration
-      - Real Estate
-      - Real-Estate
-    properties:
-      - type: Documentation
-        url: https://www.mrisoftware.com/products/mri-information-exchange/
-      - type: IntegrationsGuide
-        url: https://www.mrisoftware.com/wp-content/uploads/2018/01/MRI-API-Integrations-Guide-5.pdf
-  - aid: mri-software:mri-onlocation-api
-    name: MRI OnLocation REST API
-    description: A REST API for integrating with MRI OnLocation's people presence management platform. Enables programmatic access to visitor, contractor, and employee sign-in data, assets, certifications, locations, zones, inductions, and notifications. Supports OAuth 2.0 client credentials and API key authentication.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://apidocs.whosonlocation.com/
-    baseURL: https://login.whosonlocation.com
-    tags:
-      - Visitor Management
-      - Contractor Management
-      - Facilities
-      - People Presence
-    properties:
-      - type: Documentation
-        url: https://apidocs.whosonlocation.com/
-      - type: Authentication
-        url: https://apidocs.whosonlocation.com/developer-portal/authentication/
-  - aid: mri-software:mri-property-management-api
-    name: MRI Property Management X API
-    description: REST APIs providing programmatic access to MRI's core property management platform, covering residential and commercial property portfolios, units, leases, resident ledgers, maintenance work orders, and AP workflows. Authentication uses OAuth 2.0 with TLS 1.2+ encryption. Access is provisioned through the myMRI client portal.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.mrisoftware.com/mrifunctionalspecs/
-    tags:
-      - Property Management
-      - Lease Management
-      - Residential
-      - Commercial
-      - Multifamily
-    properties:
-      - type: Documentation
-        url: https://www.mrisoftware.com/mrifunctionalspecs/
-      - type: Login
-        url: https://mrisoftware360.my.site.com/MyMRI/s/login
+- Real Estate
+- Property Management
+- Investment Management
+- Lease Accounting
+- Facilities Management
+- Commercial Real Estate
+- Visitor Management
+- PropTech
+- Real-Estate
+
+maintainers:
+- fn: Kin Lane
+  email: kin@apievangelist.com
+
 common:
-  - type: DomainSecurity
-    url: security/mri-software-domain-security.yml
-  - type: Website
-    url: https://www.mrisoftware.com/
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/mri-software-agentic-access.yml
+- type: Spectral
+  url: rules/mri-software-rules.yml
+- type: JSONLD
+  url: json-ld/mri-software-context.jsonld
+- type: Vocabulary
+  url: vocabulary/mri-software-vocabulary.yml
+- type: DataModel
+  url: data-model/mri-software-data-model.yml
+- type: ChangeLog
+  url: changelog/mri-software-changelog.yml
+- type: Conventions
+  url: conventions/mri-software-conventions.yml
+- type: Authentication
+  url: authentication/mri-software-authentication.yml
+- type: OAuthScopes
+  url: scopes/mri-software-scopes.yml
+- type: Lifecycle
+  url: lifecycle/mri-software-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/mri-software-problem-types.yml
+- type: Conformance
+  url: conformance/mri-software-conformance.yml
+- type: Overlay
+  url: overlays/mri-software-onlocation-overlay.yaml
+- type: SecurityTxt
+  url: well-known/mri-software-statuspage-security.txt
+- type: SecurityTxt
+  url: well-known/mri-software-status-security.txt
+- type: WellKnown
+  url: well-known/mri-software-well-known.yml
+- type: Hosts
+  url: hosts/mri-software-hosts.yml
+- type: IntegrationEdges
+  url: integrations/mri-software-integration-edges.yml
+- type: Vendors
+  url: vendors/mri-software-vendors.yml
+- type: TermsOfService
+  url: https://www.mrisoftware.com/terms-of-use/
+- type: Support
+  url: https://www.mrisoftware.com/contact-support/
+- type: PrivacyPolicy
+  url: https://www.mrisoftware.com/privacy-policy/
+- type: Newsroom
+  url: https://www.mrisoftware.com/news/
+- type: Login
+  url: https://www.mrisoftware.com/login/
+- type: Leadership
+  url: https://www.mrisoftware.com/leadership/
+- type: DomainSecurity
+  url: security/mri-software-domain-security.yml
+- type: Website
+  url: https://www.mrisoftware.com/
+- type: Documentation
+  url: https://www.mrisoftware.com/mrifunctionalspecs/
+- type: GitHubOrg
+  url: https://github.com/MRI-Software
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mri-software-llc
+- type: Blog
+  url: https://www.mrisoftware.com/blog/
+- type: Pricing
+  url: https://www.mrisoftware.com/products/onlocation/pricing/
+- type: StatusPage
+  url: https://status.mrisoftware.com/
+- type: X
+  url: https://x.com/mrisoftware
+- type: Plans
+  url: plans/mri-software-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/mri-software-rate-limits.yml
+- type: FinOps
+  url: finops/mri-software-finops.yml
+
+apis:
+- aid: mri-software:mri-information-exchange-api
+  name: MRI Information Exchange (MIX) API
+  description: >-
+    An open and connected ecosystem of secure REST APIs built by MRI and its partners that enables controlled
+    data exchange between MRI's core property management and accounting platform and third-party or custom
+    applications. Over 1,000 unique APIs operate within the MIX environment, all vetted by MRI engineers
+    for security and integrity.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  tags:
+  - Property Management
+  - Accounting
+  - Integration
+  - Real Estate
+  tags_raw:
+  - Property Management
+  - Accounting
+  - Integration
+  - Real Estate
+  - Real-Estate
+  properties:
+  - type: Documentation
+    url: https://www.mrisoftware.com/products/mri-information-exchange/
+  - type: IntegrationsGuide
+    url: https://www.mrisoftware.com/wp-content/uploads/2018/01/MRI-API-Integrations-Guide-5.pdf
+- aid: mri-software:mri-property-management-api
+  name: MRI Property Management X API
+  description: >-
+    REST APIs providing programmatic access to MRI's core property management platform, covering residential
+    and commercial property portfolios, units, leases, resident ledgers, maintenance work orders, and
+    AP workflows. Authentication uses OAuth 2.0 with TLS 1.2+ encryption. Access is provisioned through
+    the myMRI client portal.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.mrisoftware.com/mrifunctionalspecs/
+  tags:
+  - Property Management
+  - Lease Management
+  - Residential
+  - Commercial
+  - Multifamily
+  properties:
   - type: Documentation
     url: https://www.mrisoftware.com/mrifunctionalspecs/
-  - type: GitHubOrg
-    url: https://github.com/MRI-Software
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/mri-software-llc
-  - type: Blog
-    url: https://www.mrisoftware.com/blog/
-  - type: Pricing
-    url: https://www.mrisoftware.com/products/onlocation/pricing/
-  - type: StatusPage
-    url: https://status.mrisoftware.com/
-  - type: X
-    url: https://x.com/mrisoftware
-  - type: Plans
-    url: plans/mri-software-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/mri-software-rate-limits.yml
-  - type: FinOps
-    url: finops/mri-software-finops.yml
-maintainers:
-  - fn: Kin Lane
-    email: kin@apievangelist.com
+  - type: Login
+    url: https://mrisoftware360.my.site.com/MyMRI/s/login
+- aid: mri-software:mri-software-asset-groups-api
+  name: MRI Software Asset groups API
+  description: >-
+    <p>All asset types are associated with an asset group. An asset group connects asset types that have
+    similar characteristics. Use the API to retrieve a list of all asset groups, add or update, or delete
+    an asset group.</p><p>Learn more about asset groups in the <a href='https://onlocation.elevio.help/en/articles/288'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Asset groups
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-asset-groups-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-asset-movements-api
+  name: MRI Software Asset movements API
+  description: >-
+    <p>Manage the movement of assets using the API. Retrieve a list of all asset movements, view a specific
+    movement, and update an movement.</p><p>Learn more about assets in the <a href='https://onlocation.elevio.help/en/articles/357'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Asset movements
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-asset-movements-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-asset-types-api
+  name: MRI Software Asset types API
+  description: >-
+    <p>An asset type is a subset of an asset group. Use the API to retrieve a list of all asset types,
+    add or update, or delete an asset type.</p><p>Learn more about assets in the <a href='https://onlocation.elevio.help/en/articles/321'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Asset types
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-asset-types-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-assets-api
+  name: MRI Software Assets API
+  description: >-
+    <p>Manage your organization’s assets with OnLocation. Use the API to retrieve a list of assets, add
+    or update, or delete an asset, or issue or return an asset. Your account owner must first enable the
+    add-on in OnLocation.</p><p>Learn more about assets in the <a href='https://onlocation.elevio.help/en/articles/278'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-assets-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-audit-log-api
+  name: MRI Software Audit log API
+  description: >-
+    <p>When records are created, updated or deleted within your account, an audit log is created. Use
+    the audit log API to retrieve the last 30 days worth of data corresponding to changes within your
+    account.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Audit log
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-audit-log-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-certification-holder-documents-api
+  name: MRI Software Certification holder documents API
+  description: >-
+    <p>Each certification added to an employee or contractor profile can have a document attached. Use
+    the API to return a list of certification documents, and update or delete a certification document.</p><p>Learn
+    more about certification documents in the <a href='https://onlocation.elevio.help/en/articles/407'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Certification holder documents
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-certification-holder-documents-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-certification-holders-api
+  name: MRI Software Certification holders API
+  description: >-
+    <p>Certifications can be assigned to employees and contractors. Each certification record includes
+    the dates that the certification is valid for, along with the person's name, email, and if there are
+    any documents attached to the record. Use the API to see which employees and contractors hold each
+    certification, or create, update or delete a certification holder record.</p><p>Learn more about certification
+    holders in the <a href='https://onlocation.elevio.help/en/articles/409' target='_blank'>OnLocation
+    Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Certification holders
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-certification-holders-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-certification-types-api
+  name: MRI Software Certification types API
+  description: >-
+    <p>Certification types are used to group similar types of certifications,  for example qualifications,
+    certificates, licenses, degrees. Use the API to return the full list of certification types, or add,
+    update or delete a certification type.</p><p>Learn more about certification types in the <a href='https://onlocation.elevio.help/en/articles/407'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Certification types
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-certification-types-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-certifications-api
+  name: MRI Software Certifications API
+  description: >-
+    <p>Certifications are used to record employee and contractor accreditations in OnLocation. Use the
+    API to retrieve the certifications created for your organization, add or update, or delete a certification,
+    and see the number of people who hold the certification.</p><p>Learn more about certifications in
+    the <a href='https://onlocation.elevio.help/en/articles/419' target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Certifications
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-certifications-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-communities-api
+  name: MRI Software Communities API
+  description: The Communities API from MRI Software — 2 operation(s) for communities.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Communities
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-communities-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-community-field-list-api
+  name: MRI Software Community field list API
+  description: >-
+    The Community field list API from MRI Software — 1 operation(s) for community field list.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Community field list
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-community-field-list-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-community-field-tabs-api
+  name: MRI Software Community field tabs API
+  description: >-
+    The Community field tabs API from MRI Software — 1 operation(s) for community field tabs.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Community field tabs
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-community-field-tabs-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-community-member-movements-api
+  name: MRI Software Community member movements API
+  description: >-
+    The Community member movements API from MRI Software — 2 operation(s) for community member movements.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Community member movements
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-community-member-movements-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-communitymembers-api
+  name: MRI Software Community Members API
+  description: The CommunityMembers API from MRI Software — 2 operation(s) for communitymembers.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - CommunityMembers
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-communitymembers-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-contact-role-types-api
+  name: MRI Software Contractor contact role types API
+  description: >-
+    <p>Contractor contact role types are used to categorize contractor members. Use the API to retrieve
+    a list of role types set up at your organization.</p><p>Learn more about role types in the <a href='https://onlocation.elevio.help/en/articles/481'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor contact role types
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-contact-role-types-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-insurance-documents-api
+  name: MRI Software Contractor insurance documents API
+  description: >-
+    <p>Contractor organization insurance policies can have documents attached to them. Use the API to
+    retrieve a list of all documents attached to a policy, add new documents, and update or delete existing
+    documents.</p><p>Learn more about insurances in the <a href='https://onlocation.elevio.help/en/articles/483'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor insurance documents
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-insurance-documents-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-insurance-policies-api
+  name: MRI Software Contractor insurance policies API
+  description: >-
+    <p>Insurance management in OnLocation is used to manage contractor organizations' insurance policies.
+    Use the API to retrieve a list of all insurance policies, add new ones, and update or delete existing
+    policies. </p><p>Learn more about insurances in the <a href='https://onlocation.elevio.help/en/articles/440'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor insurance policies
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-insurance-policies-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-member-movements-api
+  name: MRI Software Contractor member movements API
+  description: >-
+    <p>Each time a contractor signs in or out, they create a movement. Use the API to return all contractor
+    member movements, or add or update a movement record.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor member movements
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-member-movements-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-members-api
+  name: MRI Software Contractor members API
+  description: >-
+    <p>A contractor member belongs to an organization that is contracted to provide a service. Each member
+    has a profile in OnLocation that includes their contact details, status, access permission dates,
+    and locations.</p><p>Use the contractor member API to retrieve your contractor member list, or add,
+    update or delete a member profile.</p><p>To manage which organizations a member belongs to, use the
+    contractor membership endpoint.</p><p>Learn more about contractor members in the <a href='https://onlocation.elevio.help/en/articles/447'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor members
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-members-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-membership-api
+  name: MRI Software Contractor membership API
+  description: >-
+    <p>Each contractor organization has individual members that are authorized to work on-site. A contractor
+    member can belong to multiple contractor organizations in OnLocation.</p> <p>Use the API to retrieve
+    the organizations each member belongs to, including locations and contact role types; add, update,
+    or delete the connection between a member and an organization.</p><p>Learn more about contractor members
+    in the <a href='https://onlocation.elevio.help/en/articles/447' target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor membership
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-membership-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-organization-categories-api
+  name: MRI Software Contractor organization categories API
+  description: >-
+    <p>Categories are used to describe the different functions of your contractor organizations. You can
+    use them to sort your organizations and make it easier to report on them and create triggers. </p>
+
+    <p>Use the API to retrieve your categories list or add, update or delete a  category.</p><p>Learn
+    more about contractor organization categories in the <a href='https://onlocation.elevio.help/en/articles/487'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor organization categories
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-organization-categories-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-organization-groups-api
+  name: MRI Software Contractor organization groups API
+  description: >-
+    <p>Groups are a subset of contractor organization categories. For example, electrical, cleaning, and
+    maintenance could be groups under the facilities category. They are used to organize your organizations
+    and make it easier to report on them and create triggers.</p>
+
+    <p>Use the API to retrieve your groups list or add, update or delete a  group.</p>
+
+    <p>Learn more about contractor organization groups in the <a href='https://onlocation.elevio.help/en/articles/487'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor organization groups
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-organization-groups-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-contractor-organizations-api
+  name: MRI Software Contractor organizations API
+  description: >-
+    <p>A contractor organization is contracted to provide a service. Each organization has a profile in
+    OnLocation that includes contact information, status, location access, insurance policies, and linked
+    members.</p><p>Use the API to retrieve your contractor organization list, or add, update or delete
+    an organization profile.</p><p>To manage which organizations a member belongs to, use the contractor
+    membership endpoint.</p><p>Learn more about contractor organizations in the <a href='https://onlocation.elevio.help/en/articles/455'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Contractor organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-contractor-organizations-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-custom-field-tabs-api
+  name: MRI Software Custom field tabs API
+  description: >-
+    <p>Users can add new tabs to organize the custom fields in their employee or contractor profiles.
+    Use the custom fields API to retrieve any employee, contractor organization, and contractor member
+    custom field tabs.</p><p>Learn more about custom fields in the <a href='https://onlocation.elevio.help/en/articles/432'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Custom field tabs
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-custom-field-tabs-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-custom-fields-api
+  name: MRI Software Custom fields API
+  description: >-
+    <p>Custom fields are used to record information that is not covered by the the default employee and
+    contractor profile fields. Use the custom fields API to retrieve any employee custom fields, contractor
+    organization custom fields, and contractor member custom fields.</p><p>See how to update custom fields
+    in <a href='/developer-portal/example-custom-fields/'>employee</a> or <a href='/developer-portal/example-contractor-custom-fields/''>contractor</a>
+    profiles.</p><p>Learn more about custom fields in the <a href='https://onlocation.elevio.help/en/articles/432'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Custom fields
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-custom-fields-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-custom-question-answers-api
+  name: MRI Software Custom question answers API
+  description: >-
+    <p>When someone answers a custom question in a questionnaire submission, OnLocation records their
+    submission and links it to the questionnaire submission ID and custom question ID.</p><p>Use the API
+    to view the answers for all or specific custom questions.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Custom question answers
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-custom-question-answers-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-custom-questionnaire-submissions-api
+  name: MRI Software Custom questionnaire submissions API
+  description: >-
+    Returns a list of all custom questionnaire submissions (excluding the answers). Includes location,
+    kiosk, who submitted the answer, where the movement took place, date and time.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Custom questionnaire submissions
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-custom-questionnaire-submissions-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-custom-questionnaires-api
+  name: MRI Software Custom questionnaires API
+  description: >-
+    <p>A custom questionnaire is a set of custom questions that are asked during sign in, sign out, or
+    visitor pre-registration. The custom questionnaire API retrieves your custom questionnaires and can
+    return single records based on an ID.</p><p>Learn more about custom questionnaires in the <a href='https://onlocation.elevio.help/en/articles/515'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Custom questionnaires
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-custom-questionnaires-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-custom-questions-api
+  name: MRI Software Custom questions API
+  description: >-
+    <p>A custom questionnaire is made up of a set of custom questions. Use the API to list all custom
+    questions created for your organization. View details including the question type (eg multi-choice,
+    waiver, date picker) and the settings (eg if it's mandatory, if answer share is enabled, and who set
+    it up).</p><p>Learn more about custom questions in the <a href='https://onlocation.elevio.help/en/articles/521'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Custom questions
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-custom-questions-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-employee-movements-api
+  name: MRI Software Employee movements API
+  description: >-
+    <p>Each time an employee signs in or out, or moves between zones, they create a movement. Use the
+    API to return all employee movements, or add or update a movement record.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Employee movements
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-employee-movements-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-employees-api
+  name: MRI Software Employees API
+  description: >-
+    <p>Each employee has a profile in OnLocation. It contains their name, contact information, locations,
+    department, user roles and role types, and tokens.</p></p>Use the employee API to return a list of
+    all employees, add, update or delete employees, retrieve photos, and sign employees in or out.</p><p>We
+    recommend that bulk employee changes are managed using our SyncPortal integration rather than the
+    API. Check the <a href='https://onlocation.elevio.help/en/articles/592' target='_blank'>OnLocation
+    Help Center</a> for more information.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-employees-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-induction-courses-api
+  name: MRI Software Induction courses API
+  description: >-
+    <p>Induction courses are to record if an employee or contractor has completed required training. There
+    are four types of induction course in OnLocation: internal, external, eLearning and SCORM Cloud. The
+    first two options are used to record that training has been completed; last two options are used to
+    deliver online training.  An induction course record includes the basic course information, it doesn't
+    include any course content.</p><p>Use the induction API to retrieve your induction course list, create
+    an induction course, and update or delete an induction course. You can also return a list of learners
+    that hold a specific induction, add inductions to employee or contractor profiles, and update or delete
+    a specific learner record.</p><p>Learn more about induction courses in the <a href='https://onlocation.elevio.help/en/articles/639'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Induction courses
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-induction-courses-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-induction-holders-api
+  name: MRI Software Induction holders API
+  description: >-
+    <p>An induction holder is someone who has completed an induction course. Induction holder records
+    include the learner's name, email, status of the course, the number of attempts, when it's due to
+    be renewed. Use the API to retrieve who has completed each induction course, or create, update or
+    delete an induction holder record.</p><p>Learn more about induction holders in the <a href='https://onlocation.elevio.help/en/articles/631'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Induction holders
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-induction-holders-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-location-departments-api
+  name: MRI Software Location departments API
+  description: >-
+    <p>Departments are used to assign employees to different operational areas of a location. Use the
+    API to retrieve a list of all departments, create new departments and the locations they apply to,
+    update the department names, or remove them from your account.</p><p>Learn more about departments
+    in the <a href='https://onlocation.elevio.help/en/articles/396' target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Location departments
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-location-departments-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-location-zone-groups-api
+  name: MRI Software Location zone groups API
+  description: >-
+    <p>Zone groups are used to group your location's zones together. For example, a zone group may be
+    a building and each floor is a zone. Use the API to retrieve a list of all zone groups, add new zone
+    groups, and update or delete existing zone groups.</p><p>Learn more about zone groups in the <a href='https://onlocation.elevio.help/en/articles/296'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Location zone groups
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-location-zone-groups-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-location-zones-api
+  name: MRI Software Location zones API
+  description: >-
+    <p>Zones are used to split your location into specific areas. If you use the Desks and Spaces add-on,
+    you can also create bookable workspaces within each zone. Use the API to retrieve a list of all zones,
+    add new zones, update or delete existing zones, and link zones to access points.</p><p>Learn more
+    about zones in the <a href='https://onlocation.elevio.help/en/articles/296' target='_blank'>OnLocation
+    Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Location zones
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-location-zones-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-locations-api
+  name: MRI Software Locations API
+  description: >-
+    <p>Each OnLocation account is made up of one or more locations. A location record contains the name,
+    contact details, timezone, date format, employee count, and the access points set up for that location.</p><p>
+    Use the location API to retrieve your location list, add a new location, or update or delete an existing
+    location.</p><p>Learn more about the information that's captured for each location in the <a href='https://onlocation.elevio.help/en/articles/324'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-locations-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-notifications-api
+  name: MRI Software Notifications API
+  description: >-
+    OnLocation sends email, SMS, and OnLocation Mobile push notifications. Use the notification API to
+    retrieve a list of all notifications and provide a notification ID to retrieve a single notification.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-pre-registered-visitors-api
+  name: MRI Software Pre-registered visitors API
+  description: >-
+    <p>A pre-registered visitor is someone who has been approved by an employee to visit a location. Each
+    visitor is linked to a visit event. Use the pre-registered visitor API to retrieve your pre-registered
+    visitor events list, add a new pre-registered visitor event, or update or delete a pre-registered
+    visitor event.</p><p>Learn more about pre-registered visitors in the <a href='https://onlocation.elevio.help/en/articles/364'
+    target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Pre-registered visitors
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-pre-registered-visitors-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-qualification-holder-documents-deprecated-api
+  name: MRI Software Qualification holder documents (deprecated) API
+  description: >-
+    The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications
+    Management. Use the <a href='/openapi/wol/tag/Certification-holder-documents/'>certification holder
+    documents</a> endpoints to access this data.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Qualification holder documents (deprecated)
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-qualification-holder-documents-deprecated-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-qualification-holders-deprecated-api
+  name: MRI Software Qualification holders (deprecated) API
+  description: >-
+    The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications
+    Management. Use the <a href='/openapi/wol/tag/Certification-holders/'>certification holders</a> endpoints
+    to access this data.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Qualification holders (deprecated)
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-qualification-holders-deprecated-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-qualification-types-deprecated-api
+  name: MRI Software Qualification types (deprecated) API
+  description: >-
+    The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications
+    Management. Use the <a href='/openapi/wol/tag/Certification-types/'>certification types</a> endpoints
+    to access this data.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Qualification types (deprecated)
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-qualification-types-deprecated-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-qualifications-deprecated-api
+  name: MRI Software Qualifications (deprecated) API
+  description: >-
+    The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications
+    Management. Use the <a href='/openapi/wol/tag/Certifications/'>certifications</a> endpoints to access
+    this data.
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Qualifications (deprecated)
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-qualifications-deprecated-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-saved-visitors-api
+  name: MRI Software Saved visitors API
+  description: >-
+    <p>Each employee can maintain a saved visitor list in OnLocation. Use the saved visitor API to retrieve
+    all saved visitors, add a new saved visitor, or update or delete a saved visitor.</p><p>Learn more
+    about saved visitors in the <a href='https://onlocation.elevio.help/en/articles/363' target='_blank'>OnLocation
+    Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Saved visitors
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-saved-visitors-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-visitor-events-api
+  name: MRI Software Visitor events API
+  description: >-
+    <p>A visitor event is a record listing the details of a visit, including the visitor's name, where
+    they visited, contact details, basic question answers, and sign in/out mode and time.</p><p>Use the
+    visitor event API to retrieve your visitor event list, add a new visitor event, or update or delete
+    a visitor event.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Visitor events
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-visitor-events-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+- aid: mri-software:mri-software-visitor-groups-api
+  name: MRI Software Visitor groups API
+  description: >-
+    <p>Each visitor group is created by an employee and includes a set of their visitors who are pre-registered
+    to attend the same events. Use the visitor group API to retrieve your visitor group list, add a new
+    visitor group, or update or delete a visitor group.</p><p>Learn more about visitor groups in the <a
+    href='https://onlocation.elevio.help/en/articles/391' target='_blank'>OnLocation Help Center</a>.</p>
+  humanURL: https://www.mrisoftware.com/products/mri-information-exchange/
+  baseURL: https://api.whosonlocation.com/v1
+  tags:
+  - Visitor groups
+  properties:
+  - type: OpenAPI
+    url: openapi/mri-software-visitor-groups-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.whosonlocation.com/openapi/wol/overview/
+  - type: ChangeLog
+    url: https://apidocs.whosonlocation.com/developer-portal/changelog/
+  - type: GettingStarted
+    url: https://apidocs.whosonlocation.com/developer-portal/overview/
+  - type: Documentation
+    url: https://apidocs.whosonlocation.com/
+  - type: Authentication
+    url: https://apidocs.whosonlocation.com/developer-portal/authentication/
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-staff-movement-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-visitor-event-response-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-movement-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-contractor-organisation-request-schema.json
+  - type: JSONSchema
+    url: json-schema/mri-software-community-member-movement-response-schema.json
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v5

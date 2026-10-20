@@ -1,0 +1,164 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Custom questionnaires API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Custom questionnaires across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Custom questionnaires
+  description: 'A custom questionnaire is a set of custom questions that are asked during sign in, sign out, or visitor pre-registration. The custom questionnaire API retrieves your custom questionnaires and can return single records based on an ID.
+
+
+    Learn more about custom questionnaires in the OnLocation Help Center.'
+paths:
+  /custom-questionnaire:
+    get:
+      tags:
+      - Custom questionnaires
+      summary: List all custom questionnaires
+      description: 'Returns a list of all custom questionnaire records. The endpoint is limited to a maximum of 5,000 records.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getCustomQuestionnaireList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any custom questionnaire value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: '498'
+      - name: order
+        in: query
+        description: Specifies an element to order by. To order in reverse order, prepend the element with '-'.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: page
+        in: query
+        description: Specifies which page of results to return, most effective when used together with the 'limit' parameter
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of custom questionnaire records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomQuestionnaireResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomQuestionnaireResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /custom-questionnaire/{id}:
+    get:
+      tags:
+      - Custom questionnaires
+      summary: Retrieve a custom questionnaire
+      description: Returns a custom questionnaire record filtered by the provided ID.
+      operationId: getCustomQuestionnaire
+      parameters:
+      - name: id
+        in: path
+        description: ID of the custom questionnaire to look for
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: The custom questionnaire element matching the passed in ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomQuestionnaireResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CustomQuestionnaireResponse'
+        '403':
+          description: Access denied to this resource.
+        '404':
+          description: Resource not found.
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CustomQuestionnaireResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 498
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-25T12:45:45+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-25T12:51:48+13:00'
+        active:
+          type: boolean
+          format: boolean
+          example: true
+        name:
+          type: string
+          format: string
+          example: Health Check
+        record_type:
+          type: string
+          format: string
+          example: visitor
+        setup_by:
+          type: integer
+          format: int32
+          example: 823
+        frequency:
+          type: string
+          format: string
+          example: every
+        frequency_days:
+          type: integer
+          format: int32
+          example: 1
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

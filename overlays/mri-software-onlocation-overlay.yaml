@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: MRI OnLocation API - API Evangelist enhancements
+  version: 1.0.0
+extends: ../openapi/_original/mri-software-onlocation-openapi.yml
+x-generated: '2026-10-20'
+x-method: generated
+x-source: https://apidocs.whosonlocation.com/developer-portal/authentication/
+actions:
+- target: $.info
+  update:
+    title: MRI OnLocation API
+- target: $.components
+  update:
+    securitySchemes:
+      OAuth2ClientCredentials:
+        type: oauth2
+        flows:
+          clientCredentials:
+            tokenUrl: https://login.whosonlocation.com/oauth2/token
+            scopes:
+              visitor:read: Read visitor data
+              staff:read: Read staff data
+      ApiKey:
+        type: apiKey
+        in: header
+        name: Authorization
+        description: APIKEY <key> (legacy, still supported)
+- target: $
+  update:
+    security:
+    - OAuth2ClientCredentials: []
+    - ApiKey: []

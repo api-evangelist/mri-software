@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mri-software/main/json-schema/mri-software-staff-movement-response-schema.json",
+  "title": "StaffMovementResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mri-software-onlocation-openapi.yml#/components/schemas/StaffMovementResponse",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "staff_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_in": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signed_out": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode_in": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "Manual",
+        "Kiosk",
+        "Touchless",
+        "Token Scan",
+        "Sign In/Out Manager",
+        "OnLocation Mobile Legacy",
+        "OnLocation Mobile",
+        "OnLocation Mobile Auto",
+        "OnSentry Scan",
+        "OnSentry Manual",
+        "Sign In/Out Manager (Tenant)",
+        "Trigger",
+        "API",
+        "Brivo",
+        "Deputy"
+      ]
+    },
+    "mode_out": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "Manual",
+        "Kiosk",
+        "Touchless",
+        "Token Scan",
+        "Sign In/Out Manager",
+        "OnLocation Mobile Legacy",
+        "OnLocation Mobile",
+        "OnLocation Mobile Auto",
+        "OnSentry Scan",
+        "OnSentry Manual",
+        "Sign In/Out Manager (Tenant)",
+        "Trigger",
+        "API",
+        "Brivo",
+        "Deputy"
+      ]
+    },
+    "signed_in_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_out_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "scanned_in": {
+      "description": "Scanned in note",
+      "type": "string",
+      "format": "string"
+    },
+    "scanned_out": {
+      "description": "Scanned out note.",
+      "type": "string",
+      "format": "string"
+    },
+    "expected": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "assistance": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "accessdenied": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "loneworker": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "so_staff_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "zone_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "interzone": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "remote": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "name": {
+      "type": "string",
+      "format": "string"
+    },
+    "title": {
+      "type": "string",
+      "format": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "string"
+    },
+    "mobile": {
+      "type": "string",
+      "format": "string"
+    },
+    "phone": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_in_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_out_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_lat": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_lon": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_accuracy": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_lat": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_lon": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_accuracy": {
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "type": "object"
+}

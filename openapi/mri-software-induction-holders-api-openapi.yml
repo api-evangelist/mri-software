@@ -1,0 +1,297 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Induction holders API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Induction holders across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Induction holders
+  description: 'An induction holder is someone who has completed an induction course. Induction holder records include the learner''s name, email, status of the course, the number of attempts, when it''s due to be renewed. Use the API to retrieve who has completed each induction course, or create, update or delete an induction holder record.
+
+
+    Learn more about induction holders in the OnLocation Help Center.'
+paths:
+  /induction/{id}/holder:
+    get:
+      tags:
+      - Induction holders
+      summary: List all induction holders
+      description: 'Retrieves a list of all employees and contractors that hold the specified induction.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getInductionHolderList
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: q
+        in: query
+        description: Filter by induction holder value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: holders>5
+      responses:
+        '200':
+          description: List of induction holder details
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InductionHolderResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InductionHolderResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+    post:
+      tags:
+      - Induction holders
+      summary: Create an induction holder
+      description: Creates an induction holder association. If an association already exists, the existing record will be updated.
+      operationId: createOrUpdateInductionHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: 'Information used to create induction holder association:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InductionHolderPostRequest'
+      responses:
+        '201':
+          description: Induction created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InductionHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/InductionHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: member is not part of the inductions audience
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /induction/{id}/holder/{hid}:
+    get:
+      tags:
+      - Induction holders
+      summary: Retrieve an induction holder
+      description: Retrieves a single induction holder record, filtering with the provided ID.
+      operationId: getInductionHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the induction holder association to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Induction holder details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InductionHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/InductionHolderResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Induction holders
+      summary: Update induction holder
+      description: Updates an induction holder association
+      operationId: updateInductionHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the induction holder association
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: 'Information used to create Induction holder association:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InductionHolderPutRequest'
+      responses:
+        '200':
+          description: Updated induction holder
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InductionHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/InductionHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Induction holders
+      summary: Delete an induction holder
+      description: Deletes the specified induction holder association.
+      operationId: deleteInductionHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the induction holder association to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Induction holder association deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    InductionHolderPostRequest:
+      properties:
+        staff_id:
+          type: integer
+          format: int32
+          example: 55
+        sp_member_id:
+          type: integer
+          format: int32
+          example: 3001
+        completed:
+          type: string
+          format: date-time
+          example: '2021-11-25T22:01:09.385Z'
+      type: object
+    InductionHolderResponse:
+      required:
+      - org_id
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 6856
+        completed:
+          type: string
+          format: date-time
+          example: '2021-11-26T00:00:00+13:00'
+        staff_id:
+          type: integer
+          format: int32
+          example: 35
+        sp_member_id:
+          type: integer
+          format: int32
+          example: 642
+        learner_name:
+          type: string
+          format: string
+          example: Robert Jordan
+        learner_email:
+          type: string
+          format: string
+          example: example.email@whosonlocation.com
+        learner_title:
+          type: string
+          format: string
+          example: Mr
+        learner_from:
+          type: string
+          format: string
+          example: OnLocation
+        status:
+          type: string
+          format: string
+          example: passed
+        attempts:
+          type: integer
+          format: int32
+          example: 1
+        attempts_left:
+          type: integer
+          format: int32
+          example: 0
+        renew:
+          type: string
+          format: date
+          example: '2022-11-26'
+      type: object
+    InductionHolderPutRequest:
+      properties:
+        completed:
+          type: string
+          format: date-time
+          example: '2021-11-25T22:01:09.385Z'
+        staff_id:
+          type: string
+          format: integer
+          example: '123'
+        sp_member_id:
+          type: string
+          format: integer
+          example: '123'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

@@ -1,0 +1,758 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Contractor organizations API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Contractor organizations across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Contractor organizations
+  description: 'A contractor organization is contracted to provide a service. Each organization has a profile in OnLocation that includes contact information, status, location access, insurance policies, and linked members.
+
+
+    Use the API to retrieve your contractor organization list, or add, update or delete an organization profile.
+
+
+    To manage which organizations a member belongs to, use the contractor membership endpoint.
+
+
+    Learn more about contractor organizations in the OnLocation Help Center.'
+paths:
+  /sp/org:
+    get:
+      tags:
+      - Contractor organizations
+      summary: List all organizations
+      description: 'Returns a list of all contractor organizations.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match and a percent separator performs a starts-with search.'
+      operationId: getContractorOrganisationList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any contractor organization value. It is not possible to filter by customfield-elements at this point.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name:ACME
+      - name: order
+        in: query
+        description: Order by any element returned, prefix with a - to reverse order
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss) . Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of contractor organizations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorOrganisationResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorOrganisationResponse'
+        '400':
+          description: Indicating invalid fields
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Contractor organizations
+      summary: Create an organization
+      description: Create a new contractor organization.
+      operationId: createContractorOrganisation
+      requestBody:
+        description: Information to save to the database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorOrganisationRequest'
+      responses:
+        '201':
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorOrganisationResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /sp/org/{id}:
+    get:
+      tags:
+      - Contractor organizations
+      summary: Retrieve an organization
+      description: Retrieves a single contractor organization, filtering with the provided ID.
+      operationId: getContractorOrganisation
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Organization returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorOrganisationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorOrganisationResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Contractor organizations
+      summary: Update an organization
+      description: Update a contractor organization using the provided ID.
+      operationId: updateContractorOrganization
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorOrganisationRequest'
+      responses:
+        '204':
+          description: Updated organization
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Contractor organizations
+      summary: Delete an organization
+      description: Deletes the specified contractor organization
+      operationId: deleteContractorOrganisation
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Organization deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /sp/org/{id}/groups:
+    get:
+      tags:
+      - Contractor organizations
+      summary: Retrieve a contractor organization's group
+      description: Retrieves a contractor organization's group by Org ID.
+      operationId: getSpOrgGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization to retrieve
+        required: true
+        schema:
+          type: integer
+      - name: q
+        in: query
+        description: ID of the category to retrieve particular category groups.
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: category_id:123456
+      responses:
+        '200':
+          description: Contractor organization's groups
+          content:
+            application/json:
+              schema:
+                properties:
+                  group:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SpOrgGroupMembershipResponse'
+                type: object
+            application/xml:
+              schema:
+                properties:
+                  group:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SpOrgGroupMembershipResponse'
+                type: object
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Contractor organization's group not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Contractor organizations
+      summary: Update a contractor organization's group
+      description: Updates the details of a contractor organization's group.
+      operationId: updateSpOrgGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the contractor organization group record
+        content:
+          application/json:
+            schema:
+              properties:
+                groups:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/BasicIdNamePair'
+                function:
+                  description: 'Optional action to perform on groups:<br>`add`: Adds the provided groups to the existing groups (existing groups are preserved).<br>`delete`: Deletes the provided groups from the existing groups.<br>If not provided: Existing groups will be removed and replaced with the provided groups.'
+                  type:
+                  - string
+                  - 'null'
+                  enum:
+                  - add
+                  - delete
+              type: object
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                properties:
+                  group:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SpOrgGroupMembershipResponse'
+                type: object
+            application/xml:
+              schema:
+                properties:
+                  group:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SpOrgGroupMembershipResponse'
+                type: object
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Contractor organization's group not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    ContractorLocation:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 301
+        name:
+          type: string
+          format: string
+          example: Sub Office
+        start:
+          type: string
+          format: date
+          example: '2021-12-01'
+        expires:
+          type: string
+          format: date
+          example: '2021-12-01'
+      type: object
+    SpOrgGroupMembershipResponse:
+      title: SpOrgGroupMembershipResponse
+      description: Contractor organization group membership item
+      properties:
+        id:
+          description: Contractor organization group ID
+          type: integer
+          format: int32
+          example: 4
+        name:
+          description: Name of the contractor organization group
+          type: string
+          format: string
+          example: Electrical
+        category_id:
+          description: Category ID the group belongs to
+          type: integer
+          format: int32
+          example: 1
+      type: object
+    BasicIdNamePair:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 556
+        name:
+          type: string
+          format: string
+          example: Example Name
+      type: object
+    ContractorOrganisationResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 4587
+        created:
+          type: string
+          format: date-time
+          example: '2021-09-03T15:16:44+12:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-29T09:51:00+13:00'
+        name:
+          type: string
+          format: string
+          example: Contractor Organisation Name
+        setup_by:
+          type: integer
+          format: int32
+          example: 653
+        type:
+          type: string
+          format: string
+          example: Charitable organization
+        tradingas:
+          type: string
+          format: string
+          example: Contractor Organisation Name
+        legalid:
+          type: string
+          format: string
+          example: lid005
+        legalid_type:
+          type: string
+          format: string
+          example: legal ID type
+        address:
+          type: string
+          format: string
+          example: 2 Water Street, New York, NY, USA
+        country:
+          type: string
+          format: string
+          example: NZ
+        status:
+          type: string
+          format: string
+          example: active
+        email:
+          type: string
+          format: string
+          example: sp.organisation@whosonlocation.com
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractorLocation'
+        policies:
+          type: integer
+          format: int32
+          example: 2
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        organization_owner:
+          type: integer
+          format: int32
+          example: 823431
+        logs:
+          description: 'NOTE: At the time of creating this documentation I was not able to figure out what format these logs are returned in'
+          type: array
+          items:
+            format: string
+        customfields:
+          description: This will return an array of custom fields set for contractor organisations. The ID of the custom field corresponds to the ID of the custom fields when using the Customfield endpoint
+          type: object
+          example:
+            '123': custom-field value
+          additionalProperties: true
+      type: object
+    ContractorOrganisationRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Contractor Organisation Name
+        type:
+          type: string
+          enum:
+          - Charitable organization
+          - Discretionary Trading Trust
+          - Government Agency
+          - Family Partnership
+          - Fixed Unit Trust
+          - Hospital
+          - Individual/Sole Trader
+          - Limited Liability Company
+          - Local Body Agency
+          - Other Trust
+          - Partnership
+          - Private Company
+          - Publicly Listed Company
+          - Sole Proprietorship | Sole Trader
+        tradingas:
+          type: string
+          format: string
+          example: Contractor Organisation Name
+        legalid:
+          type: string
+          format: string
+          example: lid005
+        legalid_type:
+          type: string
+          format: string
+          example: legal ID type
+        address:
+          type: string
+          format: string
+          example: 2 Water Street, New York, NY, USA
+        country:
+          type: string
+          enum:
+          - AF
+          - AL
+          - DZ
+          - AS
+          - AD
+          - AO
+          - AI
+          - AQ
+          - AG
+          - AR
+          - AM
+          - AW
+          - AU
+          - AT
+          - AZ
+          - BS
+          - BH
+          - BD
+          - BB
+          - BY
+          - BE
+          - BZ
+          - BJ
+          - BM
+          - BT
+          - BO
+          - BA
+          - BW
+          - BV
+          - BR
+          - IO
+          - BN
+          - BG
+          - BF
+          - BI
+          - KH
+          - CM
+          - CA
+          - CV
+          - KY
+          - CF
+          - TD
+          - CL
+          - CN
+          - CX
+          - CC
+          - CO
+          - KM
+          - CG
+          - CD
+          - CK
+          - CR
+          - CI
+          - HR
+          - CU
+          - CY
+          - CZ
+          - DK
+          - DJ
+          - DM
+          - DO
+          - TP
+          - EC
+          - EG
+          - SV
+          - GQ
+          - ER
+          - EE
+          - ET
+          - FK
+          - FO
+          - FJ
+          - FI
+          - FR
+          - GF
+          - PF
+          - TF
+          - GA
+          - GM
+          - GE
+          - DE
+          - GH
+          - GI
+          - GR
+          - GL
+          - GD
+          - GP
+          - GU
+          - GT
+          - GN
+          - GW
+          - GY
+          - HT
+          - HM
+          - VA
+          - HN
+          - HK
+          - HU
+          - IS
+          - IN
+          - ID
+          - IR
+          - IQ
+          - IE
+          - IL
+          - IT
+          - JM
+          - JP
+          - JO
+          - KZ
+          - KE
+          - KI
+          - KP
+          - KR
+          - KW
+          - KG
+          - LA
+          - LV
+          - LB
+          - LS
+          - LR
+          - LY
+          - LI
+          - LT
+          - LU
+          - MO
+          - MK
+          - MG
+          - MW
+          - MY
+          - MV
+          - ML
+          - MT
+          - MH
+          - MQ
+          - MR
+          - MU
+          - YT
+          - MX
+          - FM
+          - MD
+          - MC
+          - MN
+          - MS
+          - MA
+          - MZ
+          - MM
+          - NA
+          - NR
+          - NP
+          - NL
+          - AN
+          - NC
+          - NZ
+          - NI
+          - NE
+          - NG
+          - NU
+          - NF
+          - MP
+          - 'NO'
+          - OM
+          - PK
+          - PW
+          - PA
+          - PG
+          - PY
+          - PE
+          - PH
+          - PN
+          - PL
+          - PT
+          - PR
+          - QA
+          - RE
+          - RO
+          - RU
+          - RW
+          - KN
+          - LC
+          - VC
+          - WS
+          - SM
+          - ST
+          - SA
+          - SN
+          - SC
+          - SL
+          - SG
+          - SK
+          - SI
+          - SB
+          - SO
+          - ZA
+          - GS
+          - ES
+          - LK
+          - SH
+          - PM
+          - SD
+          - SR
+          - SJ
+          - SZ
+          - SE
+          - CH
+          - SY
+          - TW
+          - TJ
+          - TZ
+          - TH
+          - TG
+          - TK
+          - TO
+          - TT
+          - TN
+          - TR
+          - TM
+          - TC
+          - TV
+          - UG
+          - UA
+          - AE
+          - GB
+          - US
+          - UM
+          - UY
+          - UZ
+          - VU
+          - VE
+          - VN
+          - VG
+          - VI
+          - WF
+          - EH
+          - YE
+          - ZM
+          - ZW
+          example: NZ
+        email:
+          type: string
+          format: string
+          example: sp.organisation@whosonlocation.com
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        organization_owner:
+          type: integer
+          format: int32
+          example: 823431
+        status:
+          type: string
+          enum:
+          - pending
+          - active
+          - on-hold
+          - inactive
+          example: active
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractorLocation'
+        cf:
+          description: This will return an object of custom fields set for contractor-organisations. The key of the custom field corresponds to the ID of the custom fields when using the Customfield endpoint
+          type: object
+          example:
+            '123': custom-field value
+          additionalProperties: true
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

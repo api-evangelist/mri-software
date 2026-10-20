@@ -1,0 +1,6 @@
+name: MRI Software agent skills
+generated: '2026-10-20'
+method: generated
+skills:
+  - {name: sync-employees, file: skills/mri-software-sync-employees.md}
+  - {name: pre-register-visitor, file: skills/mri-software-pre-register-visitor.md}

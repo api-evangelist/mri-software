@@ -1,0 +1,344 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Community member movements API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Community member movements across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Community member movements
+paths:
+  /community/{community_id}/movement:
+    get:
+      tags:
+      - Community member movements
+      summary: List all community-member movements
+      description: Retrieves a list of community-member movement records.
+      operationId: getCommunityMemberMovementList
+      parameters:
+      - name: q
+        in: query
+        description: Filters the result. See <a href='/developer-portal/using-the-api/#filtering'>Using the API</a> for more information.
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: community_id:123456
+      - name: order
+        in: query
+        description: Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of community-member movement records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityMemberMovementResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityMemberMovementResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Community member movements
+      summary: Create or update a community-member movement
+      description: Creates or updates an community-member movement record.
+      operationId: createOrUpdateCommunityMemberMovement
+      requestBody:
+        description: 'Data required to create or update an community member movement:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommunityMemberMovementRequest'
+      responses:
+        '200':
+          description: Updated movement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberMovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberMovementResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /community/{community_id}/movement/{id}:
+    get:
+      tags:
+      - Community member movements
+      summary: Retrieve a community member movement x
+      description: Retrieves a single community member movement, filtering with the provided ID.
+      operationId: getCommunityMemberMovement
+      parameters:
+      - name: id
+        in: path
+        description: ID of the community member movement to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberMovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberMovementResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CommunityMemberMovementResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 4938
+        created:
+          type: string
+          format: date-time
+          example: '2021-10-28T12:57:14+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-15T12:57:14+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 2538
+        community_id:
+          type: integer
+          format: int32
+          example: 30142
+        member_id:
+          type: integer
+          format: int32
+          example: 16348
+        signed_in:
+          type: string
+          format: date-time
+          example: '2021-10-28T12:57:14+13:00'
+        signed_out:
+          type: string
+          format: date-time
+          example: '2021-10-28T16:57:14+13:00'
+        mode_in:
+          type: string
+          enum:
+          - Auto
+          - Manual
+          - Kiosk
+          - Touchless
+          - Sign In/Out Manager
+          - Sign In/Out Manager (Tenant)
+          - Trigger
+          - API
+          example: Sign In/Out Manager
+        mode_out:
+          type: string
+          enum:
+          - Auto
+          - Manual
+          - Kiosk
+          - Touchless
+          - Sign In/Out Manager
+          - Sign In/Out Manager (Tenant)
+          - Trigger
+          - API
+          example: Sign In/Out Manager
+        zone_id:
+          type: integer
+          format: in32
+          example: 32
+        zone_other:
+          type: string
+          format: string
+          example: office
+        signed_in_by:
+          type: integer
+          format: int32
+          example: 823493
+        signed_out_by:
+          type: integer
+          format: int32
+          example: 823493
+        carpark_question:
+          type: boolean
+          format: bool
+          example: true
+        carpark_registration:
+          type: string
+          format: string
+          example: DRU706
+        carpark_number:
+          type: string
+          format: string
+          example: SP003
+        purpose:
+          type: string
+          format: string
+          example: Repairs
+        assistance:
+          type: boolean
+          format: boolean
+          example: false
+        expected:
+          description: Expected time on-site in minutes.
+          type: boolean
+          format: boolean
+          example: true
+        accessdenied:
+          type: boolean
+          format: boolean
+          example: false
+        accessdenied_reason:
+          type: string
+          format: string
+          example: trigger
+        loneworker:
+          type: boolean
+          format: boolean
+          example: true
+        interzone:
+          type: boolean
+          format: boolean
+          example: true
+        from_zone:
+          type: integer
+          format: int
+          example: 87
+        selected_language:
+          type: string
+          format: string
+          example: english
+        lacp_in_name:
+          type: string
+          format: string
+          example: Reception
+        lacp_out_name:
+          type: string
+          format: string
+          example: Reception
+        zone_group_name:
+          type: string
+          format: string
+          example: Maintenance
+        photo_url:
+          type: string
+          format: string
+          example: your.site/storage/contractorphoto.jpg
+        signout_photo_url:
+          type: string
+          format: string
+          example: your.site/storage/contractorphoto.jpg
+      type: object
+    CommunityMemberMovementRequest:
+      required:
+      - member_id
+      - location_id
+      - onsite_status
+      properties:
+        onsite_status:
+          description: Describes whether the movement is 'onsite' or 'offsite'
+          type: string
+          format: string
+          example: onsite
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        member_id:
+          type: integer
+          format: int32
+          example: 54
+        lacp_id:
+          description: Location access point ID. Not mandatory.
+          type: integer
+          format: int32
+          example: 38
+        zone_id:
+          description: ID of the zone being signed into. Not mandatory.
+          type: integer
+          format: int32
+          example: 3443
+        zone_other:
+          description: Zone note for this movement. Not mandatory
+          type: string
+          format: string
+        carpark_question:
+          description: Can be set as either 1/0 or true/false. Not mandatory.
+          type: boolean
+          format: boolean
+        carpark_registration:
+          description: Vehicle registration. Not mandatory.
+          type: string
+          format: string
+          example: MRD346
+        carpark_number:
+          description: Carpark number. Not mandatory.
+          type: string
+          format: string
+          example: '0014'
+        purpose:
+          description: Reason for visit. Not mandatory.
+          type: string
+          format: string
+          example: Water station repairs
+        assistance:
+          description: Whether the member requires assistance. Not mandatory.
+          type: boolean
+          format: boolean
+        expected:
+          description: Expected time on-site in minutes. Not mandatory
+          type: integer
+          format: int32
+          example: 60
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

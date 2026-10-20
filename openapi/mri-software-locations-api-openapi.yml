@@ -1,0 +1,281 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Locations API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Locations across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Locations
+  description: 'Each OnLocation account is made up of one or more locations. A location record contains the name, contact details, timezone, date format, employee count, and the access points set up for that location.
+
+
+    Use the location API to retrieve your location list, add a new location, or update or delete an existing location.
+
+
+    Learn more about the information that''s captured for each location in the OnLocation Help Center.'
+paths:
+  /location:
+    get:
+      tags:
+      - Locations
+      summary: List all locations
+      description: 'Retrieves a list of all locations.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getLocationList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by location details, eg country, staff count
+        required: false
+        schema:
+          type: string
+          format: string
+        example: staff_count>200
+      responses:
+        '200':
+          description: List of locations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LocationResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LocationResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Locations
+      summary: Create a location
+      description: Adds a new location to an account.
+      operationId: createLocation
+      requestBody:
+        description: 'Location details:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+      responses:
+        '201':
+          description: Location created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /location/{id}:
+    get:
+      tags:
+      - Locations
+      summary: Retrieves a location
+      description: Returns the details of a single location, based on the ID provided.
+      operationId: getLocation
+      parameters:
+      - name: id
+        in: path
+        description: ID of location to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Location response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found.
+        '500':
+          description: Internal server error.
+    put:
+      tags:
+      - Locations
+      summary: Update a location
+      description: Updates a location's details.
+      operationId: updateLocation
+      parameters:
+      - name: id
+        in: path
+        description: ID of the location to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: 'Location details:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+      responses:
+        '204':
+          description: Updated location
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Locations
+      summary: Delete a location
+      description: Remove a location from the account.
+      operationId: deleteLocation
+      parameters:
+      - name: id
+        in: path
+        description: ID of location to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Location deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    LocationRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Head Office
+        address:
+          type: string
+          format: string
+          example: ' 1008 Tawa Terrace, Tawa, Wellington, New Zealand'
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        postcode:
+          type: string
+          format: string
+          example: '5021'
+        country:
+          type: string
+          format: string
+          example: NZ
+        timezone:
+          type: string
+          format: string
+          example: Pacific/Auckland
+        date_format:
+          type: string
+          format: string
+          example: d/m/Y
+      type: object
+    LocationResponse:
+      description: Definition of a location inside an organisation
+      required:
+      - org_id
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 301
+        created:
+          type: string
+          format: date-time
+          example: '2021-08-12T09:26:54+12:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-09-03T09:26:54+12:00'
+        name:
+          type: string
+          format: string
+          example: Head Office
+        address:
+          type: string
+          format: string
+          example: ' 1008 Tawa Terrace, Tawa, Wellington, New Zealand'
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        external_id:
+          type: string
+          format: string
+          example: '998'
+        postcode:
+          type: string
+          format: string
+          example: '5021'
+        country:
+          type: string
+          format: string
+          example: NZ
+        timezone:
+          type: string
+          format: string
+          example: Pacific/Auckland
+        date_format:
+          type: string
+          format: string
+          example: d/m/Y
+        staff_count:
+          type: integer
+          format: int32
+          example: 13
+        lacps:
+          description: Location access points
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationAccessPoint'
+      type: object
+    LocationAccessPoint:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 240
+        name:
+          type: string
+          format: string
+          example: G1 - Entry
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

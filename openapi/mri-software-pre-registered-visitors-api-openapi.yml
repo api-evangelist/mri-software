@@ -1,0 +1,331 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Pre-registered visitors API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Pre-registered visitors across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Pre-registered visitors
+  description: 'A pre-registered visitor is someone who has been approved by an employee to visit a location. Each visitor is linked to a visit event. Use the pre-registered visitor API to retrieve your pre-registered visitor events list, add a new pre-registered visitor event, or update or delete a pre-registered visitor event.
+
+
+    Learn more about pre-registered visitors in the OnLocation Help Center.'
+paths:
+  /visitor/register:
+    get:
+      tags:
+      - Pre-registered visitors
+      summary: List all pre-registered visitor events
+      description: 'Returns a list of all pre-registered visitors and groups.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getVisitorRegisterList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by pre-registered visitor value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: location_id:100
+      responses:
+        '200':
+          description: List of pre-registered visitors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorRegisterResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorRegisterResponse'
+        '403':
+          description: Access denied to this resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Pre-registered visitors
+      summary: Create a pre-registered visitor event
+      description: Add a new pre-registered visitor event
+      operationId: createVisitorRegister
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VisitorRegisterRequest'
+      responses:
+        '201':
+          description: Pre-registered visitor event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitorRegisterRequest'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /visitor/register/{id}:
+    get:
+      tags:
+      - Pre-registered visitors
+      summary: Retrieve a pre-registered visitor event
+      description: Retrieves a single pre-registered visitor, filtering with the provided ID
+      operationId: getVisitorRegister
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A single pre-registered visitor record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitorRegisterResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/VisitorRegisterResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Pre-registered visitors
+      summary: Update a pre-registered visitor event
+      description: Updates the specified pre-registered visitor event
+      operationId: updateVisitorRegister
+      parameters:
+      - name: id
+        in: path
+        description: ID of the pre-registered visitor event to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the pre-registered visitor event record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VisitorRegisterRequest'
+      responses:
+        '204':
+          description: Updated pre-registered visitor event
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Pre-registered visitors
+      summary: Delete a pre-registered visitor event
+      description: Removes the specified pre-registered visitor event.
+      operationId: deleteVisitorRegister
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Pre-registered visitor event deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    VisitorRegisterPersonRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Robert Jordan
+        from:
+          type: string
+          format: string
+          example: ACME Corporation
+        email:
+          type: string
+          format: string
+          example: example@example.org
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Mr
+        assistance:
+          description: Whether or not a contractor requires assistance.
+          type: boolean
+          format: boolean
+        purpose:
+          type: string
+          format: string
+          example: visiting
+      type: object
+    VisitorRegisterRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Robert Jordan
+        type:
+          type: string
+          enum:
+          - preregister
+          example: preregister
+        location_id:
+          type: string
+          format: string
+          example: 301
+        staff_id:
+          type: string
+          format: string
+          example: 264
+        visiting_staff_id:
+          type: string
+          format: string
+          example: 264
+        event_start:
+          type: string
+          format: string
+          example: '2021-11-30T15:00:00+13:00'
+        event_end:
+          type: string
+          format: string
+          example: '2021-11-30T17:00:00+13:00'
+        visitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisitorRegisterPersonRequest'
+      type: object
+    VisitorRegisterResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1915
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-29T11:11:25+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-29T11:11:56+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        created_staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        visiting_staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        event_start:
+          type: string
+          format: date-time
+          example: '2021-11-30T15:00:00+13:00'
+        event_end:
+          type: string
+          format: date-time
+          example: '2021-11-30T17:00:00+13:00'
+        name:
+          type: string
+          format: string
+          example: Visitor Registor Name
+        visiting_staff_name:
+          type: string
+          format: string
+          example: Jane Doe
+        location_name:
+          type: string
+          format: string
+          example: Head Office
+        visitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisitorRegisterPersonResponse'
+        type:
+          type: string
+          format: string
+          example: preregister
+      type: object
+    VisitorRegisterPersonResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 2957
+        name:
+          type: string
+          format: string
+          example: Robert Jordan
+        email:
+          type: string
+          format: string
+          example: registered.visitor@whosonlocation.com
+        from:
+          type: string
+          format: string
+          example: ACME Corporation
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Mr
+        assistance:
+          format: boolean
+          example: false
+        purpose:
+          type: string
+          format: string
+          example: Visiting
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

@@ -1,0 +1,103 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Contractor contact role types API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Contractor contact role types across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Contractor contact role types
+  description: 'Contractor contact role types are used to categorize contractor members. Use the API to retrieve a list of role types set up at your organization.
+
+
+    Learn more about role types in the OnLocation Help Center.'
+paths:
+  /sp/role:
+    get:
+      tags:
+      - Contractor contact role types
+      summary: List all contact role types
+      description: 'Returns a list of all of the contractor contact roles created for your organization.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match and a percent separator performs a starts-with search.'
+      operationId: getContractorRole
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any contractor role value
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name:ACME
+      - name: order
+        in: query
+        description: Specifies an element to order by. Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: id
+      - name: limit
+        in: query
+        description: Limits the number of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss) . Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of contractor roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorRoleResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorRoleResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    BasicIdNamePair:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 556
+        name:
+          type: string
+          format: string
+          example: Example Name
+      type: object
+    ContractorRoleResponse:
+      properties:
+        role:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

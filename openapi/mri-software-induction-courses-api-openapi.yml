@@ -1,0 +1,311 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Induction courses API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Induction courses across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Induction courses
+  description: 'Induction courses are to record if an employee or contractor has completed required training. There are four types of induction course in OnLocation: internal, external, eLearning and SCORM Cloud. The first two options are used to record that training has been completed; last two options are used to deliver online training. An induction course record includes the basic course information, it doesn''t include any course content.
+
+
+    Use the induction API to retrieve your induction course list, create an induction course, and update or delete an induction course. You can also return a list of learners that hold a specific induction, add inductions to employee or contractor profiles, and update or delete a specific learner record.
+
+
+    Learn more about induction courses in the OnLocation Help Center.'
+paths:
+  /induction:
+    get:
+      tags:
+      - Induction courses
+      summary: List all induction courses
+      description: 'Returns a list of all induction courses.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getInductionList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by induction course field.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: type:external
+      responses:
+        '200':
+          description: List of induction courses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InductionResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InductionResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+    post:
+      tags:
+      - Induction courses
+      summary: Create an induction course
+      description: Create a new induction course, including the name, description, audience, and renewal settings.
+      operationId: createInduction
+      requestBody:
+        description: 'Induction course details:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InductionRequest'
+      responses:
+        '201':
+          description: Induction course created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InductionResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: Induction already exists with name
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /induction/{id}:
+    get:
+      tags:
+      - Induction courses
+      summary: Retrieve an induction course
+      description: Retrieves a single induction course, filtering with the provided ID.
+      operationId: getInduction
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Course returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InductionResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/InductionResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+    put:
+      tags:
+      - Induction courses
+      summary: Update an induction course
+      description: Updates an induction course based on the provided ID.
+      operationId: updateInduction
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Induction to save to the database
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InductionRequest'
+      responses:
+        '200':
+          description: Updated induction course
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InductionResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InductionResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: induction already exists with name
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Induction courses
+      summary: Delete an induction course
+      description: Deletes the specified induction course.
+      operationId: deleteInduction
+      parameters:
+      - name: id
+        in: path
+        description: ID of the induction course to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Induction course deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    BasicIdNamePair:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 556
+        name:
+          type: string
+          format: string
+          example: Example Name
+      type: object
+    InductionRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Employee induction course
+        type:
+          type: string
+          format: string
+          example: internal/external
+        description:
+          type: string
+          format: string
+          example: Induction course description
+        status:
+          type: string
+          format: string
+          example: inactive
+        audience_staff:
+          type: string
+          format: string
+          example: all/location/department/role/none
+        audience_sp:
+          type: string
+          format: string
+          example: all/location/group/role/none
+        renew:
+          type: integer
+          format: int32
+          example: 12
+        audience_staff_member:
+          type: array
+          items:
+            format: int32
+            example:
+            - 281
+            - 533
+        audience_sp_member:
+          type: array
+          items:
+            format: int32
+            example:
+            - 281
+            - 533
+      type: object
+    InductionResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 184
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-03T13:19:14+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-10T12:22:08+13:00'
+        setup_by:
+          type: integer
+          format: int32
+          example: 773
+        name:
+          type: string
+          format: string
+          example: Employee induction course
+        type:
+          type: string
+          format: string
+          example: online
+        description:
+          type: string
+          format: string
+          example: Induction course description
+        status:
+          type: string
+          format: string
+          example: inactive
+        audience_staff:
+          type: string
+          enum:
+          - all
+          - location
+          - department
+          - role
+          - none
+          example: all
+        audience_sp:
+          type: string
+          enum:
+          - all
+          - location
+          - group
+          - role
+          - none
+          example: all
+        renew:
+          type: integer
+          format: int32
+          example: 12
+        attempts:
+          type: integer
+          format: int32
+          example: 1
+        inductees:
+          type: integer
+          format: int32
+          example: 3
+        audience_staff_member:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        audience_sp_member:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

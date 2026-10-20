@@ -1,0 +1,234 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Contractor organization groups API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Contractor organization groups across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Contractor organization groups
+  description: 'Groups are a subset of contractor organization categories. For example, electrical, cleaning, and maintenance could be groups under the facilities category. They are used to organize your organizations and make it easier to report on them and create triggers.
+
+
+    Use the API to retrieve your groups list or add, update or delete a group.
+
+
+    Learn more about contractor organization groups in the OnLocation Help Center.'
+paths:
+  /sp/org/group:
+    get:
+      tags:
+      - Contractor organization groups
+      summary: List contractor organization groups
+      description: Returns a list of contractor organization groups.
+      operationId: getSpGroupList
+      parameters:
+      - name: q
+        in: query
+        description: ID of the category to retrieve particular category groups.
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: category_id:123456
+      responses:
+        '200':
+          description: List of contractor organization groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpGroupResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpGroupResponse'
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Contractor organization groups
+      summary: Create a contractor organization group
+      description: Creates a new contractor organization group with the provided details.
+      operationId: createSpGroup
+      requestBody:
+        description: Information used to create a new contractor organization group
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpGroupRequest'
+      responses:
+        '201':
+          description: Created resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpGroupRequest'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpGroupResponse'
+        '400':
+          description: Invalid input
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /sp/org/group/{id}:
+    get:
+      tags:
+      - Contractor organization groups
+      summary: Retrieve a contractor organization group
+      description: Retrieves a contractor organization group by its ID.
+      operationId: getSpGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization group to retrieve
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Contractor organization group found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpGroupResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpGroupResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Contractor organization group not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Contractor organization groups
+      summary: Update a contractor organization group
+      description: Updates the details of a contractor organization group.
+      operationId: updateSpGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization group to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the contractor organization group record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpGroupPutRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpGroupResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SpGroupResponse'
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Contractor organization group not found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Contractor organization groups
+      summary: Delete a contractor organization group
+      description: Deletes a contractor organization group by its ID.
+      operationId: deleteSpGroup
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor organization group to delete
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Contractor organization group deleted successfully
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Contractor organization group not found
+        '409':
+          description: Not deleted as contractor organizations found attached to the group
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    SpGroupRequest:
+      title: SpGroupRequest
+      description: Contractor organization group request schema
+      properties:
+        category_id:
+          description: Contractor organization category ID
+          type: integer
+          format: int32
+          example: 1
+        name:
+          description: Name of the contractor organization group
+          type: string
+          format: string
+          example: Drivers
+      type: object
+    SpGroupPutRequest:
+      title: SpGroupPutRequest
+      description: Contractor organization group request schema
+      properties:
+        name:
+          description: Name of the contractor organization group
+          type: string
+          format: string
+          example: Drivers
+      type: object
+    SpGroupResponse:
+      title: SpGroupResponse
+      description: Contractor organization group response schema
+      properties:
+        id:
+          description: Contractor organization group ID
+          type: integer
+          format: int32
+          example: 1
+        name:
+          description: Name of the contractor organization group
+          type: string
+          format: string
+          example: Drivers
+        category_id:
+          description: Contractor organization category ID that the group belongs to
+          type: integer
+          format: int32
+          example: 1
+        created:
+          description: Created time of the contractor organization group
+          type: string
+          format: date-time
+          example: '2023-05-12 09:30:00'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

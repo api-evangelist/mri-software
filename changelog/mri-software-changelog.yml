@@ -1,0 +1,17 @@
+name: MRI OnLocation API changelog
+generated: '2026-10-20'
+method: searched
+source: https://apidocs.whosonlocation.com/developer-portal/changelog/
+scheme: dated (month-year), no version numbers
+current_version: v1
+entries:
+  - {version: '2026-03', date: '2026-03', breaking: false, highlights: [New read-only endpoints for employee role types and contractor insurance types]}
+  - {version: '2025-05', date: '2025-05', breaking: false, highlights: [Endpoints to retrieve and update groups for a contractor organization]}
+  - {version: '2025-04', date: '2025-04', breaking: false, highlights: [time_zone parameter introduced across all endpoints]}
+  - {version: '2023-08', date: '2023-08', breaking: false, highlights: [Contractor organization groups and categories endpoints]}
+  - {version: '2023-07', date: '2023-07', breaking: false, highlights: [Frequent visitors renamed saved visitors; no endpoint changes]}
+  - {version: '2023-06', date: '2023-06', breaking: false, highlights: [Assets, asset groups and types; issue/return assets]}
+  - {version: '2022-11', date: '2022-11', breaking: false, highlights: [Location zones and zone groups endpoints]}
+  - {version: '2022-08', date: '2022-08', breaking: true, highlights: [Employee movement mode_in/mode_out values changed]}
+  - {version: '2022-07', date: '2022-07', breaking: false, highlights: [customfields request parameter deprecated in favour of cf]}
+  - {version: '2022-03', date: '2022-03', breaking: false, highlights: [Qualifications endpoints deprecated in favour of certifications]}

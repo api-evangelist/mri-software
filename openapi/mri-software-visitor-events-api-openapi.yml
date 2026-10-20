@@ -1,0 +1,576 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Visitor events API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Visitor events across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Visitor events
+  description: 'A visitor event is a record listing the details of a visit, including the visitor''s name, where they visited, contact details, basic question answers, and sign in/out mode and time.
+
+
+    Use the visitor event API to retrieve your visitor event list, add a new visitor event, or update or delete a visitor event.'
+paths:
+  /visitor/event:
+    get:
+      tags:
+      - Visitor events
+      summary: List all visitor events
+      description: 'Returns a list of visitor sign in and out events.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getVisitorEventList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any visitor event value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: location_id:100
+      - name: order
+        in: query
+        description: Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: location_id
+      - name: limit
+        in: query
+        description: 'Limits the amount of records to return. '
+        required: false
+        schema:
+          type: integer
+          format: date-string
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss) . Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of visitor sign in and out events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorEventResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorEventResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Visitor events
+      summary: Create a visitor event
+      description: Creates a new visitor sign in and out event.
+      operationId: createVisitorEvent
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VisitorEventPostRequest'
+      responses:
+        '201':
+          description: Event created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitorEventResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/VisitorEventResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /visitor/event/{id}:
+    get:
+      tags:
+      - Visitor events
+      summary: Retrieve a visitor event
+      description: Retrieves a single visitor sign in and out event, filtering with the provided ID.
+      operationId: getVisitorEvent
+      parameters:
+      - name: id
+        in: path
+        description: ID of the visitor sign in and out event to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Event returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitorEventResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/VisitorEventResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Visitor events
+      summary: Update a visitor event
+      description: Updates a visitor sign in and out event based on the provided ID.
+      operationId: updateVisitorEvent
+      parameters:
+      - name: id
+        in: path
+        description: ID of the visitor event to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the visitor event record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VisitorEventPutRequest'
+      responses:
+        '204':
+          description: Updated event
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Visitor events
+      summary: Delete a visitor event
+      description: Deletes the specified visitor sign in and out event.
+      operationId: deleteVisitorEvent
+      parameters:
+      - name: id
+        in: path
+        description: ID of the visitor sign in/out event to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Event deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    VisitorEventPutRequest:
+      properties:
+        type:
+          type: string
+          format: string
+          example: visit
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        visiting_staff_id:
+          type: integer
+          format: int32
+          example: 534
+        signed_in:
+          type: string
+          format: date-time
+          example: '2021-11-25T12:01:09.380Z'
+        signed_out:
+          type: string
+          format: date-time
+          example: '2021-11-25T13:01:09.380Z'
+        mode_id:
+          type: string
+          format: string
+          example: Kiosk
+        mode_out:
+          type: string
+          format: string
+          example: Kiosk
+        signed_in_by:
+          type: integer
+          format: int32
+          example: 823
+        signed_out_by:
+          type: integer
+          format: int32
+          example: 823
+        name:
+          type: string
+          format: string
+          example: Elayne Trakand
+        email:
+          type: string
+          format: string
+          example: example.email@whosonlocation.com
+        from:
+          type: string
+          format: string
+          example: Andor
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Ms
+        assistance:
+          format: boolean
+          example: false
+        expected:
+          type: boolean
+          format: boolean
+          example: false
+        pass:
+          type: boolean
+          format: boolean
+          example: true
+        purpose:
+          type: string
+          format: string
+          example: Just visiting
+        carpark_question:
+          type: boolean
+          format: boolean
+          example: false
+        carpark_registration:
+          type: string
+          format: string
+          example: MRU366
+        carpark_number:
+          type: string
+          format: string
+          example: '5'
+        cardnumber:
+          type: string
+          format: string
+          example: cn001
+        id_verification_reference:
+          type: string
+          format: boolean
+          example: true
+        id_verification_type:
+          type: string
+          format: string
+          example: licence
+        accessdenied:
+          type: boolean
+          format: boolean
+          example: false
+        visiting_staff_name:
+          type: string
+          format: string
+          example: Staff Member
+        signed_in_by_name:
+          type: string
+          format: string
+          example: Person in reception
+        signed_out_by_name:
+          type: string
+          format: string
+          example: Person in reception
+        onsite:
+          type: string
+          format: string
+          example: 13 minutes 32 seconds
+        lacp_in_id:
+          type: integer
+          format: int32
+          example: 239
+        lacp_out_id:
+          type: integer
+          format: int32
+          example: 239
+      type: object
+    VisitorEventPostRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Elayne Trakand
+        type:
+          type: string
+          enum:
+          - visit
+          example: visit
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        visiting_staff_id:
+          type: integer
+          format: int32
+          example: 534
+        signed_in:
+          type: string
+          format: date-time
+          example: '2021-11-25T12:01:09.380Z'
+        signed_out:
+          type: string
+          format: date-time
+          example: '2021-11-25T13:01:09.380Z'
+        email:
+          type: string
+          format: string
+          example: example.email@example.org
+        from:
+          type: string
+          format: string
+          example: Andor
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Ms
+        assistance:
+          format: boolean
+          example: false
+        purpose:
+          type: string
+          format: string
+          example: visiting
+        carpark_registration:
+          type: string
+          format: string
+          example: MRU366
+        carpark_number:
+          type: string
+          format: string
+          example: '5'
+        cardnumber:
+          type: string
+          format: string
+          example: cn001
+        id_verification_reference:
+          type: string
+          format: boolean
+          example: true
+        id_verification_type:
+          type: string
+          format: string
+          example: licence
+        lacp_in_id:
+          type: integer
+          format: int32
+          example: 239
+        lacp_out_id:
+          type: integer
+          format: int32
+          example: 239
+      type: object
+    VisitorEventResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 138
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-25T14:47:34+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-25T15:01:08+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        created_staff_id:
+          type: integer
+          format: int32
+          example: 349
+        visiting_staff_id:
+          type: integer
+          format: int32
+          example: 823
+        signed_in:
+          type: string
+          format: date-time
+          example: '2021-11-25T14:47:36+13:00'
+        signed_out:
+          type: string
+          format: date-time
+          example: '2021-11-25T15:01:08+13:00'
+        mode_in:
+          type: string
+          format: string
+          example: Kiosk
+        mode_out:
+          type: string
+          format: string
+          example: Kiosk
+        signed_in_by:
+          type: integer
+          format: int32
+          example: 823
+        signed_out_by:
+          type: integer
+          format: int32
+          example: 823
+        name:
+          type: string
+          format: string
+          example: Elayne Trakand
+        email:
+          type: string
+          format: string
+          example: example-email@whosonlocation.com
+        from:
+          type: string
+          format: string
+          example: Andor
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Ms
+        assistance:
+          type: boolean
+          format: boolean
+          example: false
+        expected:
+          type: boolean
+          format: boolean
+          example: false
+        printed:
+          type: boolean
+          format: boolean
+          example: true
+        pass:
+          type: boolean
+          format: boolean
+          example: true
+        purpose:
+          type: string
+          format: string
+          example: Just visiting
+        carpark_question:
+          type: boolean
+          format: boolean
+          example: false
+        carpark_registration:
+          type: string
+          format: string
+          example: MRU366
+        carpark_number:
+          type: string
+          format: string
+          example: '5'
+        cardnumber:
+          type: string
+          format: string
+          example: cn001
+        id_verification_checked:
+          type: boolean
+          format: boolean
+          example: true
+        id_verification_type:
+          type: boolean
+          format: string
+          example: licence
+        accessdenied:
+          type: boolean
+          format: boolean
+          example: false
+        id_verification_reference:
+          type: string
+          format: string
+          example: Reference verification
+        visiting_staff_name:
+          type: string
+          format: string
+          example: Staff Member
+        location_name:
+          type: string
+          format: string
+          example: Head Office
+        lacp_in_name:
+          type: string
+          format: string
+          example: Reception
+        lacp_out_name:
+          type: string
+          format: string
+          example: Reception
+        signed_in_by_name:
+          type: string
+          format: string
+          example: Person in reception
+        signed_out_by_name:
+          type: string
+          format: string
+          example: Person in reception
+        onsite:
+          type: string
+          format: string
+          example: 13 minutes 32 seconds
+        type:
+          type: string
+          format: string
+          example: visit
+        lacp_in_id:
+          type: integer
+          format: int32
+          example: 239
+        lacp_out_id:
+          type: integer
+          format: int32
+          example: 239
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

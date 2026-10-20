@@ -1,0 +1,487 @@
+generated: '2026-10-20'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/mri-software-onlocation-openapi.yml
+vocabulary:
+  name: MRI Software Domain Vocabulary
+  description: 'Terms declared by MRI Software''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-20'
+  terms:
+  - term: Assets
+    definition: Manage your organization’s assets with OnLocation. Use the API to retrieve a list of assets, add or update, or delete an asset,
+      or issue or return an asset. Your account owner must first enable the add-on in OnLocation.Learn more about assets in the OnLocation Help
+      Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Asset groups
+    definition: All asset types are associated with an asset group. An asset group connects asset types that have similar characteristics. Use
+      the API to retrieve a list of all asset groups, add or update, or delete an asset group.Learn more about asset groups in the OnLocation
+      Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Asset movements
+    definition: Manage the movement of assets using the API. Retrieve a list of all asset movements, view a specific movement, and update an movement.Learn
+      more about assets in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Asset types
+    definition: An asset type is a subset of an asset group. Use the API to retrieve a list of all asset types, add or update, or delete an asset
+      type.Learn more about assets in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Audit log
+    definition: When records are created, updated or deleted within your account, an audit log is created. Use the audit log API to retrieve the
+      last 30 days worth of data corresponding to changes within your account.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Certifications
+    definition: Certifications are used to record employee and contractor accreditations in OnLocation. Use the API to retrieve the certifications
+      created for your organization, add or update, or delete a certification, and see the number of people who hold the certification.Learn more
+      about certifications in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Certification holders
+    definition: 'Certifications can be assigned to employees and contractors. Each certification record includes the dates that the certification
+      is valid for, along with the person''s name, email, and if there are any documents attached to the record. Use the API to see which employees
+      and contractors hold each certification, or create, update or delete a certification holder record.Learn more about certification '
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Certification holder documents
+    definition: Each certification added to an employee or contractor profile can have a document attached. Use the API to return a list of certification
+      documents, and update or delete a certification document.Learn more about certification documents in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Certification types
+    definition: Certification types are used to group similar types of certifications, for example qualifications, certificates, licenses, degrees.
+      Use the API to return the full list of certification types, or add, update or delete a certification type.Learn more about certification
+      types in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor contact role types
+    definition: Contractor contact role types are used to categorize contractor members. Use the API to retrieve a list of role types set up at
+      your organization.Learn more about role types in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor insurance policies
+    definition: Insurance management in OnLocation is used to manage contractor organizations' insurance policies. Use the API to retrieve a list
+      of all insurance policies, add new ones, and update or delete existing policies. Learn more about insurances in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor insurance documents
+    definition: Contractor organization insurance policies can have documents attached to them. Use the API to retrieve a list of all documents
+      attached to a policy, add new documents, and update or delete existing documents.Learn more about insurances in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor members
+    definition: A contractor member belongs to an organization that is contracted to provide a service. Each member has a profile in OnLocation
+      that includes their contact details, status, access permission dates, and locations.Use the contractor member API to retrieve your contractor
+      member list, or add, update or delete a member profile.To manage which organizations a member belongs to, use the contractor membe
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor member movements
+    definition: Each time a contractor signs in or out, they create a movement. Use the API to return all contractor member movements, or add
+      or update a movement record.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor membership
+    definition: 'Each contractor organization has individual members that are authorized to work on-site. A contractor member can belong to multiple
+      contractor organizations in OnLocation. Use the API to retrieve the organizations each member belongs to, including locations and contact
+      role types; add, update, or delete the connection between a member and an organization.Learn more about contractor members in the '
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor organizations
+    definition: A contractor organization is contracted to provide a service. Each organization has a profile in OnLocation that includes contact
+      information, status, location access, insurance policies, and linked members.Use the API to retrieve your contractor organization list,
+      or add, update or delete an organization profile.To manage which organizations a member belongs to, use the contractor membership endp
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor organization categories
+    definition: Categories are used to describe the different functions of your contractor organizations. You can use them to sort your organizations
+      and make it easier to report on them and create triggers. Use the API to retrieve your categories list or add, update or delete a category.Learn
+      more about contractor organization categories in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Contractor organization groups
+    definition: Groups are a subset of contractor organization categories. For example, electrical, cleaning, and maintenance could be groups
+      under the facilities category. They are used to organize your organizations and make it easier to report on them and create triggers. Use
+      the API to retrieve your groups list or add, update or delete a group. Learn more about contractor organization groups in the OnLocation
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Custom fields
+    definition: Custom fields are used to record information that is not covered by the the default employee and contractor profile fields. Use
+      the custom fields API to retrieve any employee custom fields, contractor organization custom fields, and contractor member custom fields.See
+      how to update custom fields in employee or contractor profiles.Learn more about custom fields in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Custom field tabs
+    definition: Users can add new tabs to organize the custom fields in their employee or contractor profiles. Use the custom fields API to retrieve
+      any employee, contractor organization, and contractor member custom field tabs.Learn more about custom fields in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Custom questionnaires
+    definition: A custom questionnaire is a set of custom questions that are asked during sign in, sign out, or visitor pre-registration. The
+      custom questionnaire API retrieves your custom questionnaires and can return single records based on an ID.Learn more about custom questionnaires
+      in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Custom questions
+    definition: A custom questionnaire is made up of a set of custom questions. Use the API to list all custom questions created for your organization.
+      View details including the question type (eg multi-choice, waiver, date picker) and the settings (eg if it's mandatory, if answer share
+      is enabled, and who set it up).Learn more about custom questions in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Custom questionnaire submissions
+    definition: Returns a list of all custom questionnaire submissions (excluding the answers). Includes location, kiosk, who submitted the answer,
+      where the movement took place, date and time.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Custom question answers
+    definition: When someone answers a custom question in a questionnaire submission, OnLocation records their submission and links it to the
+      questionnaire submission ID and custom question ID.Use the API to view the answers for all or specific custom questions.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Employees
+    definition: 'Each employee has a profile in OnLocation. It contains their name, contact information, locations, department, user roles and
+      role types, and tokens.Use the employee API to return a list of all employees, add, update or delete employees, retrieve photos, and sign
+      employees in or out.We recommend that bulk employee changes are managed using our SyncPortal integration rather than the API. Check the '
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Employee movements
+    definition: Each time an employee signs in or out, or moves between zones, they create a movement. Use the API to return all employee movements,
+      or add or update a movement record.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Induction courses
+    definition: 'Induction courses are to record if an employee or contractor has completed required training. There are four types of induction
+      course in OnLocation: internal, external, eLearning and SCORM Cloud. The first two options are used to record that training has been completed;
+      last two options are used to deliver online training. An induction course record includes the basic course information, it doesn'
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Induction holders
+    definition: An induction holder is someone who has completed an induction course. Induction holder records include the learner's name, email,
+      status of the course, the number of attempts, when it's due to be renewed. Use the API to retrieve who has completed each induction course,
+      or create, update or delete an induction holder record.Learn more about induction holders in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Locations
+    definition: Each OnLocation account is made up of one or more locations. A location record contains the name, contact details, timezone, date
+      format, employee count, and the access points set up for that location. Use the location API to retrieve your location list, add a new location,
+      or update or delete an existing location.Learn more about the information that's captured for each location in the OnLocation
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Location departments
+    definition: Departments are used to assign employees to different operational areas of a location. Use the API to retrieve a list of all departments,
+      create new departments and the locations they apply to, update the department names, or remove them from your account.Learn more about departments
+      in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Location zones
+    definition: Zones are used to split your location into specific areas. If you use the Desks and Spaces add-on, you can also create bookable
+      workspaces within each zone. Use the API to retrieve a list of all zones, add new zones, update or delete existing zones, and link zones
+      to access points.Learn more about zones in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Location zone groups
+    definition: Zone groups are used to group your location's zones together. For example, a zone group may be a building and each floor is a
+      zone. Use the API to retrieve a list of all zone groups, add new zone groups, and update or delete existing zone groups.Learn more about
+      zone groups in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Notifications
+    definition: OnLocation sends email, SMS, and OnLocation Mobile push notifications. Use the notification API to retrieve a list of all notifications
+      and provide a notification ID to retrieve a single notification.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Visitor events
+    definition: A visitor event is a record listing the details of a visit, including the visitor's name, where they visited, contact details,
+      basic question answers, and sign in/out mode and time.Use the visitor event API to retrieve your visitor event list, add a new visitor event,
+      or update or delete a visitor event.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Visitor groups
+    definition: Each visitor group is created by an employee and includes a set of their visitors who are pre-registered to attend the same events.
+      Use the visitor group API to retrieve your visitor group list, add a new visitor group, or update or delete a visitor group.Learn more about
+      visitor groups in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Pre-registered visitors
+    definition: A pre-registered visitor is someone who has been approved by an employee to visit a location. Each visitor is linked to a visit
+      event. Use the pre-registered visitor API to retrieve your pre-registered visitor events list, add a new pre-registered visitor event, or
+      update or delete a pre-registered visitor event.Learn more about pre-registered visitors in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Saved visitors
+    definition: Each employee can maintain a saved visitor list in OnLocation. Use the saved visitor API to retrieve all saved visitors, add a
+      new saved visitor, or update or delete a saved visitor.Learn more about saved visitors in the OnLocation Help Center.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Qualifications (deprecated)
+    definition: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use
+      the certifications endpoints to access this data.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Qualification holders (deprecated)
+    definition: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use
+      the certification holders endpoints to access this data.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Qualification holder documents (deprecated)
+    definition: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use
+      the certification holder documents endpoints to access this data.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: Qualification types (deprecated)
+    definition: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use
+      the certification types endpoints to access this data.
+    tags:
+    - Resource Group
+    source: openapi/mri-software-onlocation-openapi.yml
+  - term: AssetRequest
+    definition: Asset request body data
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssetRequest
+  - term: AssetResponse
+    definition: Asset Response schema
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssetResponse
+  - term: AssetgroupRequest
+    definition: Asset Group request body data
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssetgroupRequest
+  - term: AssetgroupResponse
+    definition: Asset Group response schema
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssetgroupResponse
+  - term: AssetmovementRequest
+    definition: Asset movement request body data
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssetmovementRequest
+  - term: AssetmovementResponse
+    definition: Asset movement response body data
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssetmovementResponse
+  - term: AssettypeRequest
+    definition: Asset Type request body data
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssettypeRequest
+  - term: AssettypeResponse
+    definition: Asset Type response schema
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AssettypeResponse
+  - term: AuditResponse
+    definition: 'Object declared by the contract with fields: id, audit_timestamp, audit_event, audit_table, user_name, user_type, record_id,
+      data_changed, data_old, data_new.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/AuditResponse
+  - term: BasicIdNamePair
+    definition: 'Object declared by the contract with fields: id, name.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/BasicIdNamePair
+  - term: CertificationHolderRequest
+    definition: 'Object declared by the contract with fields: record_id, record_type, validfrom, validto, certification_number.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CertificationHolderRequest
+  - term: CertificationHolderResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, certification_id, record_id, record_type, validfrom, validto,
+      certification_number, holder_name, holder_email, certification_name. (2 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CertificationHolderResponse
+  - term: CertificationRequest
+    definition: 'Object declared by the contract with fields: name, category, certification_type_id, description.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CertificationRequest
+  - term: CertificationResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, created_by, name, category, certification_type_id, description,
+      holders, status, staff_audience, contractor_audience. (6 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CertificationResponse
+  - term: CertificationTypeRequest
+    definition: 'Object declared by the contract with fields: name.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CertificationTypeRequest
+  - term: CertificationTypeResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, name.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CertificationTypeResponse
+  - term: CommunityFieldResponse
+    definition: 'Object declared by the contract with fields: id, title, type, is_mandatory, is_unique, is_hidden.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityFieldResponse
+  - term: CommunityMemberMovementRequest
+    definition: 'Object declared by the contract with fields: onsite_status, location_id, member_id, lacp_id, zone_id, zone_other, carpark_question,
+      carpark_registration, carpark_number, purpose, assistance, expected.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityMemberMovementRequest
+  - term: CommunityMemberMovementResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, location_id, community_id, member_id, signed_in, signed_out,
+      mode_in, mode_out, zone_id, zone_other. (19 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityMemberMovementResponse
+  - term: CommunityMemberRequest
+    definition: 'Object declared by the contract with fields: location_id, community_id, external_id, name, title, email, mobile.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityMemberRequest
+  - term: CommunityMemberResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, external_id, location_id, community_id, name, title, email,
+      mobile, customfields.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityMemberResponse
+  - term: CommunityMemberUpdateRequest
+    definition: 'Object declared by the contract with fields: name, external_id, year, title, email, mobile.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityMemberUpdateRequest
+  - term: CommunityRequest
+    definition: 'Object declared by the contract with fields: name, active, is_evac_enabled, evac_primary_filter.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityRequest
+  - term: CommunityResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, name, active, is_evac_enabled, evac_primary_filter.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityResponse
+  - term: CommunityTabField
+    definition: 'Object declared by the contract with fields: id, order.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityTabField
+  - term: CommunityTabResponse
+    definition: 'Object declared by the contract with fields: title, order, fields.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/CommunityTabResponse
+  - term: ContractorInsuranceRequest
+    definition: 'Object declared by the contract with fields: org_id, type, name, reference, value, start, expires.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorInsuranceRequest
+  - term: ContractorInsuranceResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, org_id, org_name, type, name, reference, value, start, expires,
+      status. (2 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorInsuranceResponse
+  - term: ContractorLocation
+    definition: 'Object declared by the contract with fields: id, name, start, expires.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorLocation
+  - term: ContractorMemberOrganisation
+    definition: 'Object declared by the contract with fields: id, name, roles, locations, locations_same_as_org.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMemberOrganisation
+  - term: ContractorMemberRequest
+    definition: 'Object declared by the contract with fields: name, title, email, altemail, phone, ice, cur_location, extension, mobile, valid_from,
+      valid_to, onsite_status. (2 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMemberRequest
+  - term: ContractorMemberResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, name, setup_by, title, service_provider_id, email, altemail,
+      phone, mobile, status. (12 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMemberResponse
+  - term: ContractorMembershipLocation
+    definition: 'Object declared by the contract with fields: id, start, expires.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMembershipLocation
+  - term: ContractorMembershipRequest
+    definition: 'Object declared by the contract with fields: org_id, member_id, roles, locations.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMembershipRequest
+  - term: ContractorMembershipResponse
+    definition: 'Object declared by the contract with fields: id, created, org_id, org_name, member_id, member_name, roles, locations, locations_same_as_org.'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMembershipResponse
+  - term: ContractorMovementRequest
+    definition: 'Object declared by the contract with fields: onsite_status, location_id, sp_member_id, sp_org_id, print_kiosk_id, lacp_id, zone_id,
+      zone_other, scanned_in, scanned_out, visiting_staff_id, cardnumber. (11 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMovementRequest
+  - term: ContractorMovementResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, location_id, sp_member_id, sp_org_id, signed_in, signed_out,
+      mode_in, mode_out, zone_id, zone_other. (36 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMovementResponse
+  - term: ContractorOrganisationRequest
+    definition: 'Object declared by the contract with fields: name, type, tradingas, legalid, legalid_type, address, country, email, phone, organization_owner,
+      status, locations. (1 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorOrganisationRequest
+  - term: ContractorOrganisationResponse
+    definition: 'Object declared by the contract with fields: id, created, modified, name, setup_by, type, tradingas, legalid, legalid_type, address,
+      country, status. (8 more)'
+    tags:
+    - Object
+    source: openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorOrganisationResponse

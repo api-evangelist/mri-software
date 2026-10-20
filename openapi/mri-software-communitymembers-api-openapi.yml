@@ -1,0 +1,290 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Community Members API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged CommunityMembers across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: CommunityMembers
+paths:
+  /community/{community_id}/member:
+    get:
+      tags:
+      - CommunityMembers
+      summary: List of all community members
+      description: 'Returns a list of all community members
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and a greater/less than separator searches number/date ranges.'
+      operationId: getCommunityMemberList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any community member value,
+        required: false
+        schema:
+          type: string
+          format: string
+        example: year:3
+      responses:
+        '200':
+          description: List of community members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityMemberResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommunityMemberResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - CommunityMembers
+      summary: Create a community member
+      description: Creates a new community member.
+      operationId: createCommunityMember
+      requestBody:
+        description: Information to use when creating a new community member record.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommunityMemberRequest'
+      responses:
+        '201':
+          description: Community created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /community/{community_id}/member/{id}:
+    get:
+      tags:
+      - CommunityMembers
+      summary: Retrieve a community member
+      description: Retrieves a single community member, filtering with the provided ID.
+      operationId: getCommunityMember
+      parameters:
+      - name: id
+        in: path
+        description: ID of the community member to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - CommunityMembers
+      summary: Update a community member
+      description: Updates the details of a community member.
+      operationId: updateCommunityMember
+      parameters:
+      - name: id
+        in: path
+        description: ID of the community member to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the community member record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommunityMemberUpdateRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CommunityMemberResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - CommunityMembers
+      summary: Delete a community member
+      description: Deletes a community member using the provided ID.
+      operationId: deleteCommunityMember
+      parameters:
+      - name: id
+        in: path
+        description: ID of the community member to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Community member deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CommunityMemberResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1206
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:35:28+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-12-31T14:35:28+13:00'
+        external_id:
+          type: string
+          format: string
+          example: C123456789
+        location_id:
+          type: integer
+          format: int32
+          example: 35
+        community_id:
+          type: integer
+          format: int32
+          example: 77
+        name:
+          type: string
+          format: string
+          example: John Doe
+        title:
+          type: string
+          format: string
+          example: Mr
+        email:
+          type: string
+          format: string
+          example: example@example.org
+        mobile:
+          type: string
+          format: string
+          example: '0212345566'
+        customfields:
+          type: array
+          format: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+      type: object
+    CommunityMemberRequest:
+      properties:
+        location_id:
+          type: integer
+          format: int32
+          example: 35
+        community_id:
+          type: integer
+          format: int32
+          example: 77
+        external_id:
+          type: string
+          format: string
+          example: C123456789
+        name:
+          type: string
+          format: string
+          example: John Doe
+        title:
+          type: string
+          format: string
+          example: Mr
+        email:
+          type: string
+          format: string
+          example: example@example.org
+        mobile:
+          type: string
+          format: string
+          example: '0212345566'
+      type: object
+    BasicIdNamePair:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 556
+        name:
+          type: string
+          format: string
+          example: Example Name
+      type: object
+    CommunityMemberUpdateRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Harry Dresden
+        external_id:
+          type: string
+          format: string
+          example: C123456789
+        year:
+          type: integer
+          format: int32
+          example: 12
+        title:
+          type: string
+          format: string
+          example: Mr
+        email:
+          type: string
+          format: string
+          example: emailaddress@mailinator.com
+        mobile:
+          type: string
+          format: string
+          example: '0212345566'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

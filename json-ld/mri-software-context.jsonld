@@ -1,0 +1,1149 @@
+{
+  "@context": {
+    "@vocab": "https://mrisoftware.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "mri": "https://mrisoftware.com/schema#",
+    "AssetRequest": "mri:AssetRequest",
+    "type_id": {
+      "@id": "mri:type_id",
+      "@type": "xsd:integer"
+    },
+    "name": {
+      "@id": "mri:name",
+      "@type": "xsd:string"
+    },
+    "tag": {
+      "@id": "mri:tag",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "mri:reference",
+      "@type": "xsd:string"
+    },
+    "department_id": {
+      "@id": "mri:department_id",
+      "@type": "xsd:integer"
+    },
+    "notes": {
+      "@id": "mri:notes",
+      "@type": "xsd:string"
+    },
+    "geo_lat": {
+      "@id": "mri:geo_lat",
+      "@type": "xsd:string"
+    },
+    "geo_lon": {
+      "@id": "mri:geo_lon",
+      "@type": "xsd:string"
+    },
+    "owner_type": {
+      "@id": "mri:owner_type",
+      "@type": "xsd:string"
+    },
+    "owner_staff_id": {
+      "@id": "mri:owner_staff_id",
+      "@type": "xsd:integer"
+    },
+    "owner_sp_id": {
+      "@id": "mri:owner_sp_id",
+      "@type": "xsd:integer"
+    },
+    "location_id": {
+      "@id": "mri:location_id",
+      "@type": "xsd:integer"
+    },
+    "AssetResponse": "mri:AssetResponse",
+    "id": {
+      "@id": "mri:id",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "mri:status",
+      "@type": "xsd:string"
+    },
+    "AssetgroupRequest": "mri:AssetgroupRequest",
+    "class": {
+      "@id": "mri:class",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "mri:description",
+      "@type": "xsd:string"
+    },
+    "AssetgroupResponse": "mri:AssetgroupResponse",
+    "AssetmovementRequest": "mri:AssetmovementRequest",
+    "assigned_type": {
+      "@id": "mri:assigned_type",
+      "@type": "xsd:string"
+    },
+    "assigned_staff_id": {
+      "@id": "mri:assigned_staff_id",
+      "@type": "xsd:integer"
+    },
+    "assigned_spm_id": {
+      "@id": "mri:assigned_spm_id",
+      "@type": "xsd:integer"
+    },
+    "assigned_visitor_id": {
+      "@id": "mri:assigned_visitor_id",
+      "@type": "xsd:integer"
+    },
+    "dueback": {
+      "@id": "mri:dueback",
+      "@type": "xsd:dateTime"
+    },
+    "AssetmovementResponse": "mri:AssetmovementResponse",
+    "asset_id": {
+      "@id": "mri:asset_id",
+      "@type": "xsd:integer"
+    },
+    "signed_out": {
+      "@id": "mri:signed_out",
+      "@type": "xsd:dateTime"
+    },
+    "signed_in": {
+      "@id": "mri:signed_in",
+      "@type": "xsd:dateTime"
+    },
+    "issued_out": {
+      "@id": "mri:issued_out",
+      "@type": "xsd:string"
+    },
+    "issued_in": {
+      "@id": "mri:issued_in",
+      "@type": "xsd:string"
+    },
+    "AssettypeRequest": "mri:AssettypeRequest",
+    "group_id": {
+      "@id": "mri:group_id",
+      "@type": "xsd:integer"
+    },
+    "AssettypeResponse": "mri:AssettypeResponse",
+    "AuditResponse": "mri:AuditResponse",
+    "audit_timestamp": {
+      "@id": "mri:audit_timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "audit_event": {
+      "@id": "mri:audit_event",
+      "@type": "xsd:string"
+    },
+    "audit_table": {
+      "@id": "mri:audit_table",
+      "@type": "xsd:string"
+    },
+    "user_name": {
+      "@id": "mri:user_name",
+      "@type": "xsd:string"
+    },
+    "user_type": {
+      "@id": "mri:user_type",
+      "@type": "xsd:string"
+    },
+    "record_id": {
+      "@id": "mri:record_id",
+      "@type": "xsd:integer"
+    },
+    "data_changed": {
+      "@id": "mri:data_changed"
+    },
+    "data_old": {
+      "@id": "mri:data_old"
+    },
+    "data_new": {
+      "@id": "mri:data_new"
+    },
+    "BasicIdNamePair": "mri:BasicIdNamePair",
+    "CertificationHolderRequest": "mri:CertificationHolderRequest",
+    "record_type": {
+      "@id": "mri:record_type",
+      "@type": "xsd:string"
+    },
+    "validfrom": {
+      "@id": "mri:validfrom",
+      "@type": "xsd:date"
+    },
+    "validto": {
+      "@id": "mri:validto",
+      "@type": "xsd:date"
+    },
+    "certification_number": {
+      "@id": "mri:certification_number",
+      "@type": "xsd:string"
+    },
+    "CertificationHolderResponse": "mri:CertificationHolderResponse",
+    "created": {
+      "@id": "mri:created",
+      "@type": "xsd:dateTime"
+    },
+    "modified": {
+      "@id": "mri:modified",
+      "@type": "xsd:dateTime"
+    },
+    "certification_id": {
+      "@id": "mri:certification_id",
+      "@type": "xsd:integer"
+    },
+    "holder_name": {
+      "@id": "mri:holder_name",
+      "@type": "xsd:string"
+    },
+    "holder_email": {
+      "@id": "mri:holder_email",
+      "@type": "xsd:string"
+    },
+    "certification_name": {
+      "@id": "mri:certification_name",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "mri:type",
+      "@type": "xsd:string"
+    },
+    "documents": {
+      "@id": "mri:documents",
+      "@type": "xsd:integer"
+    },
+    "CertificationRequest": "mri:CertificationRequest",
+    "category": {
+      "@id": "mri:category",
+      "@type": "xsd:string"
+    },
+    "certification_type_id": {
+      "@id": "mri:certification_type_id",
+      "@type": "xsd:integer"
+    },
+    "CertificationResponse": "mri:CertificationResponse",
+    "created_by": {
+      "@id": "mri:created_by",
+      "@type": "xsd:integer"
+    },
+    "holders": {
+      "@id": "mri:holders",
+      "@type": "xsd:integer"
+    },
+    "staff_audience": {
+      "@id": "mri:staff_audience",
+      "@type": "xsd:string"
+    },
+    "contractor_audience": {
+      "@id": "mri:contractor_audience",
+      "@type": "xsd:string"
+    },
+    "staff_departments": {
+      "@id": "mri:staff_departments",
+      "@container": "@list"
+    },
+    "staff_locations": {
+      "@id": "mri:staff_locations",
+      "@container": "@list"
+    },
+    "staff_roles": {
+      "@id": "mri:staff_roles",
+      "@container": "@list"
+    },
+    "sp_groups": {
+      "@id": "mri:sp_groups",
+      "@container": "@list"
+    },
+    "sp_locations": {
+      "@id": "mri:sp_locations",
+      "@container": "@list"
+    },
+    "sp_roles": {
+      "@id": "mri:sp_roles",
+      "@container": "@list"
+    },
+    "CertificationTypeRequest": "mri:CertificationTypeRequest",
+    "CertificationTypeResponse": "mri:CertificationTypeResponse",
+    "CommunityFieldResponse": "mri:CommunityFieldResponse",
+    "title": {
+      "@id": "mri:title",
+      "@type": "xsd:string"
+    },
+    "is_mandatory": {
+      "@id": "mri:is_mandatory",
+      "@type": "xsd:boolean"
+    },
+    "is_unique": {
+      "@id": "mri:is_unique",
+      "@type": "xsd:boolean"
+    },
+    "is_hidden": {
+      "@id": "mri:is_hidden",
+      "@type": "xsd:boolean"
+    },
+    "CommunityMemberMovementRequest": "mri:CommunityMemberMovementRequest",
+    "onsite_status": {
+      "@id": "mri:onsite_status",
+      "@type": "xsd:string"
+    },
+    "member_id": {
+      "@id": "mri:member_id",
+      "@type": "xsd:integer"
+    },
+    "lacp_id": {
+      "@id": "mri:lacp_id",
+      "@type": "xsd:integer"
+    },
+    "zone_id": {
+      "@id": "mri:zone_id",
+      "@type": "xsd:integer"
+    },
+    "zone_other": {
+      "@id": "mri:zone_other",
+      "@type": "xsd:string"
+    },
+    "carpark_question": {
+      "@id": "mri:carpark_question",
+      "@type": "xsd:boolean"
+    },
+    "carpark_registration": {
+      "@id": "mri:carpark_registration",
+      "@type": "xsd:string"
+    },
+    "carpark_number": {
+      "@id": "mri:carpark_number",
+      "@type": "xsd:string"
+    },
+    "purpose": {
+      "@id": "mri:purpose",
+      "@type": "xsd:string"
+    },
+    "assistance": {
+      "@id": "mri:assistance",
+      "@type": "xsd:boolean"
+    },
+    "expected": {
+      "@id": "mri:expected",
+      "@type": "xsd:integer"
+    },
+    "CommunityMemberMovementResponse": "mri:CommunityMemberMovementResponse",
+    "community_id": {
+      "@id": "mri:community_id",
+      "@type": "xsd:integer"
+    },
+    "mode_in": {
+      "@id": "mri:mode_in",
+      "@type": "xsd:string"
+    },
+    "mode_out": {
+      "@id": "mri:mode_out",
+      "@type": "xsd:string"
+    },
+    "signed_in_by": {
+      "@id": "mri:signed_in_by",
+      "@type": "xsd:integer"
+    },
+    "signed_out_by": {
+      "@id": "mri:signed_out_by",
+      "@type": "xsd:integer"
+    },
+    "accessdenied": {
+      "@id": "mri:accessdenied",
+      "@type": "xsd:boolean"
+    },
+    "accessdenied_reason": {
+      "@id": "mri:accessdenied_reason",
+      "@type": "xsd:string"
+    },
+    "loneworker": {
+      "@id": "mri:loneworker",
+      "@type": "xsd:boolean"
+    },
+    "interzone": {
+      "@id": "mri:interzone",
+      "@type": "xsd:boolean"
+    },
+    "from_zone": {
+      "@id": "mri:from_zone",
+      "@type": "xsd:integer"
+    },
+    "selected_language": {
+      "@id": "mri:selected_language",
+      "@type": "xsd:string"
+    },
+    "lacp_in_name": {
+      "@id": "mri:lacp_in_name",
+      "@type": "xsd:string"
+    },
+    "lacp_out_name": {
+      "@id": "mri:lacp_out_name",
+      "@type": "xsd:string"
+    },
+    "zone_group_name": {
+      "@id": "mri:zone_group_name",
+      "@type": "xsd:string"
+    },
+    "photo_url": {
+      "@id": "mri:photo_url",
+      "@type": "xsd:string"
+    },
+    "signout_photo_url": {
+      "@id": "mri:signout_photo_url",
+      "@type": "xsd:string"
+    },
+    "CommunityMemberRequest": "mri:CommunityMemberRequest",
+    "external_id": {
+      "@id": "mri:external_id",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "mri:email",
+      "@type": "xsd:string"
+    },
+    "mobile": {
+      "@id": "mri:mobile",
+      "@type": "xsd:string"
+    },
+    "CommunityMemberResponse": "mri:CommunityMemberResponse",
+    "customfields": {
+      "@id": "mri:customfields",
+      "@container": "@list"
+    },
+    "CommunityMemberUpdateRequest": "mri:CommunityMemberUpdateRequest",
+    "year": {
+      "@id": "mri:year",
+      "@type": "xsd:integer"
+    },
+    "CommunityRequest": "mri:CommunityRequest",
+    "active": {
+      "@id": "mri:active",
+      "@type": "xsd:boolean"
+    },
+    "is_evac_enabled": {
+      "@id": "mri:is_evac_enabled",
+      "@type": "xsd:boolean"
+    },
+    "evac_primary_filter": {
+      "@id": "mri:evac_primary_filter",
+      "@type": "xsd:string"
+    },
+    "CommunityResponse": "mri:CommunityResponse",
+    "CommunityTabField": "mri:CommunityTabField",
+    "order": {
+      "@id": "mri:order",
+      "@type": "xsd:integer"
+    },
+    "CommunityTabResponse": "mri:CommunityTabResponse",
+    "fields": {
+      "@id": "mri:fields",
+      "@container": "@list"
+    },
+    "ContractorInsuranceRequest": "mri:ContractorInsuranceRequest",
+    "org_id": {
+      "@id": "mri:org_id",
+      "@type": "xsd:integer"
+    },
+    "value": {
+      "@id": "mri:value",
+      "@type": "xsd:string"
+    },
+    "start": {
+      "@id": "mri:start",
+      "@type": "xsd:date"
+    },
+    "expires": {
+      "@id": "mri:expires",
+      "@type": "xsd:date"
+    },
+    "ContractorInsuranceResponse": "mri:ContractorInsuranceResponse",
+    "org_name": {
+      "@id": "mri:org_name",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "mri:tags",
+      "@container": "@list"
+    },
+    "ContractorLocation": "mri:ContractorLocation",
+    "ContractorMemberOrganisation": "mri:ContractorMemberOrganisation",
+    "roles": {
+      "@id": "mri:roles",
+      "@container": "@list"
+    },
+    "locations": {
+      "@id": "mri:locations",
+      "@container": "@list"
+    },
+    "locations_same_as_org": {
+      "@id": "mri:locations_same_as_org",
+      "@type": "xsd:boolean"
+    },
+    "ContractorMemberRequest": "mri:ContractorMemberRequest",
+    "altemail": {
+      "@id": "mri:altemail",
+      "@type": "xsd:string"
+    },
+    "phone": {
+      "@id": "mri:phone",
+      "@type": "xsd:string"
+    },
+    "ice": {
+      "@id": "mri:ice",
+      "@type": "xsd:string"
+    },
+    "cur_location": {
+      "@id": "mri:cur_location",
+      "@type": "xsd:integer"
+    },
+    "extension": {
+      "@id": "mri:extension",
+      "@type": "xsd:string"
+    },
+    "valid_from": {
+      "@id": "mri:valid_from",
+      "@type": "xsd:date"
+    },
+    "valid_to": {
+      "@id": "mri:valid_to",
+      "@type": "xsd:date"
+    },
+    "service_provider_id": {
+      "@id": "mri:service_provider_id",
+      "@type": "xsd:string"
+    },
+    "cf": {
+      "@id": "mri:cf"
+    },
+    "ContractorMemberResponse": "mri:ContractorMemberResponse",
+    "setup_by": {
+      "@id": "mri:setup_by",
+      "@type": "xsd:integer"
+    },
+    "cur_location_id": {
+      "@id": "mri:cur_location_id",
+      "@type": "xsd:integer"
+    },
+    "cur_sp_org_id": {
+      "@id": "mri:cur_sp_org_id",
+      "@type": "xsd:integer"
+    },
+    "sp_orgs": {
+      "@id": "mri:sp_orgs",
+      "@container": "@list"
+    },
+    "logs": {
+      "@id": "mri:logs",
+      "@container": "@list"
+    },
+    "tokens": {
+      "@id": "mri:tokens",
+      "@container": "@list"
+    },
+    "ContractorMembershipLocation": "mri:ContractorMembershipLocation",
+    "ContractorMembershipRequest": "mri:ContractorMembershipRequest",
+    "ContractorMembershipResponse": "mri:ContractorMembershipResponse",
+    "member_name": {
+      "@id": "mri:member_name",
+      "@type": "xsd:string"
+    },
+    "ContractorMovementRequest": "mri:ContractorMovementRequest",
+    "sp_member_id": {
+      "@id": "mri:sp_member_id",
+      "@type": "xsd:integer"
+    },
+    "sp_org_id": {
+      "@id": "mri:sp_org_id",
+      "@type": "xsd:integer"
+    },
+    "print_kiosk_id": {
+      "@id": "mri:print_kiosk_id",
+      "@type": "xsd:integer"
+    },
+    "scanned_in": {
+      "@id": "mri:scanned_in",
+      "@type": "xsd:string"
+    },
+    "scanned_out": {
+      "@id": "mri:scanned_out",
+      "@type": "xsd:string"
+    },
+    "visiting_staff_id": {
+      "@id": "mri:visiting_staff_id",
+      "@type": "xsd:integer"
+    },
+    "cardnumber": {
+      "@id": "mri:cardnumber",
+      "@type": "xsd:string"
+    },
+    "pass": {
+      "@id": "mri:pass",
+      "@type": "xsd:integer"
+    },
+    "other_pass": {
+      "@id": "mri:other_pass",
+      "@type": "xsd:string"
+    },
+    "sp_purpose": {
+      "@id": "mri:sp_purpose",
+      "@type": "xsd:string"
+    },
+    "so_staff_id": {
+      "@id": "mri:so_staff_id",
+      "@type": "xsd:integer"
+    },
+    "so_spm_id": {
+      "@id": "mri:so_spm_id",
+      "@type": "xsd:integer"
+    },
+    "ContractorMovementResponse": "mri:ContractorMovementResponse",
+    "breathtest": {
+      "@id": "mri:breathtest",
+      "@type": "xsd:string"
+    },
+    "signed_in_by_kiosk": {
+      "@id": "mri:signed_in_by_kiosk",
+      "@type": "xsd:boolean"
+    },
+    "signed_out_by_kiosk": {
+      "@id": "mri:signed_out_by_kiosk",
+      "@type": "xsd:boolean"
+    },
+    "signed_in_lat": {
+      "@id": "mri:signed_in_lat",
+      "@type": "xsd:string"
+    },
+    "signed_in_lon": {
+      "@id": "mri:signed_in_lon",
+      "@type": "xsd:string"
+    },
+    "signed_in_accuracy": {
+      "@id": "mri:signed_in_accuracy",
+      "@type": "xsd:string"
+    },
+    "signed_out_lat": {
+      "@id": "mri:signed_out_lat",
+      "@type": "xsd:string"
+    },
+    "signed_out_lon": {
+      "@id": "mri:signed_out_lon",
+      "@type": "xsd:string"
+    },
+    "signed_out_accuracy": {
+      "@id": "mri:signed_out_accuracy",
+      "@type": "xsd:string"
+    },
+    "ContractorOrganisationRequest": "mri:ContractorOrganisationRequest",
+    "tradingas": {
+      "@id": "mri:tradingas",
+      "@type": "xsd:string"
+    },
+    "legalid": {
+      "@id": "mri:legalid",
+      "@type": "xsd:string"
+    },
+    "legalid_type": {
+      "@id": "mri:legalid_type",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "mri:address",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "mri:country",
+      "@type": "xsd:string"
+    },
+    "organization_owner": {
+      "@id": "mri:organization_owner",
+      "@type": "xsd:integer"
+    },
+    "ContractorOrganisationResponse": "mri:ContractorOrganisationResponse",
+    "policies": {
+      "@id": "mri:policies",
+      "@type": "xsd:integer"
+    },
+    "members": {
+      "@id": "mri:members",
+      "@container": "@list"
+    },
+    "ContractorRoleResponse": "mri:ContractorRoleResponse",
+    "role": {
+      "@id": "mri:role",
+      "@container": "@list"
+    },
+    "CustomQuestionnaireQuestionResponse": "mri:CustomQuestionnaireQuestionResponse",
+    "questionnaire_id": {
+      "@id": "mri:questionnaire_id",
+      "@type": "xsd:integer"
+    },
+    "question": {
+      "@id": "mri:question",
+      "@type": "xsd:string"
+    },
+    "compulsory": {
+      "@id": "mri:compulsory",
+      "@type": "xsd:boolean"
+    },
+    "answershare": {
+      "@id": "mri:answershare",
+      "@type": "xsd:boolean"
+    },
+    "parent_id": {
+      "@id": "mri:parent_id",
+      "@type": "xsd:integer"
+    },
+    "parent_key": {
+      "@id": "mri:parent_key",
+      "@type": "xsd:integer"
+    },
+    "version": {
+      "@id": "mri:version",
+      "@type": "xsd:integer"
+    },
+    "settings_options": {
+      "@id": "mri:settings_options",
+      "@container": "@list"
+    },
+    "settings_options_unique": {
+      "@id": "mri:settings_options_unique",
+      "@container": "@list"
+    },
+    "settings_waiver": {
+      "@id": "mri:settings_waiver",
+      "@type": "xsd:string"
+    },
+    "settings_video": {
+      "@id": "mri:settings_video",
+      "@type": "xsd:string"
+    },
+    "settings_image": {
+      "@id": "mri:settings_image",
+      "@type": "@id"
+    },
+    "settings_signature": {
+      "@id": "mri:settings_signature",
+      "@type": "xsd:boolean"
+    },
+    "settings_copy": {
+      "@id": "mri:settings_copy",
+      "@type": "xsd:boolean"
+    },
+    "settings_copy_host": {
+      "@id": "mri:settings_copy_host",
+      "@type": "xsd:boolean"
+    },
+    "settings_send_recipients": {
+      "@id": "mri:settings_send_recipients",
+      "@container": "@list"
+    },
+    "settings_email_non_staff": {
+      "@id": "mri:settings_email_non_staff",
+      "@type": "xsd:string"
+    },
+    "CustomQuestionnaireResponse": "mri:CustomQuestionnaireResponse",
+    "frequency": {
+      "@id": "mri:frequency",
+      "@type": "xsd:string"
+    },
+    "frequency_days": {
+      "@id": "mri:frequency_days",
+      "@type": "xsd:integer"
+    },
+    "CustomQuestionnaireSubmissionAnswerResponse": "mri:CustomQuestionnaireSubmissionAnswerResponse",
+    "submission_id": {
+      "@id": "mri:submission_id",
+      "@type": "xsd:integer"
+    },
+    "question_id": {
+      "@id": "mri:question_id",
+      "@type": "xsd:integer"
+    },
+    "answer": {
+      "@id": "mri:answer",
+      "@type": "xsd:string"
+    },
+    "signature_url": {
+      "@id": "mri:signature_url",
+      "@type": "xsd:string"
+    },
+    "answer_multi": {
+      "@id": "mri:answer_multi",
+      "@container": "@list"
+    },
+    "CustomQuestionnaireSubmissionResponse": "mri:CustomQuestionnaireSubmissionResponse",
+    "visitor_id": {
+      "@id": "mri:visitor_id",
+      "@type": "xsd:integer"
+    },
+    "staff_id": {
+      "@id": "mri:staff_id",
+      "@type": "xsd:string"
+    },
+    "movement_id": {
+      "@id": "mri:movement_id",
+      "@type": "xsd:integer"
+    },
+    "source": {
+      "@id": "mri:source",
+      "@type": "xsd:string"
+    },
+    "CustomfieldElement": "mri:CustomfieldElement",
+    "cf_tab_id": {
+      "@id": "mri:cf_tab_id",
+      "@type": "xsd:integer"
+    },
+    "is_visible": {
+      "@id": "mri:is_visible",
+      "@type": "xsd:boolean"
+    },
+    "config": {
+      "@id": "mri:config",
+      "@container": "@list"
+    },
+    "modified_by": {
+      "@id": "mri:modified_by",
+      "@type": "xsd:integer"
+    },
+    "element_type": {
+      "@id": "mri:element_type",
+      "@type": "xsd:string"
+    },
+    "CustomfieldTab": "mri:CustomfieldTab",
+    "sort": {
+      "@id": "mri:sort",
+      "@type": "xsd:integer"
+    },
+    "updated_by": {
+      "@id": "mri:updated_by",
+      "@type": "xsd:integer"
+    },
+    "DepartmentRequest": "mri:DepartmentRequest",
+    "DepartmentResponse": "mri:DepartmentResponse",
+    "DocumentResponse": "mri:DocumentResponse",
+    "size": {
+      "@id": "mri:size",
+      "@type": "xsd:integer"
+    },
+    "link": {
+      "@id": "mri:link",
+      "@type": "xsd:string"
+    },
+    "InductionHolderPostRequest": "mri:InductionHolderPostRequest",
+    "completed": {
+      "@id": "mri:completed",
+      "@type": "xsd:dateTime"
+    },
+    "InductionHolderPutRequest": "mri:InductionHolderPutRequest",
+    "InductionHolderResponse": "mri:InductionHolderResponse",
+    "learner_name": {
+      "@id": "mri:learner_name",
+      "@type": "xsd:string"
+    },
+    "learner_email": {
+      "@id": "mri:learner_email",
+      "@type": "xsd:string"
+    },
+    "learner_title": {
+      "@id": "mri:learner_title",
+      "@type": "xsd:string"
+    },
+    "learner_from": {
+      "@id": "mri:learner_from",
+      "@type": "xsd:string"
+    },
+    "attempts": {
+      "@id": "mri:attempts",
+      "@type": "xsd:integer"
+    },
+    "attempts_left": {
+      "@id": "mri:attempts_left",
+      "@type": "xsd:integer"
+    },
+    "renew": {
+      "@id": "mri:renew",
+      "@type": "xsd:date"
+    },
+    "InductionRequest": "mri:InductionRequest",
+    "audience_staff": {
+      "@id": "mri:audience_staff",
+      "@type": "xsd:string"
+    },
+    "audience_sp": {
+      "@id": "mri:audience_sp",
+      "@type": "xsd:string"
+    },
+    "audience_staff_member": {
+      "@id": "mri:audience_staff_member",
+      "@container": "@list"
+    },
+    "audience_sp_member": {
+      "@id": "mri:audience_sp_member",
+      "@container": "@list"
+    },
+    "InductionResponse": "mri:InductionResponse",
+    "inductees": {
+      "@id": "mri:inductees",
+      "@type": "xsd:integer"
+    },
+    "LocationAccessPoint": "mri:LocationAccessPoint",
+    "LocationRequest": "mri:LocationRequest",
+    "postcode": {
+      "@id": "mri:postcode",
+      "@type": "xsd:string"
+    },
+    "timezone": {
+      "@id": "mri:timezone",
+      "@type": "xsd:string"
+    },
+    "date_format": {
+      "@id": "mri:date_format",
+      "@type": "xsd:string"
+    },
+    "LocationResponse": "mri:LocationResponse",
+    "staff_count": {
+      "@id": "mri:staff_count",
+      "@type": "xsd:integer"
+    },
+    "lacps": {
+      "@id": "mri:lacps",
+      "@container": "@list"
+    },
+    "NotificationResponse": "mri:NotificationResponse",
+    "for_staff_id": {
+      "@id": "mri:for_staff_id",
+      "@type": "xsd:integer"
+    },
+    "to_staff_id": {
+      "@id": "mri:to_staff_id",
+      "@type": "xsd:integer"
+    },
+    "method": {
+      "@id": "mri:method",
+      "@type": "xsd:string"
+    },
+    "recipient": {
+      "@id": "mri:recipient",
+      "@type": "xsd:string"
+    },
+    "messageid": {
+      "@id": "mri:messageid",
+      "@type": "xsd:string"
+    },
+    "to_staff_name": {
+      "@id": "mri:to_staff_name",
+      "@type": "xsd:string"
+    },
+    "for_staff_name": {
+      "@id": "mri:for_staff_name",
+      "@type": "xsd:string"
+    },
+    "QualificationRequest": "mri:QualificationRequest",
+    "QualificationResponse": "mri:QualificationResponse",
+    "SettingsImageResponse": "mri:SettingsImageResponse",
+    "thumb": {
+      "@id": "mri:thumb",
+      "@type": "xsd:string"
+    },
+    "full": {
+      "@id": "mri:full",
+      "@type": "xsd:string"
+    },
+    "SpCategoryRequest": "mri:SpCategoryRequest",
+    "SpCategoryResponse": "mri:SpCategoryResponse",
+    "SpGroupPutRequest": "mri:SpGroupPutRequest",
+    "SpGroupRequest": "mri:SpGroupRequest",
+    "category_id": {
+      "@id": "mri:category_id",
+      "@type": "xsd:integer"
+    },
+    "SpGroupResponse": "mri:SpGroupResponse",
+    "SpInsuranceTypeResponse": "mri:SpInsuranceTypeResponse",
+    "SpOrgGroupMembershipResponse": "mri:SpOrgGroupMembershipResponse",
+    "StaffGlobalRoamingLocation": "mri:StaffGlobalRoamingLocation",
+    "StaffListResponse": "mri:StaffListResponse",
+    "account_status": {
+      "@id": "mri:account_status",
+      "@type": "xsd:string"
+    },
+    "last_login": {
+      "@id": "mri:last_login",
+      "@type": "xsd:dateTime"
+    },
+    "altname": {
+      "@id": "mri:altname",
+      "@type": "xsd:string"
+    },
+    "setup_method": {
+      "@id": "mri:setup_method",
+      "@type": "xsd:string"
+    },
+    "employee_id": {
+      "@id": "mri:employee_id",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "mri:location",
+      "@type": "xsd:string"
+    },
+    "department": {
+      "@id": "mri:department",
+      "@type": "xsd:string"
+    },
+    "role_types": {
+      "@id": "mri:role_types",
+      "@container": "@list"
+    },
+    "remote": {
+      "@id": "mri:remote",
+      "@type": "xsd:integer"
+    },
+    "globalroaming": {
+      "@id": "mri:globalroaming",
+      "@type": "xsd:integer"
+    },
+    "StaffMovementRequest": "mri:StaffMovementRequest",
+    "changed_at": {
+      "@id": "mri:changed_at",
+      "@type": "xsd:dateTime"
+    },
+    "StaffMovementResponse": "mri:StaffMovementResponse",
+    "StaffRequest": "mri:StaffRequest",
+    "roletype": {
+      "@id": "mri:roletype",
+      "@container": "@list"
+    },
+    "globalroaming_locations": {
+      "@id": "mri:globalroaming_locations",
+      "@container": "@list"
+    },
+    "StaffRoleTypeResponse": "mri:StaffRoleTypeResponse",
+    "StaffTokens": "mri:StaffTokens",
+    "number": {
+      "@id": "mri:number",
+      "@type": "xsd:integer"
+    },
+    "issued": {
+      "@id": "mri:issued",
+      "@type": "xsd:dateTime"
+    },
+    "expiry": {
+      "@id": "mri:expiry",
+      "@type": "xsd:dateTime"
+    },
+    "VisitorEventPostRequest": "mri:VisitorEventPostRequest",
+    "from": {
+      "@id": "mri:from",
+      "@type": "xsd:string"
+    },
+    "id_verification_reference": {
+      "@id": "mri:id_verification_reference",
+      "@type": "xsd:string"
+    },
+    "id_verification_type": {
+      "@id": "mri:id_verification_type",
+      "@type": "xsd:string"
+    },
+    "lacp_in_id": {
+      "@id": "mri:lacp_in_id",
+      "@type": "xsd:integer"
+    },
+    "lacp_out_id": {
+      "@id": "mri:lacp_out_id",
+      "@type": "xsd:integer"
+    },
+    "VisitorEventPutRequest": "mri:VisitorEventPutRequest",
+    "mode_id": {
+      "@id": "mri:mode_id",
+      "@type": "xsd:string"
+    },
+    "visiting_staff_name": {
+      "@id": "mri:visiting_staff_name",
+      "@type": "xsd:string"
+    },
+    "signed_in_by_name": {
+      "@id": "mri:signed_in_by_name",
+      "@type": "xsd:string"
+    },
+    "signed_out_by_name": {
+      "@id": "mri:signed_out_by_name",
+      "@type": "xsd:string"
+    },
+    "onsite": {
+      "@id": "mri:onsite",
+      "@type": "xsd:string"
+    },
+    "VisitorEventResponse": "mri:VisitorEventResponse",
+    "created_staff_id": {
+      "@id": "mri:created_staff_id",
+      "@type": "xsd:integer"
+    },
+    "printed": {
+      "@id": "mri:printed",
+      "@type": "xsd:boolean"
+    },
+    "id_verification_checked": {
+      "@id": "mri:id_verification_checked",
+      "@type": "xsd:boolean"
+    },
+    "location_name": {
+      "@id": "mri:location_name",
+      "@type": "xsd:string"
+    },
+    "VisitorGroupRequest": "mri:VisitorGroupRequest",
+    "VisitorGroupResponse": "mri:VisitorGroupResponse",
+    "VisitorPersonResponse": "mri:VisitorPersonResponse",
+    "groups": {
+      "@id": "mri:groups",
+      "@container": "@list"
+    },
+    "VisitorRegisterPersonRequest": "mri:VisitorRegisterPersonRequest",
+    "VisitorRegisterPersonResponse": "mri:VisitorRegisterPersonResponse",
+    "VisitorRegisterRequest": "mri:VisitorRegisterRequest",
+    "event_start": {
+      "@id": "mri:event_start",
+      "@type": "xsd:string"
+    },
+    "event_end": {
+      "@id": "mri:event_end",
+      "@type": "xsd:string"
+    },
+    "visitors": {
+      "@id": "mri:visitors",
+      "@container": "@list"
+    },
+    "VisitorRegisterResponse": "mri:VisitorRegisterResponse",
+    "ZoneGroupRequest": "mri:ZoneGroupRequest",
+    "ZoneGroupResponse": "mri:ZoneGroupResponse",
+    "modifed": {
+      "@id": "mri:modifed",
+      "@type": "xsd:dateTime"
+    },
+    "ZoneRequest": "mri:ZoneRequest",
+    "maximum_occupancy": {
+      "@id": "mri:maximum_occupancy",
+      "@type": "xsd:integer"
+    },
+    "spaces_enabled": {
+      "@id": "mri:spaces_enabled",
+      "@type": "xsd:boolean"
+    },
+    "spaces": {
+      "@id": "mri:spaces",
+      "@type": "xsd:integer"
+    },
+    "spaces_title": {
+      "@id": "mri:spaces_title",
+      "@type": "xsd:string"
+    },
+    "ZoneResponse": "mri:ZoneResponse",
+    "zone_group_id": {
+      "@id": "mri:zone_group_id",
+      "@type": "xsd:integer"
+    },
+    "zone_fullname": {
+      "@id": "mri:zone_fullname",
+      "@type": "xsd:string"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "MRI Software API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects MRI Software's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-20) from openapi/mri-software-onlocation-openapi.yml.",
+  "dcterms:created": "2026-10-20",
+  "dcterms:source": [
+    "openapi/mri-software-onlocation-openapi.yml"
+  ]
+}

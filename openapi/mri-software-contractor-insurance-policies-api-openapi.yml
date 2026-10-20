@@ -1,0 +1,417 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Contractor insurance policies API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Contractor insurance policies across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Contractor insurance policies
+  description: 'Insurance management in OnLocation is used to manage contractor organizations'' insurance policies. Use the API to retrieve a list of all insurance policies, add new ones, and update or delete existing policies.
+
+
+    Learn more about insurances in the OnLocation Help Center.'
+paths:
+  /sp/insurance:
+    get:
+      tags:
+      - Contractor insurance policies
+      summary: List all insurance policies
+      description: 'Returns a list of all contractor insurance policy records.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match and a percent separator performs a starts-with search.'
+      operationId: getContractorList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any contractor insurance value
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name:ACME
+      - name: order
+        in: query
+        description: Specifies an element to order by. Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: -org_id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of contractor insurance records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorInsuranceResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContractorInsuranceResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Contractor insurance policies
+      summary: Create an insurance policy
+      description: Add a new contractor insurance policy.
+      operationId: createContractorInsurance
+      requestBody:
+        description: 'The contractor insurance record to add to an organization:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorInsuranceRequest'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorInsuranceResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorInsuranceResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /sp/insurance/{id}:
+    get:
+      tags:
+      - Contractor insurance policies
+      summary: Retrieve an insurance policy
+      description: Retrieves a single contractor insurance record, filtering with the provided ID.
+      operationId: getContractorInsurance
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor insurance record to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+        example: id=140
+      responses:
+        '200':
+          description: Policy returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorInsuranceResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorInsuranceResponse'
+        '403':
+          description: Access denied to resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Contractor insurance policies
+      summary: Update an insurance policy
+      description: Updates a contractor insurance policy using the provided ID.
+      operationId: updateContractorInsurance
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor insurance record to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+        example: id=140
+      requestBody:
+        description: 'Information used to create the insurance policy record:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractorInsuranceRequest'
+      responses:
+        '200':
+          description: Updated policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContractorInsuranceResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ContractorInsuranceResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Contractor insurance policies
+      summary: Delete an insurance policy
+      description: Deletes a contractor insurance policy based on the provided ID.
+      operationId: deleteContractorInsurance
+      parameters:
+      - name: id
+        in: path
+        description: ID of the contractor insurance record to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Policy deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /sp/insurance/type:
+    get:
+      tags:
+      - Contractor insurance policies
+      summary: List contractor insurance types
+      description: 'Returns a list of contractor insurance types configured for your organization.
+
+
+        A comma separated list of tag:value search parameters; a colon separator performs an exact match and a percent separator performs a starts-with search.'
+      operationId: getSpInsuranceTypeList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any insurance type value
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name:Public Liability
+      - name: order
+        in: query
+        description: Specifies an element to order by. Prefix with - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name
+      - name: limit
+        in: query
+        description: Limits the number of records to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '50'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned.
+        required: false
+        schema:
+          type: string
+          format: string
+      responses:
+        '200':
+          description: List of contractor insurance types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpInsuranceTypeResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpInsuranceTypeResponse'
+        '400':
+          description: Invalid input
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    ContractorInsuranceResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 140
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-29T08:10:09+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2022-11-29T08:10:09+13:00'
+        org_id:
+          type: integer
+          format: int32
+          example: 4587
+        org_name:
+          type: string
+          format: string
+          example: Example Organisation Name
+        type:
+          type: string
+          format: string
+          example: other
+        name:
+          type: string
+          format: string
+          example: Policy Underwriter
+        reference:
+          type: string
+          format: string
+          example: Ref002
+        value:
+          type: string
+          format: string
+          example: '6000'
+        start:
+          type: string
+          format: date
+          example: '2021-11-30'
+        expires:
+          type: string
+          format: date
+          example: '2022-11-29'
+        status:
+          type: string
+          format: string
+          example: Active
+        tags:
+          type: array
+          items:
+            format: string
+            example:
+            - asset
+            - insurance
+            - other
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentResponse'
+      type: object
+    DocumentResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 70
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-29T08:12:24+13:00'
+        name:
+          type: string
+          format: string
+          example: file-example
+        type:
+          type: string
+          format: string
+          example: pdf
+        size:
+          type: integer
+          format: int64
+          example: 469513
+        link:
+          type: string
+          format: string
+          example: https://your.site.com/storage/file-example.pdf
+      type: object
+    SpInsuranceTypeResponse:
+      title: SpInsuranceTypeResponse
+      description: Contractor insurance type response schema
+      properties:
+        id:
+          description: Insurance type ID
+          type: integer
+          format: int32
+          example: 1
+        name:
+          description: Name of the insurance type
+          type: string
+          format: string
+          example: Public Liability
+        created:
+          description: Date and time the insurance type was created
+          type: string
+          format: date-time
+          example: '2025-01-08T06:04:00+00:00'
+        modified:
+          description: Date and time the insurance type was last modified
+          type:
+          - string
+          - 'null'
+          format: date-time
+          example: '2025-06-01T10:00:00+00:00'
+      type: object
+    ContractorInsuranceRequest:
+      properties:
+        org_id:
+          type: integer
+          format: int32
+          example: 4587
+        type:
+          type: string
+          format: string
+          example: other
+        name:
+          type: string
+          format: string
+          example: Policy Underwriter
+        reference:
+          type: string
+          format: string
+          example: Ref002
+        value:
+          type: string
+          format: string
+          example: '6000'
+        start:
+          type: string
+          format: date
+          example: '2021-11-30'
+        expires:
+          type: string
+          format: date
+          example: '2022-11-29'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

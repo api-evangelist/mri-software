@@ -1,30 +1,27 @@
-# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
-# harvested from the provider. `method: generated` so the economics campaign may replace it with a
-# dated, verbatim transcription; every figure below is unverified until it does.
-method: generated
-name: MRI Software Rate Limits
-description: MRI Software does not publish explicit API rate limits for its core platform APIs (Property Management X, MRI Information Exchange). The OnLocation REST API imposes a maximum of 5,000 records per list request. Enterprise API throughput is described as tuned for enterprise workloads and governed per customer entitlements. Specific numeric throttle thresholds require engagement with MRI Software or a formal API agreement.
-url: https://apidocs.whosonlocation.com/
+name: MRI Software rate limits
+generated: '2026-10-20'
+method: searched
+source: https://apidocs.whosonlocation.com/developer-portal/using-the-api/
+api: MRI OnLocation REST API
+limit_count: 1
 limits:
-  - api: MRI OnLocation REST API
-    description: Maximum records returned per paginated list request.
-    type: page_size
-    value: 5000
-    unit: records per request
-    notes: Pagination is required for data sets exceeding 5,000 records. No explicit per-minute or per-day call rate is documented publicly.
-  - api: MRI Information Exchange (MIX)
-    description: Rate limits are governed by customer entitlements negotiated at contract time. MRI engineers vet all partner APIs for data security and integrity.
-    type: enterprise_custom
-    value: Contact Sales
-    unit: per customer agreement
-    notes: Over 1,000 unique APIs operate within the MIX environment. Throttle policies vary by integration and partner tier.
-  - api: MRI Core Platform APIs (Property Management X / Agora)
-    description: API throughput is described as tuned for enterprise use. Explicit public rate limit figures are not published.
-    type: enterprise_custom
-    value: Contact Sales
-    unit: per customer agreement
-    notes: Authentication uses OAuth 2.0 (client credentials) or API key. Session tokens are refreshed automatically with secure challenge handling.
-notes:
-  - MRI Software does not publish a public developer portal with rate limit dashboards.
-  - OnLocation API keys can be scoped to restrict access to staff, visitors, contractors, certifications, notifications, and locations.
-  - All API calls must use HTTPS/TLS; plaintext HTTP is rejected.
+  - name: Per-credential request rate
+    limit_text: "You can only query the API service up to 100 times per minute per credential (API key or OAuth2 client)."
+    max: 100
+    limit: 100
+    window: minute
+    scope: per-credential
+    status_on_exhaustion: 429
+    headers: [Retry-After]
+maximum_return_limits:
+  source: https://apidocs.whosonlocation.com/developer-portal/using-the-api/
+  limits:
+    - {name: Contractor movement, limit_text: "Contractor movement => 3,000", max: 3000}
+    - {name: Custom questionnaire, limit_text: "Custom questionnaire => 5,000", max: 5000}
+    - {name: Custom questionnaire submission, limit_text: "Custom questionnaire submission => 10,000", max: 10000}
+    - {name: Custom questionnaire submission answer, limit_text: "Custom questionnaire submission answer => 10,000", max: 10000}
+    - {name: Induction Holder, limit_text: "Induction Holder => 1,000", max: 1000}
+    - {name: Notification, limit_text: "Notification => 200", max: 200}
+    - {name: Staff movement, limit_text: "Staff movement => 5,000", max: 5000}
+    - {name: Visitor event, limit_text: "Visitor event => 10,000", max: 10000}
+note: Only the OnLocation API publishes limits; MRI's core platform APIs (MIX, Property Management X) publish none publicly. "We reserve the right to adjust the rate limit for given endpoints to provide a high-quality service for all clients."

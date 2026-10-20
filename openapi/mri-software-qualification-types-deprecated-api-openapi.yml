@@ -1,0 +1,201 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Qualification types (deprecated) API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Qualification types (deprecated) across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Qualification types (deprecated)
+  description: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use the certification types endpoints to access this data.
+paths:
+  /qualification/types:
+    get:
+      tags:
+      - Qualification types (deprecated)
+      summary: List all qualification types
+      description: 'Retrieves a list of all qualification types.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getQualificatioTypenList
+      responses:
+        '200':
+          description: List of qualification types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificationTypeResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificationTypeResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    post:
+      tags:
+      - Qualification types (deprecated)
+      summary: Create a qualification type
+      description: Adds a new qualification type to assign to a qualification.
+      operationId: createQualificationType
+      requestBody:
+        description: 'Type of qualification to add:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationTypeRequest'
+      responses:
+        '201':
+          description: Qualification type created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationTypeResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationTypeResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: Type already exists
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /qualification/types/{id}:
+    get:
+      tags:
+      - Qualification types (deprecated)
+      summary: Retrieve a qualification type
+      description: Retrieves a single qualification type, filtering with the provided ID.
+      operationId: getQualificationType
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification type to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Qualification type response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationTypeResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationTypeResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    put:
+      tags:
+      - Qualification types (deprecated)
+      summary: Update a qualification type
+      description: Updates a single qualification type.
+      operationId: updateQualificationType
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification type to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the qualification type record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationTypeRequest'
+      responses:
+        '200':
+          description: Updated qualification type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationTypeResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationTypeResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+      deprecated: true
+    delete:
+      tags:
+      - Qualification types (deprecated)
+      summary: Delete a qualification type
+      description: Deletes the specified qualification type.
+      operationId: deleteQualificationType
+      parameters:
+      - name: id
+        in: path
+        description: ID of the QualificationType to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Qualification type deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CertificationTypeResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 79
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:33:41+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2022-11-26T14:33:41+13:00'
+        name:
+          type: string
+          format: string
+          example: Certificate
+      type: object
+    CertificationTypeRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Diploma
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

@@ -1,0 +1,10 @@
+name: MRI Software OAuth scopes
+generated: '2026-10-20'
+method: searched
+source: https://apidocs.whosonlocation.com/developer-portal/authentication/
+docs: https://apidocs.whosonlocation.com/developer-portal/authentication/
+format: "OAuth2.0 scopes are space-separated and use the format domain:read and domain:write."
+scopes:
+  - {name: "visitor:read", description: Read visitor data (named in the docs token example)}
+  - {name: "staff:read", description: Read staff/employee data (named in the docs token example)}
+note: The docs publish the domain:read / domain:write pattern and two example scopes only; no full scope list is published, so no other scope names are recorded.

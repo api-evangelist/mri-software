@@ -1,0 +1,357 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Location zones API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Location zones across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Location zones
+  description: 'Zones are used to split your location into specific areas. If you use the Desks and Spaces add-on, you can also create bookable workspaces within each zone. Use the API to retrieve a list of all zones, add new zones, update or delete existing zones, and link zones to access points.
+
+
+    Learn more about zones in the OnLocation Help Center.'
+paths:
+  /zone:
+    get:
+      tags:
+      - Location zones
+      summary: List all zones
+      description: 'Returns a list of all zones
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getZoneList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any zone value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: spaces>5
+      responses:
+        '200':
+          description: List of zones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneResponse'
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    post:
+      tags:
+      - Location zones
+      summary: Create zone
+      description: Creates a new zone that can be assigned to a location.
+      operationId: createZone
+      requestBody:
+        description: Information to use when creating a new zone record.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneRequest'
+      responses:
+        '201':
+          description: Zone created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /zone/{id}:
+    get:
+      tags:
+      - Location zones
+      summary: Retrieve zone
+      description: Retrieves a single zone, filtering with the provided ID.
+      operationId: getZone
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ZoneResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Location zones
+      summary: Update zone
+      description: Updates the details of a zone.
+      operationId: updateZone
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to create the zone record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZoneResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ZoneResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Location zones
+      summary: Delete zone
+      description: Deletes a zone using the provided ID.
+      operationId: deleteZone
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Zone deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /zone/{id}/archive:
+    put:
+      tags:
+      - Location zones
+      summary: Archive zone
+      description: Archives a zone. An archived zone cannot be activated again.
+      operationId: putZoneByIdArchive
+      parameters:
+      - name: id
+        in: path
+        description: ID of the zone to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Updated resource
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+      x-operation-id-source: normalized
+      x-operation-id-original: updateZone
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /zone/{zoneId}/link/{accessPointId}:
+    put:
+      tags:
+      - Location zones
+      summary: Link zone
+      description: Links a zone to an access point. Access points are places in your location that people use to sign in or out.
+      operationId: linkZone
+      parameters:
+      - name: zoneId
+        in: path
+        description: ID of the zone to link
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: accessPointId
+        in: path
+        description: ID of the access point to link
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Updated resource
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /zone/{zoneId}/unlink/{accessPointId}:
+    put:
+      tags:
+      - Location zones
+      summary: Unlink zone
+      description: Removes the link between a zone and an access point.
+      operationId: unlinkZone
+      parameters:
+      - name: zoneId
+        in: path
+        description: ID of the zone to unlink
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: accessPointId
+        in: path
+        description: ID of the access point to unlink
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Updated resource
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    ZoneResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1206
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:35:28+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-12-31T14:35:28+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 15
+        zone_group_id:
+          type: integer
+          format: int32
+          example: 3
+        name:
+          type: string
+          format: string
+          example: Meeting room 1
+        reference:
+          type: string
+          format: string
+          example: Large meeting room - seats 20
+        status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          example: Active
+        maximum_occupancy:
+          type: integer
+          format: int32
+          example: 50
+        spaces_enabled:
+          type: boolean
+          format: bool
+          example: true
+        spaces:
+          type: integer
+          format: int32
+          example: 11
+        spaces_title:
+          type: string
+          format: string
+          example: Spaces Reference
+        zone_group_name:
+          type: string
+          format: string
+          example: Floor 1
+        zone_fullname:
+          type: string
+          format: string
+          example: Floor 1 - Meeting room 1
+      type: object
+    ZoneRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Meeting room 1
+        location_id:
+          type: integer
+          format: int32
+          example: 15
+        reference:
+          type: string
+          format: string
+          example: Large meeting room - seats 20
+        maximum_occupancy:
+          type: integer
+          format: int32
+          example: 50
+        spaces_enabled:
+          type: boolean
+          format: bool
+          example: true
+        spaces:
+          description: This is required if spaces are enabled
+          type: integer
+          format: int32
+          example: 11
+        spaces_title:
+          description: This is required if spaces are enabled
+          type: string
+          format: string
+          example: Spaces Reference
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

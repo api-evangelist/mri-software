@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Asset movements API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Asset movements across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Asset movements
+  description: 'Manage the movement of assets using the API. Retrieve a list of all asset movements, view a specific movement, and update an movement.
+
+
+    Learn more about assets in the OnLocation Help Center.'
+paths:
+  /assetmovement:
+    get:
+      tags:
+      - Asset movements
+      summary: List asset movements
+      description: Returns a list of asset movements.
+      operationId: getAssetMovementList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any asset movement value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: asset_id:1,assigned_staff_id:2,assigned_type:staff
+      - name: limit
+        in: query
+        description: Limits the amount of records to return (maxiumum 5000).
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      responses:
+        '200':
+          description: List of asset movements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssetmovementResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssetmovementResponse'
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /assetmovement/{id}:
+    get:
+      tags:
+      - Asset movements
+      summary: Get asset movement by ID
+      description: Returns a single asset movement.
+      operationId: getAssetMovement
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset movement to return
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Asset movement data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Asset movement not found
+    put:
+      tags:
+      - Asset movements
+      summary: Update an asset movement
+      description: Updates the details of an asset movement.
+      operationId: updateAssetMovement
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset movement to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the asset movement record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetmovementRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    AssetmovementRequest:
+      title: AssetmovementRequest
+      description: Asset movement request body data
+      properties:
+        assigned_type:
+          description: Type of the entity to whom the asset is being assigned
+          type: string
+          format: string
+          enum:
+          - staff
+          - spm
+          - visitor
+          example: staff
+        assigned_staff_id:
+          description: ID of the staff to whom the asset is being assigned, should only be set if assigned_type is 'staff'
+          type: integer
+          format: int32
+          example: 1
+        assigned_spm_id:
+          description: ID of the contractor member to whom the asset is being assigned, should only be set if assigned_type is 'spm'
+          type: integer
+          format: int32
+          example: 1
+        assigned_visitor_id:
+          description: ID of the visitor to whom the asset is being assigned, should only be set if assigned_type is 'visitor'
+          type: integer
+          format: int32
+          example: 1
+        dueback:
+          description: Dueback date for the asset
+          type: string
+          format: date-time
+          example: '2023-05-01 13:10:00'
+      type: object
+    AssetmovementResponse:
+      title: AssetmovementResponse
+      description: Asset movement response body data
+      properties:
+        asset_id:
+          description: Asset ID
+          type: integer
+          format: int32
+          example: 1
+        assigned_type:
+          description: Type of the entity to whom the asset is being assigned
+          type: string
+          format: string
+          enum:
+          - staff
+          - spm
+          - visitor
+          example: staff
+        assigned_staff_id:
+          description: ID of the staff to whom the asset is being assigned
+          type: integer
+          format: int32
+          example: 1
+        assigned_spm_id:
+          description: ID of the contractor member to whom the asset is being assigned
+          type: integer
+          format: int32
+          example: 1
+        assigned_visitor_id:
+          description: ID of the visitor to whom the asset is being assigned
+          type: integer
+          format: int32
+          example: 1
+        signed_out:
+          description: Datetime when the asset is signed out
+          type: string
+          format: date-time
+          example: '2023-04-18 13:15:00'
+        signed_in:
+          description: Datetime when the asset is signed in
+          type: string
+          format: date-time
+          example: '2023-04-18 13:15:00'
+        dueback:
+          description: Dueback date for the asset
+          type: string
+          format: date-time
+          example: '2023-05-01 13:15:07'
+        notes:
+          description: Notes for the asset movement
+          type: string
+          format: string
+          example: Notes about the asset movement
+        issued_out:
+          description: ID of the employee by whom the asset is issued out
+          type: string
+          format: int32
+          example: '10008'
+        issued_in:
+          description: ID of the employee by whom the asset is issued in
+          type: string
+          format: int32
+          example: '20008'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

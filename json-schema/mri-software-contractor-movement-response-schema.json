@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mri-software/main/json-schema/mri-software-contractor-movement-response-schema.json",
+  "title": "ContractorMovementResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMovementResponse",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "sp_member_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "sp_org_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_in": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signed_out": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mode_in": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "Manual",
+        "Kiosk",
+        "Touchless",
+        "Token Scan",
+        "Sign In/Out Manager",
+        "OnLocation Mobile Legacy",
+        "OnLocation Mobile",
+        "OnLocation Mobile Auto",
+        "OnSentry Scan",
+        "OnSentry Manual",
+        "Sign In/Out Manager (Tenant)",
+        "Trigger",
+        "Brivo",
+        "API"
+      ]
+    },
+    "mode_out": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "Manual",
+        "Kiosk",
+        "Touchless",
+        "Token Scan",
+        "Sign In/Out Manager",
+        "OnLocation Mobile Legacy",
+        "OnLocation Mobile",
+        "OnLocation Mobile Auto",
+        "OnSentry Scan",
+        "OnSentry Manual",
+        "Sign In/Out Manager (Tenant)",
+        "Trigger",
+        "Brivo",
+        "API"
+      ]
+    },
+    "zone_id": {
+      "type": "integer",
+      "format": "in32"
+    },
+    "zone_other": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "signed_out_by": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "scanned_in": {
+      "description": "Scanned in note.",
+      "type": "string",
+      "format": "string"
+    },
+    "scanned_out": {
+      "description": "Scanned out note.",
+      "type": "string",
+      "format": "string"
+    },
+    "visiting_staff_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "cardnumber": {
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_question": {
+      "type": "boolean",
+      "format": "bool"
+    },
+    "carpark_registration": {
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_number": {
+      "type": "string",
+      "format": "string"
+    },
+    "pass": {
+      "type": "integer",
+      "format": "int"
+    },
+    "other_pass": {
+      "type": "string",
+      "format": "string"
+    },
+    "sp_purpose": {
+      "type": "string",
+      "format": "string"
+    },
+    "assistance": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "expected": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "accessdenied": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "accessdenied_reason": {
+      "type": "string",
+      "format": "string"
+    },
+    "loneworker": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "so_staff_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "so_spm_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "interzone": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "breathtest": {
+      "type": "string",
+      "format": "string"
+    },
+    "from_zone": {
+      "type": "integer",
+      "format": "int"
+    },
+    "selected_language": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_in_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "lacp_out_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "zone_group_name": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_by_kiosk": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "signed_out_by_kiosk": {
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "photo_url": {
+      "type": "string",
+      "format": "string"
+    },
+    "signout_photo_url": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_lat": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_lon": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_in_accuracy": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_lat": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_lon": {
+      "type": "string",
+      "format": "string"
+    },
+    "signed_out_accuracy": {
+      "type": "string",
+      "format": "string"
+    }
+  },
+  "type": "object"
+}

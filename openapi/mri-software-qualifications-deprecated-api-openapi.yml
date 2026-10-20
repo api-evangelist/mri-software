@@ -1,0 +1,343 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Qualifications (deprecated) API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Qualifications (deprecated) across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Qualifications (deprecated)
+  description: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use the certifications endpoints to access this data.
+paths:
+  /qualification:
+    get:
+      tags:
+      - Qualifications (deprecated)
+      summary: List all qualifications
+      description: 'Returns a list of all qualifications.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getQualificationList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any qualification value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: holders>5
+      responses:
+        '200':
+          description: List of qualifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QualificationResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QualificationResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    post:
+      tags:
+      - Qualifications (deprecated)
+      summary: Create a qualification
+      description: Creates a new qualification that can be assigned to employees or contractors.
+      operationId: createQualification
+      requestBody:
+        description: 'Information to use when creating a new qualification record:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationRequest'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QualificationResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: Certification already exists with name
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /qualification/{id}:
+    get:
+      tags:
+      - Qualifications (deprecated)
+      summary: Retrieve a qualification
+      description: Retrieves a single qualification, filtering with the provided ID.
+      operationId: getQualification
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Qualification returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QualificationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/QualificationResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    put:
+      tags:
+      - Qualifications (deprecated)
+      summary: Update a qualification
+      description: Updates the details of a qualification.
+      operationId: updateQualification
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: 'Qualification information to use when updating a qualification record:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationRequest'
+      responses:
+        '200':
+          description: Updated qualification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationResponse'
+        '403':
+          description: Access denied to this resource
+        '409':
+          description: Certification already exists with that name
+        '500':
+          description: Internal server error
+      deprecated: true
+    delete:
+      tags:
+      - Qualifications (deprecated)
+      summary: Delete a qualification
+      description: Deletes a qualification using the provided ID.
+      operationId: deleteQualification
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Qualification deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    CertificationRequest:
+      properties:
+        name:
+          type: string
+          format: string
+          example: Updated Request
+        category:
+          type: string
+          format: string
+          example: external
+        certification_type_id:
+          type: integer
+          format: int32
+          example: 81
+        description:
+          type: string
+          format: string
+          example: This describes the certification
+      type: object
+    QualificationResponse:
+      required:
+      - org_id
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1206
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:35:28+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-12-31T14:35:28+13:00'
+        created_by:
+          type: integer
+          format: int32
+          example: 35
+        name:
+          type: string
+          format: string
+          example: Qualification Name
+        category:
+          type: string
+          enum:
+          - external
+          - internal
+          example: external
+        description:
+          type: string
+          format: string
+          example: This describes the certification
+        holders:
+          type: integer
+          format: int32
+          example: 2
+        status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          example: Active
+      type: object
+    BasicIdNamePair:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 556
+        name:
+          type: string
+          format: string
+          example: Example Name
+      type: object
+    CertificationResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1206
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:35:28+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-12-31T14:35:28+13:00'
+        created_by:
+          type: integer
+          format: int32
+          example: 35
+        name:
+          type: string
+          format: string
+          example: Certification Name
+        category:
+          type: string
+          format: string
+          example: internal
+        certification_type_id:
+          type: integer
+          format: int32
+          example: 81
+        description:
+          type: string
+          format: string
+          example: This describes the certification
+        holders:
+          type: integer
+          format: int32
+          example: 2
+        status:
+          type: string
+          enum:
+          - Active
+          - Inactive
+          example: Active
+        staff_audience:
+          type: string
+          enum:
+          - locations
+          - departments
+          - roles
+          - all
+          example: locations
+        contractor_audience:
+          type: string
+          enum:
+          - locations
+          - groups
+          - roles
+          - all
+          example: groups
+        staff_departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        staff_locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        staff_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        sp_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        sp_locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+        sp_roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicIdNamePair'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

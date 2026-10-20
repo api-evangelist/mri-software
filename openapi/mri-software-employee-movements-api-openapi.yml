@@ -1,0 +1,359 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Employee movements API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Employee movements across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Employee movements
+  description: Each time an employee signs in or out, or moves between zones, they create a movement. Use the API to return all employee movements, or add or update a movement record.
+paths:
+  /staff/movement:
+    get:
+      tags:
+      - Employee movements
+      summary: List all employee movements
+      description: 'Retrieves a list of all employee sign in/sign out events.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getStaffMovementList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any employee movement.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: staff_id:1234
+      - name: order
+        in: query
+        description: Order by any element returned, prefix with a - to reverse order.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: staff_id
+      - name: limit
+        in: query
+        description: Limits the amount of records to return.
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      - name: If-Modified-Since
+        in: header
+        description: A UTC timestamp (yyyy-mm-ddThh:mm:ss). Only entities created or modified since this timestamp will be returned e.g. 2009-11-12T00:00:00
+        required: false
+        schema:
+          type: string
+          format: int32
+      responses:
+        '200':
+          description: List of staff movement records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StaffMovementResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StaffMovementResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Employee movements
+      summary: Create or update an employee movement
+      description: Creates or updates an employee movement record.
+      operationId: createOrUpdateStaffMovement
+      requestBody:
+        description: 'Data required to create or update an employee movement:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffMovementRequest'
+      responses:
+        '200':
+          description: Updated movement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffMovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffMovementResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /staff/movement/{id}:
+    get:
+      tags:
+      - Employee movements
+      summary: Retrieve an employee movement
+      description: Retrieves a single employee movement record, filtering with the provided ID.
+      operationId: getStaffMovement
+      parameters:
+      - name: id
+        in: path
+        description: ID of the employee movement record to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A staff movement record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffMovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffMovementResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    StaffMovementRequest:
+      required:
+      - onsite_status
+      - location_id
+      - staff_id
+      properties:
+        onsite_status:
+          type: string
+          enum:
+          - onsite
+          - offsite
+          example: onsite
+        location_id:
+          type: integer
+          format: int32
+          example: 38
+        location:
+          type: string
+          format: string
+          example: Head Office
+        staff_id:
+          type: integer
+          format: int32
+          example: 201
+        lacp_id:
+          type: integer
+          format: int32
+          example: 201
+        zone_id:
+          type: integer
+          format: int32
+          example: 201
+        remote:
+          type: boolean
+          format: boolean
+          example: false
+        changed_at:
+          type: string
+          format: date-time
+          example: '2021-11-25 22:01:09'
+        print_kiosk_id:
+          description: ID of the kiosk which has shared badge pass printing enabled. Not mandatory.
+          type: integer
+          format: int32
+          example: 301
+      type: object
+    StaffMovementResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 167503
+        created:
+          type: string
+          format: date-time
+          example: '2021-09-09T12:52:31+12:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-09-09T13:52:31+12:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        signed_in:
+          type: string
+          format: date-time
+          example: '2021-09-09T12:52:31+12:00'
+        signed_out:
+          type: string
+          format: date-time
+          example: '2021-09-09T14:52:31+12:00'
+        mode_in:
+          type: string
+          enum:
+          - Auto
+          - Manual
+          - Kiosk
+          - Touchless
+          - Token Scan
+          - Sign In/Out Manager
+          - OnLocation Mobile Legacy
+          - OnLocation Mobile
+          - OnLocation Mobile Auto
+          - OnSentry Scan
+          - OnSentry Manual
+          - Sign In/Out Manager (Tenant)
+          - Trigger
+          - API
+          - Brivo
+          - Deputy
+          example: Sign In/Out Manager
+        mode_out:
+          type: string
+          enum:
+          - Auto
+          - Manual
+          - Kiosk
+          - Touchless
+          - Token Scan
+          - Sign In/Out Manager
+          - OnLocation Mobile Legacy
+          - OnLocation Mobile
+          - OnLocation Mobile Auto
+          - OnSentry Scan
+          - OnSentry Manual
+          - Sign In/Out Manager (Tenant)
+          - Trigger
+          - API
+          - Brivo
+          - Deputy
+          example: Sign In/Out Manager
+        signed_in_by:
+          type: integer
+          format: int32
+          example: 823431
+        signed_out_by:
+          type: integer
+          format: int32
+          example: 823431
+        scanned_in:
+          description: Scanned in note
+          type: string
+          format: string
+        scanned_out:
+          description: Scanned out note.
+          type: string
+          format: string
+        expected:
+          type: boolean
+          format: boolean
+          example: true
+        assistance:
+          type: boolean
+          format: boolean
+          example: false
+        accessdenied:
+          type: boolean
+          format: boolean
+          example: false
+        loneworker:
+          type: boolean
+          format: boolean
+          example: true
+        so_staff_id:
+          type: integer
+          format: int32
+          example: 584
+        zone_id:
+          type: integer
+          format: int32
+          example: 8
+        interzone:
+          type: boolean
+          format: boolean
+          example: true
+        remote:
+          type: boolean
+          format: boolean
+          example: false
+        name:
+          type: string
+          format: string
+          example: Harold Brunning
+        title:
+          type: string
+          format: string
+          example: Mr
+        email:
+          type: string
+          format: string
+          example: staff.movement@whosonlocation.com
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        lacp_in_name:
+          type: string
+          format: string
+          example: Ground floor entry
+        lacp_out_name:
+          type: string
+          format: string
+          example: Ground floor entry
+        signed_in_lat:
+          type: string
+          format: string
+          example: Latitude-value of coordinates for sign-in (Decimal Degrees)
+        signed_in_lon:
+          type: string
+          format: string
+          example: Longitude-value of coordinates for sign-in (Decimal Degrees)
+        signed_in_accuracy:
+          type: string
+          format: string
+          example: Precision for sign-in coordinates
+        signed_out_lat:
+          type: string
+          format: string
+          example: Latitude-value of coordinates for sign-out (Decimal Degrees)
+        signed_out_lon:
+          type: string
+          format: string
+          example: Longitude-value of coordinates for sign-out (Decimal Degrees)
+        signed_out_accuracy:
+          type: string
+          format: string
+          example: Precision for sign-out coordinates
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

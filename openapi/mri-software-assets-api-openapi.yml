@@ -1,0 +1,500 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Assets API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Assets across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Assets
+  description: 'Manage your organization’s assets with OnLocation. Use the API to retrieve a list of assets, add or update, or delete an asset, or issue or return an asset. Your account owner must first enable the add-on in OnLocation.
+
+
+    Learn more about assets in the OnLocation Help Center.'
+paths:
+  /asset:
+    get:
+      tags:
+      - Assets
+      summary: List assets
+      description: Returns a list of assets.
+      operationId: getAssetList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any asset value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name:iPhone4
+      - name: limit
+        in: query
+        description: Limits the amount of records to return (maximum 5000).
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      responses:
+        '200':
+          description: List of assets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssetResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssetResponse'
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+    post:
+      tags:
+      - Assets
+      summary: Create an asset
+      description: Creates a new asset with the provided details.
+      operationId: createAsset
+      requestBody:
+        description: Information used to create a new asset record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetRequest'
+      responses:
+        '201':
+          description: Created resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+        '400':
+          description: Invalid input
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /asset/{id}:
+    get:
+      tags:
+      - Assets
+      summary: Retrieve an asset
+      description: Retrieves an asset by its ID.
+      operationId: getAsset
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset to retrieve
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Asset found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Asset not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Assets
+      summary: Update an asset
+      description: Updates the details of an asset.
+      operationId: updateAsset
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the asset record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+        '400':
+          description: Invalid Input
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Assets
+      summary: Delete an asset
+      description: Deletes an asset by its ID.
+      operationId: deleteAsset
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset to delete
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Asset deleted successfully
+        '400':
+          description: Invalid input
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Asset not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /asset/{id}/issue:
+    put:
+      tags:
+      - Assets
+      summary: Issue an asset
+      description: Issue an asset with the provided details, this will create a new asset movement.
+      operationId: issueAsset
+      parameters:
+      - name: id
+        in: path
+        description: Asset ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to issue an asset
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetmovementRequest'
+      responses:
+        '200':
+          description: Issued successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+        '400':
+          description: Invalid input
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /asset/{id}/return:
+    put:
+      tags:
+      - Assets
+      summary: Return an asset
+      description: Return an asset with the provided details.
+      operationId: returnAsset
+      parameters:
+      - name: id
+        in: path
+        description: Asset ID
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssetmovementResponse'
+        '400':
+          description: Invalid input
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    AssetmovementRequest:
+      title: AssetmovementRequest
+      description: Asset movement request body data
+      properties:
+        assigned_type:
+          description: Type of the entity to whom the asset is being assigned
+          type: string
+          format: string
+          enum:
+          - staff
+          - spm
+          - visitor
+          example: staff
+        assigned_staff_id:
+          description: ID of the staff to whom the asset is being assigned, should only be set if assigned_type is 'staff'
+          type: integer
+          format: int32
+          example: 1
+        assigned_spm_id:
+          description: ID of the contractor member to whom the asset is being assigned, should only be set if assigned_type is 'spm'
+          type: integer
+          format: int32
+          example: 1
+        assigned_visitor_id:
+          description: ID of the visitor to whom the asset is being assigned, should only be set if assigned_type is 'visitor'
+          type: integer
+          format: int32
+          example: 1
+        dueback:
+          description: Dueback date for the asset
+          type: string
+          format: date-time
+          example: '2023-05-01 13:10:00'
+      type: object
+    AssetResponse:
+      title: AssetResponse
+      description: Asset Response schema
+      properties:
+        id:
+          description: Asset ID
+          type: integer
+          format: int32
+          example: 1
+        type_id:
+          description: Type ID of the asset
+          type: integer
+          format: int32
+          example: 1
+        name:
+          description: Name of the asset
+          type: string
+          format: string
+          example: Laptop 001
+        tag:
+          description: Tag of the asset
+          type: string
+          format: string
+          example: TAG001
+        reference:
+          description: Reference of the asset
+          type: string
+          format: string
+          example: REF001
+        department_id:
+          description: Department ID of the asset
+          type: integer
+          format: int32
+          example: 1
+        notes:
+          description: Notes for the asset
+          type: string
+          format: string
+          example: Notes about the asset
+        geo_lat:
+          description: Geolocation latitude of the asset
+          type: string
+          format: string
+          example: '12.34'
+        geo_lon:
+          description: Geolocation longitude of the asset
+          type: string
+          format: string
+          example: '56.78'
+        owner_type:
+          type: string
+          enum:
+          - org
+          - sp
+          example: org
+        owner_staff_id:
+          description: Asset owner staff ID
+          type: integer
+          format: int32
+          example: 1
+        owner_sp_id:
+          description: Asset owner contractor ID
+          type: integer
+          format: int32
+          example: 1
+        location_id:
+          description: Location ID of the asset
+          type: integer
+          format: int32
+          example: 1
+        status:
+          type: string
+          enum:
+          - in
+          - out
+          example: in
+      type: object
+    AssetmovementResponse:
+      title: AssetmovementResponse
+      description: Asset movement response body data
+      properties:
+        asset_id:
+          description: Asset ID
+          type: integer
+          format: int32
+          example: 1
+        assigned_type:
+          description: Type of the entity to whom the asset is being assigned
+          type: string
+          format: string
+          enum:
+          - staff
+          - spm
+          - visitor
+          example: staff
+        assigned_staff_id:
+          description: ID of the staff to whom the asset is being assigned
+          type: integer
+          format: int32
+          example: 1
+        assigned_spm_id:
+          description: ID of the contractor member to whom the asset is being assigned
+          type: integer
+          format: int32
+          example: 1
+        assigned_visitor_id:
+          description: ID of the visitor to whom the asset is being assigned
+          type: integer
+          format: int32
+          example: 1
+        signed_out:
+          description: Datetime when the asset is signed out
+          type: string
+          format: date-time
+          example: '2023-04-18 13:15:00'
+        signed_in:
+          description: Datetime when the asset is signed in
+          type: string
+          format: date-time
+          example: '2023-04-18 13:15:00'
+        dueback:
+          description: Dueback date for the asset
+          type: string
+          format: date-time
+          example: '2023-05-01 13:15:07'
+        notes:
+          description: Notes for the asset movement
+          type: string
+          format: string
+          example: Notes about the asset movement
+        issued_out:
+          description: ID of the employee by whom the asset is issued out
+          type: string
+          format: int32
+          example: '10008'
+        issued_in:
+          description: ID of the employee by whom the asset is issued in
+          type: string
+          format: int32
+          example: '20008'
+      type: object
+    AssetRequest:
+      title: AssetRequest
+      description: Asset request body data
+      properties:
+        type_id:
+          description: Type ID of the asset
+          type: integer
+          format: int32
+          example: 1
+        name:
+          description: Name of the asset
+          type: string
+          format: string
+          example: Laptop 001
+        tag:
+          description: Tag of the asset
+          type: string
+          format: string
+          example: TAG001
+        reference:
+          description: Reference of the asset
+          type: string
+          format: string
+          example: REF001
+        department_id:
+          description: Department ID of the asset
+          type: integer
+          format: int32
+          example: 1
+        notes:
+          description: Notes for the asset
+          type: string
+          format: string
+          example: Notes about the asset
+        geo_lat:
+          description: Geolocation latitude of the asset
+          type: string
+          format: string
+          example: '12.34'
+        geo_lon:
+          description: Geolocation longitude of the asset
+          type: string
+          format: string
+          example: '56.78'
+        owner_type:
+          type: string
+          enum:
+          - org
+          - sp
+          example: org
+        owner_staff_id:
+          description: Asset owner staff ID, should only be set if owner_type is 'org'
+          type: integer
+          format: int32
+          example: 1583
+        owner_sp_id:
+          description: Asset owner contractor ID, should only be set if owner_type is 'sp'
+          type: integer
+          format: int32
+          example: 2700
+        location_id:
+          description: Location ID of the asset
+          type: integer
+          format: int32
+          example: 1
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

@@ -1,0 +1,9 @@
+name: MRI Software lifecycle
+generated: '2026-10-20'
+method: searched
+source: https://apidocs.whosonlocation.com/developer-portal/changelog/
+versioning: URL path version (/v1 on https://api.whosonlocation.com/v1); changes announced in a dated changelog.
+deprecation: "Deprecations are announced in the changelog (e.g. March 2022: qualifications endpoints deprecated, switch to certifications; July 2022: customfields parameter deprecated, use cf). The OpenAPI tags these as '(deprecated)'. No Sunset/Deprecation headers or removal dates are published."
+deprecation_docs: https://apidocs.whosonlocation.com/developer-portal/changelog/
+status_page: https://status.mrisoftware.com/
+sla: null

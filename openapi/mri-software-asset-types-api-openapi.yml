@@ -1,0 +1,227 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Asset types API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Asset types across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Asset types
+  description: 'An asset type is a subset of an asset group. Use the API to retrieve a list of all asset types, add or update, or delete an asset type.
+
+
+    Learn more about assets in the OnLocation Help Center.'
+paths:
+  /assettype:
+    get:
+      tags:
+      - Asset types
+      summary: List asset types
+      description: Returns a list of asset types.
+      operationId: getAssetTypeList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by any asset type value.
+        required: false
+        schema:
+          type: string
+          format: string
+        example: name:macbooks,description:anydescriptions
+      - name: limit
+        in: query
+        description: Limits the amount of records to return (maxiumum 5000).
+        required: false
+        schema:
+          type: integer
+          format: int32
+        example: '10'
+      responses:
+        '200':
+          description: List of asset types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssettypeResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssettypeResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+    post:
+      tags:
+      - Asset types
+      summary: Create an asset type
+      description: Creates a new asset type that can be assigned to an asset.
+      operationId: createAssetType
+      requestBody:
+        description: Information to use when creating a new asset type record.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssettypeRequest'
+      responses:
+        '201':
+          description: Asset Type created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssettypeResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /assettype/{id}:
+    get:
+      tags:
+      - Asset types
+      summary: Retrieve an asset type
+      description: Retrieves a single asset type, filtering with the provided ID.
+      operationId: getAssetType
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset type to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssettypeResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssettypeResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Asset types
+      summary: Update an asset type
+      description: Updates the details of an asset type.
+      operationId: updateAssetType
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset type to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information used to update the asset type record
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssettypeRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssettypeResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/AssettypeResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Asset types
+      summary: Delete an asset type
+      description: Deletes an asset type using the provided ID.
+      operationId: deleteAssetType
+      parameters:
+      - name: id
+        in: path
+        description: ID of the asset type to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Asset Type deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    AssettypeRequest:
+      title: AssettypeRequest
+      description: Asset Type request body data
+      properties:
+        name:
+          description: Name of the asset type
+          type: string
+          format: string
+          example: Macbooks
+        group_id:
+          description: Group ID of the asset type.
+          type: integer
+          format: int32
+          example: '10008'
+        description:
+          description: Description of the asset type
+          type:
+          - string
+          - 'null'
+          format: string
+          example: A portable device type
+      type: object
+    AssettypeResponse:
+      title: AssettypeResponse
+      description: Asset Type response schema
+      properties:
+        id:
+          description: ID of the asset type
+          type: integer
+          format: int32
+          example: '10008'
+        name:
+          description: Name of the asset type
+          type: string
+          format: string
+          example: Laptop
+        group_id:
+          description: ID of the asset group that this asset type belongs to
+          type: integer
+          example: '20000'
+        description:
+          description: Description of the asset type
+          type: string
+          format: string
+          example: A portable device type
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

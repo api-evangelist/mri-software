@@ -1,0 +1,214 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Notifications API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Notifications across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Notifications
+  description: OnLocation sends email, SMS, and OnLocation Mobile push notifications. Use the notification API to retrieve a list of all notifications and provide a notification ID to retrieve a single notification.
+paths:
+  /notification:
+    get:
+      tags:
+      - Notifications
+      summary: List all notifications
+      description: 'Returns a list of all notification records.
+
+
+        Filter by any notification element. A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getNotificationList
+      parameters:
+      - name: q
+        in: query
+        description: Filter by notification value
+        required: false
+        schema:
+          type: string
+          format: string
+        example: method:sms,location_id:7
+      responses:
+        '200':
+          description: List of notification records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotificationResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotificationResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /notification/{id}:
+    get:
+      tags:
+      - Notifications
+      summary: Retrieve a notification
+      description: Retrieves a single notification, filtering with the provided ID.
+      operationId: getNotification
+      parameters:
+      - name: id
+        in: path
+        description: ID of the notification to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Notification returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    VisitorPersonResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 293
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-29T11:10:44+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-30T11:10:44+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        created_staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        name:
+          type: string
+          format: string
+          example: Frequent Visitor name
+        email:
+          type: string
+          format: string
+          example: frequent.visitor@whosonlocation.com
+        from:
+          type: string
+          format: string
+          example: Another Organisation
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Mr
+        assistance:
+          type: boolean
+          format: bool
+          example: false
+        type:
+          type: string
+          format: string
+          example: frequent
+        groups:
+          description: Group IDs
+          type: array
+          items:
+            format: int32
+            example:
+            - 197
+            - 198
+      type: object
+    NotificationResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 192
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-25T15:01:31+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-25T15:01:33+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        visitor_id:
+          type: integer
+          format: int32
+          example: 139
+        for_staff_id:
+          type: integer
+          format: int32
+          example: 82
+        to_staff_id:
+          type: integer
+          format: int32
+          example: 431
+        method:
+          type: string
+          format: string
+          example: sms
+        type:
+          type: string
+          format: string
+          example: signin
+        recipient:
+          type: string
+          format: string
+          example: 64 212143775
+        messageid:
+          type: string
+          format: string
+          example: 18f007ae1767d54b6654bae703d472808634a123@yoursite.whosonlocation.com
+        to_staff_name:
+          type: string
+          format: string
+          example: Great Scott
+        for_staff_name:
+          type: string
+          format: string
+          example: Great Scott
+        status:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisitorPersonResponse'
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

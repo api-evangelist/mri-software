@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Saved visitors API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Saved visitors across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Saved visitors
+  description: 'Each employee can maintain a saved visitor list in OnLocation. Use the saved visitor API to retrieve all saved visitors, add a new saved visitor, or update or delete a saved visitor.
+
+
+    Learn more about saved visitors in the OnLocation Help Center.'
+paths:
+  /visitor/person:
+    get:
+      tags:
+      - Saved visitors
+      summary: List all saved visitors
+      description: 'Returns a list of all saved visitors added by employees.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getVisitorPersonList
+      responses:
+        '200':
+          description: List of registered visitors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorPersonResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorPersonResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /visitor/person/{id}:
+    get:
+      tags:
+      - Saved visitors
+      summary: Retrieve a saved visitor
+      description: Retrieves a single saved visitor, filtering with the provided ID.
+      operationId: getVisitorPerson
+      parameters:
+      - name: id
+        in: path
+        description: ID of the registered visitor to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A visitor's details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitorPersonResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/VisitorPersonResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+      - Saved visitors
+      summary: Delete a saved visitor
+      description: Deletes a saved visitor using with the provided ID.
+      operationId: deleteVisitorPerson
+      parameters:
+      - name: id
+        in: path
+        description: ID of the registered visitor to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Saved visitor deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    VisitorPersonResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 293
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-29T11:10:44+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-30T11:10:44+13:00'
+        location_id:
+          type: integer
+          format: int32
+          example: 301
+        created_staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        staff_id:
+          type: integer
+          format: int32
+          example: 823431
+        name:
+          type: string
+          format: string
+          example: Frequent Visitor name
+        email:
+          type: string
+          format: string
+          example: frequent.visitor@whosonlocation.com
+        from:
+          type: string
+          format: string
+          example: Another Organisation
+        phone:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        mobile:
+          type: string
+          format: string
+          example: +1 206 555 0123
+        title:
+          type: string
+          format: string
+          example: Mr
+        assistance:
+          type: boolean
+          format: bool
+          example: false
+        type:
+          type: string
+          format: string
+          example: frequent
+        groups:
+          description: Group IDs
+          type: array
+          items:
+            format: int32
+            example:
+            - 197
+            - 198
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml

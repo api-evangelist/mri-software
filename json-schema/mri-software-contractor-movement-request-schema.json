@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mri-software/main/json-schema/mri-software-contractor-movement-request-schema.json",
+  "title": "ContractorMovementRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/mri-software-onlocation-openapi.yml#/components/schemas/ContractorMovementRequest",
+  "required": [
+    "sp_member_id",
+    "location_id",
+    "sp_org_id",
+    "onsite_status"
+  ],
+  "properties": {
+    "onsite_status": {
+      "description": "Describes whether the movement is 'onsite' or 'offsite', if set to onsite the 'scanned_out' field is unset",
+      "type": "string",
+      "format": "string"
+    },
+    "location_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "sp_member_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "sp_org_id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "print_kiosk_id": {
+      "description": "ID of the kiosk which has shared badge pass printing enabled. Not mandatory.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "lacp_id": {
+      "description": "Location access point ID. Not mandatory.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "zone_id": {
+      "description": "ID of the zone being signed into. Not mandatory.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "zone_other": {
+      "description": "Zone note for this movement. Not mandatory",
+      "type": "string",
+      "format": "string"
+    },
+    "scanned_in": {
+      "description": "Scanned in note. Only set when onsite_status = 'onsite'. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "scanned_out": {
+      "description": "Scanned out note. Only set when onsite_status = 'offsite', gets unset when onsite_status = 'onsite'. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "visiting_staff_id": {
+      "description": "ID of staff member being visited. Not mandatory.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "cardnumber": {
+      "description": "Sign in card number. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_question": {
+      "description": "Can be set as either 1/0 or true/false. Not mandatory.",
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "carpark_registration": {
+      "description": "Vehicle registration. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "carpark_number": {
+      "description": "Carpark number. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "pass": {
+      "description": "Not mandatory",
+      "type": "integer",
+      "format": "int32"
+    },
+    "other_pass": {
+      "description": "Any other pass that might need to be submitted. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "sp_purpose": {
+      "description": "Reason for contractor visit. Not mandatory.",
+      "type": "string",
+      "format": "string"
+    },
+    "assistance": {
+      "description": "Whether or not a contractor requires assistance. Not mandatory.",
+      "type": "boolean",
+      "format": "boolean"
+    },
+    "expected": {
+      "description": "Expected time on-site. Not mandatory",
+      "type": "integer",
+      "format": "int32"
+    },
+    "loneworker": {
+      "description": "Describes whether or not the contractor is working alone. Not mandatory.",
+      "format": "boolean"
+    },
+    "so_staff_id": {
+      "description": "Staff safety officer ID. Not mandatory",
+      "type": "integer",
+      "format": "int32"
+    },
+    "so_spm_id": {
+      "description": "Contractor manager safety officer ID. Not mandatory",
+      "type": "integer",
+      "format": "int32"
+    }
+  },
+  "type": "object"
+}

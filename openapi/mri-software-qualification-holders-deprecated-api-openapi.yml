@@ -1,0 +1,367 @@
+openapi: 3.2.0
+info:
+  title: Mri Software Qualification holders (deprecated) API
+  version: '0.1'
+  contact:
+    email: support@whosonlocation.com
+  description: 'Operations tagged Qualification holders (deprecated) across 2 of this provider''s published API definitions: mri-software-onlocation-openapi.json, mri-software-onlocation-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.whosonlocation.com/v1
+tags:
+- name: Qualification holders (deprecated)
+  description: The qualifications endpoints have been deprecated as Qualifications Management has been renamed Certifications Management. Use the certification holders endpoints to access this data.
+paths:
+  /qualification/{id}/holder:
+    get:
+      tags:
+      - Qualification holders (deprecated)
+      summary: List all qualification holders
+      description: 'Returns a list of the employees or contractors that hold the specified qualification.
+
+
+        A comma separated list of tag:value search parameters, a colon separator performs an exact match, a percent separator performs a starts-with search and greater/less than search number/date ranges.'
+      operationId: getQualificationHolderList
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification to retrieve holders for
+        required: true
+        schema:
+          type: integer
+          format: int32
+        example: '5'
+      responses:
+        '200':
+          description: List of employees or contractors that hold the qualification
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificationHolderResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    post:
+      tags:
+      - Qualification holders (deprecated)
+      summary: Create a qualification holder
+      description: Adds a new qualification holder association.
+      operationId: createQualificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification to create a holder association for
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: 'Information use to create the qualification holder association:'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationHolderRequest'
+      responses:
+        '201':
+          description: Qualification holder created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /qualification/{id}/holder/{hid}:
+    get:
+      tags:
+      - Qualification holders (deprecated)
+      summary: Retrieve a qualification holder
+      description: Retrieves the details of a specific qualification holder.
+      operationId: getQualificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification to retrieve holders for
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the qualification holder to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: List of employees or contractors that hold the qualification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    put:
+      tags:
+      - Qualification holders (deprecated)
+      summary: Update a qualification holder
+      description: Updates a qualification holder's details.
+      operationId: updateQualificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the qualification holder association to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Information use to create the qualification holder association
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CertificationHolderRequest'
+      responses:
+        '200':
+          description: Updated resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CertificationHolderResponse'
+        '403':
+          description: Access denied to this resource
+        '500':
+          description: Internal server error
+      deprecated: true
+    delete:
+      tags:
+      - Qualification holders (deprecated)
+      summary: Delete a qualification holder
+      description: Deletes the specified qualification holder association record.
+      operationId: deleteQualificationHolder
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the qualification holder association to delete
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '204':
+          description: Qualification holder deleted
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+  /qualification/{id}/holder/{hid}/document:
+    get:
+      tags:
+      - Qualification holders (deprecated)
+      summary: List all qualification documents
+      description: Retrieves a list of documents for a specified qualification holder and specified qualification.
+      operationId: getQualificationHolderDocuments
+      parameters:
+      - name: id
+        in: path
+        description: ID of the qualification
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: hid
+        in: path
+        description: ID of the qualification holder
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: List of qualification holder documents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentResponse'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentResponse'
+        '403':
+          description: Access denied to resource
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+      deprecated: true
+    servers:
+    - url: https://api.whosonlocation.com/v1
+components:
+  schemas:
+    DocumentResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 70
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-29T08:12:24+13:00'
+        name:
+          type: string
+          format: string
+          example: file-example
+        type:
+          type: string
+          format: string
+          example: pdf
+        size:
+          type: integer
+          format: int64
+          example: 469513
+        link:
+          type: string
+          format: string
+          example: https://your.site.com/storage/file-example.pdf
+      type: object
+    CertificationHolderResponse:
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 218
+        created:
+          type: string
+          format: date-time
+          example: '2021-11-26T14:37:12+13:00'
+        modified:
+          type: string
+          format: date-time
+          example: '2021-11-30T14:37:12+13:00'
+        certification_id:
+          type: integer
+          format: int32
+          example: 1205
+        record_id:
+          type: integer
+          format: int32
+          example: 823431
+        record_type:
+          type: string
+          enum:
+          - staff
+          - sp
+          example: staff
+        validfrom:
+          type: string
+          format: date
+          example: '2021-11-27'
+        validto:
+          type: string
+          format: date
+          example: '2022-11-27'
+        certification_number:
+          type: string
+          format: string
+          example: WFL900
+        holder_name:
+          type: string
+          format: string
+          example: Robert Jordan
+        holder_email:
+          type: string
+          format: string
+          example: example-email@whosonlocation.com
+        certification_name:
+          type: string
+          format: string
+          example: Window Fitting Licence
+        type:
+          type: string
+          format: string
+          example: Licence
+        documents:
+          type: integer
+          format: int32
+          example: 1
+      type: object
+    CertificationHolderRequest:
+      properties:
+        record_id:
+          description: This is the ID of the staff or contractor member being given the qualification
+          type: integer
+          format: int32
+          example: 823431
+        record_type:
+          type: string
+          enum:
+          - staff
+          - sp
+          example: staff
+        validfrom:
+          type: string
+          format: date
+          example: '2021-11-27'
+        validto:
+          type: string
+          format: date
+          example: '2022-11-27'
+        certification_number:
+          type: string
+          format: string
+          example: WFL900
+      type: object
+x-refined-from:
+- mri-software-onlocation-openapi.json
+- mri-software-onlocation-openapi.yml
