@@ -1,0 +1,59 @@
+slug: mri-software
+provider: MRI Software
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Real Estate
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Pre-registered visitors
+  spec_file: mri-software-pre-registered-visitors-api-openapi.yml
+  capability_id: BC-700.10
+  capability_id_l1: BC-700
+  capability_name: Workplace Services Management
+  confidence: 0.72
+  evidence: POST /visitor/register 'Create a pre-registered visitor event'; schemas VisitorRegisterPersonRequest,
+    VisitorRegisterResponse
+  reason: Visitor pre-registration for site arrival is core reception/front-of-house workplace service
+    in MRI's visitor management product, matching Workplace Services Management.
+- tag: Contractor insurance policies
+  spec_file: mri-software-contractor-insurance-policies-api-openapi.yml
+  capability_id: BC-4940.30
+  capability_id_l1: BC-4940
+  capability_name: Property Vendor & Service Contract Management
+  confidence: 0.7
+  evidence: POST /sp/insurance  createContractorInsurance  Create an insurance policy ... GET /sp/insurance/type  getSpInsuranceTypeList  List
+    contractor insurance types
+  reason: Tracks insurance policies held by contractors/service providers working on site, a standard
+    compliance gate in property-level vendor onboarding and contract management. Not an insurance-underwriting
+    capability and not asset insurance — it is contractor qualification data.
+- tag: Contractor organizations
+  spec_file: mri-software-contractor-organizations-api-openapi.yml
+  capability_id: BC-4940.30
+  capability_id_l1: BC-4940
+  capability_name: Property Vendor & Service Contract Management
+  confidence: 0.7
+  evidence: POST /sp/org  createContractorOrganisation  Create an organization ... GET /sp/org/{id}/groups  getSpOrgGroup  Retrieve
+    a contractor organization's group
+  reason: Master register of contractor / service-provider organisations with their locations and groupings,
+    which is the core of onboarding and managing property-level service vendors. The 'sp' path prefix
+    and ContractorOrganisationResponse schema ground the contractor reading over any generic 'organization'
+    reading.
+- tag: Visitor events
+  spec_file: mri-software-visitor-events-api-openapi.yml
+  capability_id: BC-4940.50
+  capability_id_l1: BC-4940
+  capability_name: Property Security & Life Safety Operations
+  confidence: 0.7
+  evidence: POST /visitor/event createVisitorEvent Create a visitor event
+  reason: Visitor sign-in/sign-out events at a site for a vendor whose stated scope includes 'visitor
+    and contractor management'; this is on-site access control and presence tracking, the core of property
+    security and life-safety operations (including evacuation roll-call).
