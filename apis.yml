@@ -68,6 +68,9 @@ maintainers:
   email: kin@apievangelist.com
 
 common:
+- type: CapabilityMap
+  url: capabilities/mri-software-capability-edges.yml
+  name: MRI Software Business Capability Map
 - type: AgentSkill
   url: skills/_index.yml
 - type: AgenticAccess
